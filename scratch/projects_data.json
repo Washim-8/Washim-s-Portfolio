@@ -1,0 +1,295 @@
+[
+  {
+    "id": "avatarai",
+    "name": "AvatarAI",
+    "category": "AI/ML",
+    "featured": true,
+    "period": "Mar 2026 – Apr 2026",
+    "association": "Inventeron Technologies",
+    "description": "Developed AvatarAI, an AI-powered application focused on generating and processing digital avatars using modern machine learning and media processing techniques. The project addresses the growing need for intelligent avatar-based interaction systems by enabling automated content generation and visual transformation workflows. 🚀\n\nThe system is designed to integrate AI-based media processing with backend workflows, allowing users to generate avatar-based outputs from input data. It follows a structured pipeline involving input processing, model integration, API handling, and output generation, ensuring a smooth and scalable workflow. 📊🧠\n\nKey features include AI-driven avatar generation, integration with external APIs for media processing, and automated backend handling of user inputs and outputs. The application emphasizes modular design, enabling flexibility for future enhancements and integration of advanced AI models. 💻✅\n\nBuilt using Python along with AI/ML libraries and API integrations, the project demonstrates practical implementation of intelligent systems combining automation and media processing. As the developer, I designed and implemented the core architecture, integrated APIs, handled backend logic, and ensured efficient processing of data across the pipeline. ⚙️📈\n\nThis project has real-world applications in digital content creation, virtual assistants, personalized media generation, and AI-driven communication systems, showcasing my ability to work with emerging technologies and build scalable AI-powered solutions. 🎭📷",
+    "bullets": [
+      "Developed an AI-powered system for automated avatar generation and processing",
+      "Integrated external APIs for media handling and transformation workflows",
+      "Designed a modular and scalable backend architecture",
+      "Built a real-world AI application focused on digital content creation"
+    ],
+    "technologies": ["Artificial Intelligence", "Machine Learning", "Python", "Media Processing", "APIs"],
+    "github": "https://github.com/Washim-8/AvatarAI"
+  },
+  {
+    "id": "brain-tumor",
+    "name": "BrainScan AI - Brain Tumor Detection System",
+    "category": "AI/ML",
+    "featured": true,
+    "period": "Mar 2026 – Mar 2026",
+    "association": "Inventeron Technologies",
+    "description": "Developed a Brain Tumor Classification system using Deep Learning to automatically classify medical images for identifying potential tumor presence. This project addresses the critical need for faster and more reliable diagnostic assistance by leveraging machine learning techniques to analyze medical imaging data. 🚀\n\nThe system follows a structured workflow involving image preprocessing, feature extraction, and model-based classification, enabling the identification of patterns in medical images. It focuses on improving accuracy and efficiency in analyzing complex image data, which is essential in healthcare-related applications. 📊🧠\n\nKey features of the project include image classification, data preprocessing, and model training for medical image analysis, ensuring reliable predictions. The implementation is designed to handle image data effectively and provide consistent outputs, demonstrating the application of deep learning techniques in real-world scenarios. 💻✅\n\nBuilt using Python and deep learning libraries such as TensorFlow/Keras, the project highlights practical implementation of computer vision techniques. As the developer, I designed and implemented the end-to-end pipeline, including preprocessing, model training, and evaluation, ensuring the system performs effectively on image datasets. ⚙️📈\n\nThis project has real-world applications in medical diagnosis support systems, where automated image classification can assist healthcare professionals in early detection and analysis. It demonstrates my ability to work on impactful AI/ML solutions and apply deep learning techniques to solve complex problems. 🏥📷",
+    "bullets": [
+      "Implemented a deep learning-based image classification system for medical data",
+      "Applied computer vision techniques for feature extraction and analysis",
+      "Designed a structured ML pipeline for preprocessing and model evaluation",
+      "Demonstrated a real-world healthcare use case using AI/ML"
+    ],
+    "technologies": ["Deep Learning", "Computer Vision", "TensorFlow", "Keras", "Python"],
+    "github": "https://github.com/Washim-8/Brain-tumor-classification-main"
+  },
+  {
+    "id": "drowsiness",
+    "name": "Driver Drowsiness Detection System",
+    "category": "AI/ML",
+    "featured": true,
+    "period": "Mar 2026 – Mar 2026",
+    "association": "Inventeron Technologies",
+    "description": "Developed a Driver Drowsiness Detection System using computer vision and machine learning techniques to enhance road safety by detecting signs of driver fatigue in real time. This project addresses the critical issue of accidents caused by drowsy driving by providing an automated monitoring system that alerts drivers when signs of fatigue are detected. 🚀\n\nThe system captures live video input through a camera and processes facial features to detect eye closure and fatigue patterns. It follows a structured pipeline involving image acquisition, facial landmark detection, feature extraction, and real-time analysis, enabling continuous monitoring of driver alertness. 📊🧠\n\nKey features include real-time drowsiness detection, facial feature analysis, and alert triggering mechanisms, ensuring timely warnings to prevent potential accidents. The system emphasizes responsiveness and reliability, making it suitable for real-world safety applications. 💻✅\n\nBuilt using Python along with computer vision libraries such as OpenCV and machine learning techniques, the project demonstrates practical implementation of intelligent monitoring systems. As the developer, I designed and implemented the full pipeline, including image processing logic, detection algorithms, and alert system integration. ⚙️📈\n\nThis project has strong real-world applications in automotive safety systems and driver assistance technologies, where monitoring driver behavior is essential for preventing accidents. It highlights my ability to develop impactful AI/ML solutions with real-time processing capabilities. 🚗📷",
+    "bullets": [
+      "Implemented a real-time driver monitoring system using computer vision",
+      "Applied facial feature detection for fatigue analysis",
+      "Designed a responsive alert mechanism to improve road safety",
+      "Built a practical AI-based solution for real-world automotive applications"
+    ],
+    "technologies": ["Machine Learning", "Image Processing", "Computer Vision", "OpenCV", "Python"],
+    "github": "https://github.com/Washim-8/Driver-Drowsiness-Detection-System"
+  },
+  {
+    "id": "face-recognition",
+    "name": "Face Recognition Employee Attendance System",
+    "category": "AI/ML",
+    "featured": true,
+    "period": "Mar 2026 – Mar 2026",
+    "association": "Inventeron Technologies",
+    "description": "Developed a Face Recognition-Based Employee Attendance System to automate attendance tracking using computer vision and machine learning techniques. This project addresses the inefficiencies and inaccuracies of manual attendance systems by providing a contactless, reliable, and time-efficient solution for recording employee presence. 🚀\n\nThe system captures facial data through a camera, processes images using face detection and recognition algorithms, and matches them against stored data to mark attendance automatically. It follows a structured pipeline involving image acquisition, preprocessing, feature extraction, and identity verification, ensuring accurate and consistent results. 📊🧠\n\nKey features include automated attendance marking, real-time face recognition, and structured data handling, enabling seamless tracking of employee attendance. The implementation focuses on usability and efficiency, reducing manual intervention while improving accuracy and reliability. 💻✅\n\nBuilt using Python along with computer vision libraries such as OpenCV and machine learning techniques, the project demonstrates practical application of AI in real-world systems. As the developer, I designed and implemented the complete system, including image processing logic, recognition workflow, and integration of attendance recording functionality. ⚙️📈\n\nThis project has strong real-world applications in corporate offices, educational institutions, and organizations, where automated attendance systems can improve operational efficiency and reduce human error. It highlights my ability to build intelligent, real-time systems using AI/ML and computer vision. 🏢📷",
+    "bullets": [
+      "Implemented a real-time face recognition system for attendance automation",
+      "Applied computer vision techniques for face detection and identification",
+      "Designed a structured pipeline for image processing and data handling",
+      "Built a practical AI-based solution for organizational use cases"
+    ],
+    "technologies": ["OpenCV", "Computer Vision", "Machine Learning", "Python", "Data Processing"],
+    "github": "https://github.com/Washim-8/Face-Recognition-Employee-Attendance-System"
+  },
+  {
+    "id": "fintrackai",
+    "name": "FinTrackAI – Personal Finance Tracker",
+    "category": "Data Science",
+    "period": "Feb 2026 – Feb 2026",
+    "association": "Inventeron Technologies",
+    "description": "Developed FinTrack-AI — Personal Finance Tracker, a web-based application designed to help users efficiently manage and analyze their financial activities. This project addresses the challenge of tracking personal expenses and financial behavior by providing a structured platform for recording, monitoring, and understanding spending patterns. 🚀\n\nThe system enables users to track income and expenses, organize financial records, and gain insights into their spending habits, allowing better financial planning and decision-making. It focuses on simplifying personal finance management through an intuitive interface and structured data handling. 📊💻\n\nKey features include expense tracking, financial data organization, and basic analytical insights, ensuring users can monitor their finances effectively. The application emphasizes usability and clarity, making it accessible for individuals seeking a simple yet functional finance tracking solution. ✅✨\n\nBuilt using Python (for AI/ML concepts), along with web technologies such as HTML, CSS, and JavaScript, the project demonstrates the integration of basic intelligent features with frontend development. As the developer, I designed and implemented the overall system, handled data processing logic, and ensured smooth interaction between components. ⚙️📈\n\nThis project has real-world applications in personal finance management and budgeting, helping users improve financial awareness and maintain better control over their expenses. It highlights my ability to combine web development with foundational AI concepts to build practical, user-centric solutions. 💰📉➡️📈",
+    "bullets": [
+      "Developed a personal finance tracking system with structured data management",
+      "Integrated basic AI/ML concepts for enhanced financial insights",
+      "Designed a clean and user-friendly interface for better usability",
+      "Built a real-world application focused on budgeting and expense control"
+    ],
+    "technologies": ["Machine Learning", "Python", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Washim-8/FinTrackAI"
+  },
+  {
+    "id": "agritrade",
+    "name": "Interactive AgriTrade",
+    "category": "Web Development",
+    "featured": true,
+    "isMajor": true,
+    "period": "Aug 2025 – Jan 2026",
+    "association": "Visvesvaraya Technological University (VTU)",
+    "description": "Developed Interactive-AgriTrade, a web-based platform designed to facilitate digital interaction and trading within the agricultural ecosystem. The project aims to address the challenges faced by farmers and buyers in traditional marketplaces by providing a structured and accessible online environment for agricultural trade and communication. 🚀\n\nThe system focuses on enabling user interaction, product listing, and streamlined communication between stakeholders, ensuring a more efficient and transparent trading process. By digitizing agricultural transactions, the platform helps reduce dependency on intermediaries and improves accessibility for farmers and buyers. 📊🌱\n\nKey features include interactive user interface, structured data presentation, and organized workflow for showcasing agricultural products, ensuring ease of use and clarity. The platform emphasizes usability and responsiveness, making it accessible across devices and suitable for real-world adoption. 💻✅\n\nBuilt using web technologies such as HTML, CSS, JavaScript, and backend integration (where applicable), the project demonstrates full-stack development capabilities. As the developer, I designed the user interface, structured the application flow, implemented interactive components, and ensured smooth functionality across different modules. ⚙️📈\n\nThis project has strong real-world applications in agriculture and digital marketplaces, supporting farmers by improving market access and enabling better price discovery. It highlights my ability to build impactful solutions that combine technology with real-world societal needs. 🌾📉➡️📈",
+    "bullets": [
+      "Developed a digital platform for agricultural trade and interaction",
+      "Designed a responsive and user-friendly interface for accessibility",
+      "Focused on real-world problem-solving in the agriculture domain",
+      "Built a structured and scalable web application architecture"
+    ],
+    "technologies": ["Artificial Intelligence", "FastAPI", "HTML", "CSS", "JavaScript", "PHP", "Machine Learning"],
+    "github": "https://github.com/Washim-8/Interactive-AgriTrade"
+  },
+  {
+    "id": "recipe-finder",
+    "name": "Recipe Finder & Meal Planner",
+    "category": "Web Development",
+    "period": "Dec 2025 – Dec 2025",
+    "association": "Visvesvaraya Technological University (VTU)",
+    "description": "Developed a Recipe Finder and Meal Planner web application to help users discover recipes and organize their meals efficiently. This project addresses the common challenge of planning daily meals and searching for suitable recipes by providing a centralized platform for browsing and managing food choices. 🚀\n\nThe application allows users to search for recipes, explore meal options, and plan meals in an organized manner, ensuring a streamlined user experience. It focuses on simplifying the decision-making process related to food selection by presenting information in a clear and structured format. 📊🍴\n\nKey features include recipe search functionality, meal planning interface, and user-friendly navigation, enabling users to efficiently manage their meal schedules. The system emphasizes usability and responsiveness, ensuring smooth interaction across different devices and screen sizes. ✅✨\n\nBuilt using HTML, CSS, and JavaScript, the project demonstrates strong frontend development skills along with the ability to handle dynamic content and user interactions. As the developer, I designed the interface, implemented search and planning logic, and ensured seamless functionality across the application. ⚙️📈\n\nThis project has real-world applications in personal nutrition management and lifestyle planning, helping users maintain organized meal routines and make informed dietary choices. It highlights my ability to develop practical, user-centric web applications that solve everyday problems. 🥗📅",
+    "bullets": [
+      "Developed a user-friendly application for recipe discovery and meal planning",
+      "Implemented dynamic search and interaction using JavaScript",
+      "Designed a responsive and clean UI for better user experience",
+      "Built a real-world lifestyle application focused on usability and practicality"
+    ],
+    "technologies": ["Web Application Development", "Front-End Development", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Washim-8/Recipe-Finder-Meal-Planner"
+  },
+  {
+    "id": "room-booking",
+    "name": "Booking Management System for Room Booking",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "WoRisGo",
+    "description": "Developed a Booking Management System for Room Booking to streamline the process of reserving and managing room bookings through a web-based platform. This project addresses the inefficiencies of manual booking systems by providing a structured and digital solution for handling reservations, improving accuracy, and enhancing user convenience. 🚀\n\nThe system enables users to book rooms, manage reservations, and view booking details, ensuring a smooth and organized workflow. It focuses on simplifying booking operations by maintaining structured data and providing a user-friendly interface for interaction. This reduces the chances of booking conflicts and improves overall management efficiency. 📊💻\n\nKey features include room booking functionality, reservation management, and data organization, demonstrating the integration of backend logic with frontend interfaces. The platform ensures that booking data is handled systematically, making it easier to track and manage reservations in real time. ✅✨\n\nBuilt using PHP, HTML, CSS, and backend logic, the project showcases practical implementation of full-stack web development concepts. As the developer, I was responsible for designing the user interface, implementing backend functionalities for booking operations, and ensuring seamless interaction between client-side and server-side components. ⚙️📈\n\nThis project has real-world applications in hospitality, hostels, and resource management systems, where efficient booking and scheduling are essential. It highlights my ability to design and develop functional web applications that solve real-world operational challenges. 🏨📅",
+    "bullets": [
+      "Developed a web-based booking system for managing room reservations",
+      "Implemented backend logic for handling booking and data management",
+      "Designed a user-friendly interface for smooth booking experience",
+      "Demonstrated integration of frontend and backend technologies in a real-world use case"
+    ],
+    "technologies": ["Back-End Web Development", "Web Application Development", "PHP", "HTML", "CSS"],
+    "github": "https://github.com/Washim-8/Booking-Management-System"
+  },
+  {
+    "id": "todo-php",
+    "name": "PHP Simple To-Do List",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "WoRisGo",
+    "description": "Developed a To-Do List Web Application using PHP to manage daily tasks efficiently through a server-side implementation. This project addresses the limitation of static task management systems by introducing backend functionality, enabling persistent storage and dynamic handling of user tasks. 🚀\n\nThe application allows users to create, update, and delete tasks, ensuring effective task organization and management. By leveraging PHP for backend processing, the system handles user inputs securely and maintains task data across sessions, improving reliability compared to purely frontend-based solutions. 📋⚙️\n\nKey features include server-side task management, dynamic data handling, and structured task storage, ensuring consistency and usability. The system demonstrates how backend technologies can be integrated with basic web interfaces to build functional and scalable web applications. ✅✨\n\nBuilt using PHP, HTML, CSS, and basic database interaction (assumed for task persistence), the project showcases practical understanding of full-stack fundamentals. As the developer, I implemented backend logic, handled form submissions, managed task operations, and ensured smooth interaction between frontend and server-side components. 💻📊\n\nThis project has real-world relevance as a productivity and task management tool, providing users with a reliable way to manage tasks with data persistence. It highlights my ability to develop backend-driven web applications and integrate frontend and server-side logic effectively. 📈📝",
+    "bullets": [
+      "Implemented server-side task management using PHP",
+      "Designed a simple and functional UI for usability",
+      "Demonstrated integration of frontend and backend components",
+      "Built a real-world productivity application with persistent behavior"
+    ],
+    "technologies": ["Back-End Web Development", "Web Application Development", "PHP", "HTML", "CSS"],
+    "github": "https://github.com/Washim-8/PHP-Simple-To-Do-List"
+  },
+  {
+    "id": "expense-tracker",
+    "name": "Personal Expense Tracker",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "1Stop.ai",
+    "description": "Developed a Personal Expense Tracker application to help users efficiently manage and monitor their daily financial activities. The project addresses the common challenge of tracking expenses manually by providing a structured and user-friendly system to record, categorize, and review spending patterns. 🚀\n\nThe application enables users to add, update, and manage expense records, offering a clear overview of financial transactions. It focuses on simplifying expense tracking by organizing data in a structured format, making it easier to analyze spending habits and maintain financial discipline. 📊💻\n\nKey features of the system include expense entry management, data organization, and basic tracking functionality, ensuring users can maintain accurate records of their expenditures. The implementation emphasizes simplicity and usability, making the application accessible even for users with minimal technical background. ✅✨\n\nBuilt using core web technologies such as HTML, CSS, and JavaScript, the project demonstrates strong fundamentals in frontend development and basic application logic. As the developer, I designed and implemented the user interface, handled data input logic, and ensured smooth interaction between components for an efficient user experience. ⚙️📈\n\nThis project has practical real-world use as a personal finance management tool, helping individuals track expenses, improve budgeting habits, and gain better control over their finances. It highlights my ability to build functional web applications focused on usability and real-life problem-solving. 💰📉➡️📈",
+    "bullets": [
+      "Developed a user-friendly interface for managing daily expenses",
+      "Focused on clean and simple design for better usability",
+      "Implemented structured data handling for expense tracking",
+      "Built a practical real-world application for personal finance management"
+    ],
+    "technologies": ["Web Application Development", "Front-End Development", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Washim-8/Personal-Expense-Tracker"
+  },
+  {
+    "id": "portfolio",
+    "name": "Portfolio",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "1Stop.ai",
+    "description": "Developed a personal portfolio website to showcase projects, technical skills, certifications, and internship experience in a structured and visually accessible format. This project addresses the need for a centralized digital presence, enabling recruiters and collaborators to easily explore my work and professional background. 🚀\n\nThe portfolio is designed with a focus on clean UI/UX, responsive design, and organized content presentation, ensuring accessibility across different devices. It includes sections such as About Me, Projects, Skills, Certifications, and Contact, allowing a comprehensive overview of my technical profile and achievements. 💻📊\n\nKey features of the project include responsive web design, structured layout, and user-friendly navigation, making it easy for visitors to interact with the content. The implementation emphasizes simplicity and clarity, ensuring fast loading and smooth user experience without unnecessary complexity. ✅✨\n\nBuilt using HTML, CSS, and JavaScript, the project demonstrates strong fundamentals in front-end development and web design principles. As the developer, I was responsible for designing the layout, implementing responsive styling, organizing content, and ensuring consistency across all sections of the website. ⚙️🎨\n\nThis portfolio serves as a professional branding tool, helping present my skills and projects effectively for job applications, internships, and networking opportunities. It highlights my ability to combine technical skills with design thinking to create impactful web solutions. 🌐📈",
+    "bullets": [
+      "Designed a clean and responsive UI/UX for better user engagement",
+      "Implemented a structured layout for easy navigation and readability",
+      "Focused on performance and lightweight frontend implementation",
+      "Created a professional digital portfolio for real-world job applications"
+    ],
+    "technologies": ["Front-End Development", "Responsive Web Design", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Washim-8/Portfolio"
+  },
+  {
+    "id": "blogging-platform",
+    "name": "Simple Blogging Platform",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "WoRisGo",
+    "description": "Developed a Simple Blogging Platform to enable users to create, manage, and view blog content through a structured web-based interface. This project addresses the need for a basic content publishing system by allowing users to write and organize posts in an accessible and user-friendly environment. 🚀\n\nThe platform provides core blogging functionalities such as creating, editing, and displaying blog posts, ensuring smooth content management. It focuses on delivering a clean and intuitive interface where users can interact with blog entries efficiently. The system is designed to simplify content publishing while maintaining clarity and usability. 📄💻\n\nKey features include content creation, structured data handling, and dynamic display of posts, demonstrating the integration of frontend and backend logic. The project emphasizes simplicity and functionality, making it suitable for understanding the fundamentals of web-based content management systems. ✅✨\n\nBuilt using PHP, HTML, CSS, and basic backend logic, the platform showcases practical implementation of server-side scripting combined with frontend development. As the developer, I was responsible for designing the user interface, implementing backend logic for handling posts, and ensuring seamless interaction between components. ⚙️📊\n\nThis project has real-world applications as a basic content management and blogging system, helping users share ideas and manage written content online. It highlights my ability to develop full-stack web applications and implement core functionalities required for dynamic web platforms. 🌐📈",
+    "bullets": [
+      "Developed a basic content management system for blogging",
+      "Implemented server-side logic using PHP for handling posts",
+      "Designed a clean and user-friendly interface for content interaction",
+      "Demonstrated integration of frontend and backend technologies"
+    ],
+    "technologies": ["Back-End Web Development", "Web Application Development", "PHP", "HTML", "CSS"],
+    "github": "https://github.com/Washim-8/Simple-Blogging-Platform"
+  },
+  {
+    "id": "todo-html",
+    "name": "To-Do List Pro",
+    "category": "Web Development",
+    "period": "Jul 2025 – Sep 2025",
+    "association": "1Stop.ai",
+    "description": "Developed a To-Do List Web Application using core front-end technologies to help users efficiently manage daily tasks and improve productivity. This project addresses the common challenge of organizing tasks by providing a simple, interactive interface for creating, tracking, and managing to-do items in a structured manner. 🚀\n\nThe application allows users to add, edit, and delete tasks, ensuring flexibility in task management. It focuses on delivering a smooth and intuitive user experience, enabling users to easily maintain their task lists without unnecessary complexity. The system emphasizes usability, making it accessible for everyday use. 📋💻\n\nKey features of the project include dynamic task handling, interactive UI updates, and organized task management, ensuring real-time responsiveness and user-friendly interaction. The application demonstrates how basic web technologies can be used effectively to build functional and responsive tools. ✅✨\n\nBuilt using HTML, CSS, and JavaScript, the project showcases strong fundamentals in frontend development and DOM manipulation. As the developer, I designed and implemented the complete interface, handled event-driven logic for task operations, and ensured consistent performance across user interactions. ⚙️📈\n\nThis project has practical real-world use as a productivity and task management tool, helping users stay organized and manage their daily responsibilities effectively. It highlights my ability to build lightweight, functional web applications with a focus on usability and performance. 📝📊",
+    "bullets": [
+      "Implemented dynamic task management using JavaScript and DOM manipulation",
+      "Designed a clean and intuitive user interface for better usability",
+      "Focused on lightweight and efficient frontend performance",
+      "Built a real-world productivity tool for everyday task tracking"
+    ],
+    "technologies": ["DOM Manipulation", "Front-End Development", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Washim-8/To-Do-List-Pro"
+  },
+  {
+    "id": "customer-churn",
+    "name": "Customer Churn Prediction",
+    "category": "Data Science",
+    "period": "Dec 2024 – Feb 2025",
+    "association": "YHills",
+    "description": "Developed a Customer Churn Prediction system using Machine Learning to identify customers who are likely to discontinue a service. This project addresses a critical business problem by enabling organizations to proactively retain customers, reduce revenue loss, and improve customer satisfaction through data-driven insights. 🚀\n\nThe system follows a structured machine learning workflow, including data preprocessing, feature selection, model training, and evaluation. Raw customer data is cleaned and transformed into meaningful features, allowing the model to learn behavioral patterns associated with churn. This ensures reliable predictions and supports informed decision-making. 📊🧠\n\nKey features of the project include classification-based prediction, data analysis, and model evaluation, enabling accurate identification of at-risk customers. The implementation focuses on clarity and modularity, ensuring each component—from preprocessing to prediction—is maintainable and scalable. 💻✅\n\nBuilt using Python and standard machine learning libraries, the project demonstrates practical application of predictive analytics in a business context. As the developer, I designed and implemented the end-to-end pipeline, handled data preparation, trained models, and evaluated performance to ensure meaningful outcomes. ⚙️📈\n\nThis project has real-world applications in industries such as telecommunications, banking, and subscription-based services, where customer retention is essential. It highlights my ability to apply machine learning techniques to solve real-world business problems and generate actionable insights. 📉➡️📈",
+    "bullets": [
+      "Implemented a complete ML pipeline from preprocessing to prediction",
+      "Focused on clean, modular, and maintainable code structure",
+      "Applied data-driven decision-making techniques",
+      "Designed for real-world business use cases (customer retention)"
+    ],
+    "technologies": ["Machine Learning", "Predictive Modeling", "Python", "Data Analysis", "Scikit-Learn"],
+    "github": "https://github.com/Washim-8/Customer-Churn-Prediction"
+  },
+  {
+    "id": "financial-fraud",
+    "name": "Financial Fraud Detection",
+    "category": "Data Science",
+    "period": "Dec 2024 – Feb 2025",
+    "association": "YHills",
+    "description": "Developed a Financial Fraud Detection System using Machine Learning to identify and flag potentially fraudulent transactions. The project addresses a critical challenge in financial systems—detecting fraudulent activities in large volumes of transactional data—by leveraging data-driven predictive models to enhance security and minimize financial risk. 🚀\n\nThe system follows a structured machine learning pipeline, including data preprocessing, feature engineering, model training, and evaluation. Transactional data is cleaned and transformed into meaningful features, enabling the model to learn patterns associated with legitimate and fraudulent behavior. This approach supports accurate and reliable classification of transactions. 📊🧠\n\nKey features of the project include fraud classification, anomaly detection logic (basic), and model evaluation, allowing the system to distinguish between normal and suspicious activities. The implementation emphasizes clarity and modularity, ensuring that each stage—from data handling to prediction—is maintainable and scalable for future enhancements. 💻✅\n\nBuilt using Python and standard machine learning libraries, the project demonstrates the practical application of predictive analytics in the financial domain. As the developer, I designed and implemented the complete workflow, including data preparation, model development, and evaluation, ensuring the system performs effectively on unseen data. ⚙️📈\n\nThis project has real-world applications in banking, digital payments, and financial services, where early detection of fraud is essential. It highlights my ability to apply machine learning techniques to solve high-impact problems, improve decision-making, and contribute to secure transaction systems. 💳🔐",
+    "bullets": [
+      "Implemented a complete end-to-end ML pipeline",
+      "Focused on real-world financial fraud detection use case",
+      "Designed with clean and modular code structure",
+      "Supports scalable analysis of transactional datasets"
+    ],
+    "technologies": ["Fraud Detection", "Machine Learning", "Python", "Data Analysis", "Predictive Modeling"],
+    "github": "https://github.com/Washim-8/Financial-Fraud-Detection"
+  },
+  {
+    "id": "house-price",
+    "name": "House Price Prediction",
+    "category": "Data Science",
+    "period": "Dec 2024 – Feb 2025",
+    "association": "YHills",
+    "description": "Developed a House Price Prediction system using Machine Learning to estimate property prices based on various input features. This project addresses the challenge of accurately predicting real estate prices by leveraging historical housing data and data-driven modeling techniques, helping users make informed buying or selling decisions. 🚀\n\nThe project follows a structured machine learning workflow, beginning with data preprocessing and cleaning, where raw housing data is transformed into a suitable format for analysis. Feature selection and transformation are applied to identify key factors influencing house prices, enabling the model to learn meaningful patterns from the dataset. 📊🧠\n\nKey features of the system include predictive modeling for price estimation, data analysis, and model evaluation, ensuring reliable and consistent output. The implementation focuses on simplicity and clarity, making the pipeline easy to understand while maintaining effectiveness in prediction tasks. 💻✅\n\nBuilt using Python and standard machine learning libraries, the project demonstrates practical application of regression techniques in real-world scenarios. As the developer, I designed and implemented the complete pipeline, including data handling, model training, and evaluation, ensuring accurate predictions and efficient performance. ⚙️📈\n\nThis project has strong real-world applications in the real estate domain, where accurate pricing is essential for buyers, sellers, and investors. It highlights my ability to apply machine learning concepts to solve practical business problems and deliver data-driven insights. 🏠📉➡️📈",
+    "bullets": [
+      "Implemented a regression-based ML model for price prediction",
+      "Designed a clean and modular pipeline for preprocessing and modeling",
+      "Focused on real-world applicability in housing market analysis",
+      "Ensured maintainable and readable code structure"
+    ],
+    "technologies": ["Regression Modeling", "Data Processing", "Python", "Machine Learning", "Data Analysis"],
+    "github": "https://github.com/Washim-8/House-Price-Prediction"
+  },
+  {
+    "id": "text-classification",
+    "name": "Text Classification Using TensorFlow",
+    "category": "AI/ML",
+    "period": "Apr 2024 – May 2024",
+    "association": "Coincent.ai",
+    "description": "Developed a Text Classification System using TensorFlow to automatically categorize textual data into predefined classes, enabling efficient handling and analysis of large-scale text datasets. This project addresses the challenge of manual text processing by leveraging machine learning techniques to deliver accurate and scalable classification results. 🚀\n\nThe system implements a structured pipeline starting from data preprocessing, including text cleaning, tokenization, and transformation into numerical representations suitable for model training. A deep learning model is then built using TensorFlow to learn patterns from the processed data and perform classification tasks effectively. 📊🤖\n\nKey features of the project include automated text classification, efficient handling of unstructured data, and the ability to train and evaluate models using standard machine learning workflows. The model is designed to generalize well on unseen data, ensuring reliable predictions and practical usability across different text-based applications. 💻✅\n\nTechnologies used in this project include TensorFlow, Python, NumPy, and text preprocessing techniques, enabling the development of a robust and scalable machine learning solution. As the developer, I was responsible for designing the end-to-end pipeline, implementing the model, and optimizing preprocessing steps to improve performance and accuracy. 🧠📈\n\nThis project demonstrates real-world applicability in domains such as spam detection, sentiment analysis, and document categorization, making it a valuable solution for businesses and applications dealing with large volumes of textual information.",
+    "bullets": [
+      "Implemented a clean ML pipeline from preprocessing to evaluation",
+      "Focused on model performance and generalization",
+      "Designed for scalability in handling large text datasets",
+      "Applied structured coding practices for maintainability"
+    ],
+    "technologies": ["TensorFlow", "Python", "NLP", "Machine Learning", "Deep Learning"],
+    "github": "https://github.com/Washim-8/Text-Classification-Using-TensorFlow"
+  },
+  {
+    "id": "vision-transformer",
+    "name": "Vision Transformer Image Classification",
+    "category": "AI/ML",
+    "period": "Apr 2024 – May 2024",
+    "association": "Coincent.ai",
+    "description": "Developed an Image Classification system using Vision Transformer (ViT) architecture to accurately classify images by leveraging advanced deep learning techniques. This project addresses the limitations of traditional Convolutional Neural Networks (CNNs) by utilizing transformer-based architectures for improved feature extraction and global context understanding in images. 🚀\n\nThe system follows a structured pipeline that includes image preprocessing, dataset preparation, patch embedding, and transformer-based feature learning. Images are divided into patches and processed through a transformer encoder, enabling the model to capture long-range dependencies and spatial relationships more effectively than conventional approaches. 📊🧠\n\nKey features of the project include patch-based image representation, attention mechanisms, and scalable deep learning architecture for classification tasks. The implementation focuses on maintaining modularity and clarity, ensuring that each stage of the pipeline—from preprocessing to model evaluation—is well-structured and reusable. 💻✅\n\nBuilt using Python and TensorFlow/Keras, the project demonstrates practical implementation of transformer-based models in computer vision. As the developer, I designed and implemented the end-to-end pipeline, including preprocessing logic, model architecture, and training workflow, while ensuring efficient utilization of computational resources. ⚙️📈\n\nThis project has real-world applications in areas such as image recognition, object classification, and visual data analysis, making it highly relevant for domains like healthcare imaging, autonomous systems, and content categorization. It highlights my ability to work with cutting-edge architectures and apply them to solve complex computer vision problems. 🤖📷",
+    "bullets": [
+      "Implemented a transformer-based architecture for vision tasks",
+      "Designed with a modular and clean pipeline structure",
+      "Focused on scalable and modern deep learning approaches"
+    ],
+    "technologies": ["Vision Transformer", "Deep Learning", "TensorFlow", "Keras", "Python"],
+    "github": "https://github.com/Washim-8/Vision-Transformer-Image-Classification"
+  }
+]
