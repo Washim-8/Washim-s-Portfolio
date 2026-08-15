@@ -118,7 +118,7 @@ function keywordFallback(message: string): string {
     return `You can reach Washim at:\n📧 ${personal.email}\n📱 ${personal.phone}\n🔗 LinkedIn: ${personal.linkedin}\n💻 GitHub: ${personal.github}`;
   }
   if (lower.includes("education") || lower.includes("study") || lower.includes("college") || lower.includes("degree") || lower.includes("cgpa") || lower.includes("gpa")) {
-    return `Washim is pursuing a B.E. in Computer Science and Engineering at Beary's Institute of Technology (BIT), Mangalore (VTU) — graduating in 2026 with a CGPA of 8.01/10. He previously scored 84.33% in PUC and 83.04% in SSLC.`;
+    return `Washim is pursuing a B.E. in Computer Science and Engineering at Beary's Institute of Technology (BIT), Mangalore (VTU) — graduating in 2026 with a CGPA of 8.2/10. He previously scored 84.33% in PUC and 83.04% in SSLC.`;
   }
   if (lower.includes("cert") || lower.includes("qualification")) {
     return `Washim holds ${certifications.length} certifications including Generative AI for Beginners and Advanced Prompt Engineering (Simplilearn), Cybersecurity Fundamentals (CySecK), Basics of Python (Infosys Springboard), and a Computer Literacy Course scoring 190/200 (Skill India).`;

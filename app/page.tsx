@@ -18,7 +18,7 @@ import ResumeChatbot from "@/components/ResumeChatbot";
 export const metadata: Metadata = {
   title: "Washim Shaikh — Software Engineer & AI/ML Developer",
   description:
-    "Hi, I'm Washim Shaikh — CSE'26 student at BIT Mangalore building real-world AI & Web solutions. 20+ projects, 6 internships, CGPA 8.01.",
+    "Hi, I'm Washim Shaikh — CSE'26 student at BIT Mangalore building real-world AI & Web solutions. 20+ projects, 6 internships, CGPA 8.2.",
 };
 
 const statItems = [

@@ -22,7 +22,7 @@ export const education = [
     institution: "Beary's Institute of Technology (BIT), Mangalore",
     university: "Visvesvaraya Technological University (VTU)",
     period: "2022 – 2026",
-    score: "CGPA: 8.01 / 10",
+    score: "CGPA: 8.2 / 10",
     type: "undergraduate",
   },
   {
@@ -1187,5 +1187,5 @@ export const stats = {
   projects: 20,
   internships: 6,
   languages: 5,
-  cgpa: "8.01",
+  cgpa: "8.2",
 };
