@@ -1,6 +1,7 @@
 "use client";
+
 import { useState } from "react";
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -13,6 +14,7 @@ interface FormData {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   subject?: string;
   message?: string;
 }
@@ -35,7 +37,7 @@ export default function ContactForm() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = "Invalid email address";
     if (!form.subject.trim()) errs.subject = "Subject is required";
     if (!form.message.trim()) errs.message = "Message is required";
-    else if (form.message.length < 20) errs.message = "Message must be at least 20 characters";
+    else if (form.message.length < 15) errs.message = "Message must be at least 15 characters";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -61,150 +63,132 @@ export default function ContactForm() {
     }
   };
 
-  // Shared input class with full dark mode support
-  const inputCls = (field: keyof FormErrors) =>
-    `w-full px-4 py-3 rounded-xl border text-sm text-slate-900 dark:text-darktext-primary placeholder:text-slate-400 dark:placeholder:text-darktext-muted focus:outline-none focus:ring-2 transition-all bg-white dark:bg-darkbg-tertiary ${
+  const inputStyle = (field: keyof FormErrors) =>
+    `w-full h-[46px] px-4 py-3 rounded-2xl bg-[#E6ECF5] dark:bg-[#161B26] text-[#2A354F] dark:text-white placeholder:text-[#7E8BA0] text-xs sm:text-sm shadow-[inset_4px_4px_8px_rgba(166,180,200,0.55),inset_-4px_-4px_8px_rgba(255,255,255,0.90)] dark:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.65),inset_-2px_-2px_4px_rgba(255,255,255,0.05)] border ${
       errors[field]
-        ? "border-red-300 dark:border-red-500/50 focus:ring-red-200 dark:focus:ring-red-500/20 bg-red-50 dark:bg-red-500/5"
-        : "border-slate-200 dark:border-white/10 focus:ring-primary/20 dark:focus:ring-primary/20 focus:border-primary dark:focus:border-primary hover:border-slate-300 dark:hover:border-white/20"
-    }`;
-
-  const baseInputCls = "w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-darktext-primary placeholder:text-slate-400 dark:placeholder:text-darktext-muted focus:outline-none focus:ring-2 focus:ring-primary/20 dark:focus:ring-primary/20 focus:border-primary dark:focus:border-primary bg-white dark:bg-darkbg-tertiary hover:border-slate-300 dark:hover:border-white/20 transition-all";
+        ? "border-red-400 focus:ring-2 focus:ring-red-400/20"
+        : "border-white/40 dark:border-white/5 focus:shadow-[inset_5px_5px_10px_rgba(166,180,200,0.65),inset_-5px_-5px_10px_rgba(255,255,255,0.95)] focus:border-[#00BFE8]/60 focus:ring-2 focus:ring-[#00BFE8]/25"
+    } focus:outline-none transition-all`;
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cf-name" className="block text-sm font-medium text-slate-700 dark:text-darktext-secondary mb-1.5">
-            Full Name <span className="text-red-400">*</span>
+          <label htmlFor="cf-name" className="block text-xs font-bold text-[#2A354F] dark:text-slate-300 mb-1.5">
+            Full Name <span className="text-[#00BFE8]">*</span>
           </label>
           <input
             id="cf-name"
             type="text"
-            placeholder="Your full name"
+            placeholder="Washim Shaikh"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className={inputCls("name")}
-            aria-describedby={errors.name ? "cf-name-error" : undefined}
-            aria-invalid={!!errors.name}
+            className={inputStyle("name")}
             disabled={status === "loading"}
           />
-          {errors.name && <p id="cf-name-error" className="mt-1 text-xs text-red-500">{errors.name}</p>}
+          {errors.name && <p className="mt-1 text-[11px] text-red-500 font-semibold pl-1">{errors.name}</p>}
         </div>
+
         <div>
-          <label htmlFor="cf-email" className="block text-sm font-medium text-slate-700 dark:text-darktext-secondary mb-1.5">
-            Email Address <span className="text-red-400">*</span>
+          <label htmlFor="cf-email" className="block text-xs font-bold text-[#2A354F] dark:text-slate-300 mb-1.5">
+            Email Address <span className="text-[#00BFE8]">*</span>
           </label>
           <input
             id="cf-email"
             type="email"
-            placeholder="your@email.com"
+            placeholder="you@company.com"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={inputCls("email")}
-            aria-describedby={errors.email ? "cf-email-error" : undefined}
-            aria-invalid={!!errors.email}
+            className={inputStyle("email")}
             disabled={status === "loading"}
           />
-          {errors.email && <p id="cf-email-error" className="mt-1 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-[11px] text-red-500 font-semibold pl-1">{errors.email}</p>}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cf-phone" className="block text-sm font-medium text-slate-700 dark:text-darktext-secondary mb-1.5">
-            Phone <span className="text-slate-400 font-normal">(optional)</span>
+          <label htmlFor="cf-phone" className="block text-xs font-bold text-[#2A354F] dark:text-slate-300 mb-1.5">
+            Phone <span className="text-[#7E8BA0] font-normal">(Optional)</span>
           </label>
           <input
             id="cf-phone"
             type="tel"
-            placeholder="+91 98765 43210"
+            placeholder="+91 8884958185"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className={baseInputCls}
+            className={inputStyle("phone")}
             disabled={status === "loading"}
           />
         </div>
+
         <div>
-          <label htmlFor="cf-subject" className="block text-sm font-medium text-slate-700 dark:text-darktext-secondary mb-1.5">
-            Subject <span className="text-red-400">*</span>
+          <label htmlFor="cf-subject" className="block text-xs font-bold text-[#2A354F] dark:text-slate-300 mb-1.5">
+            Subject <span className="text-[#00BFE8]">*</span>
           </label>
           <input
             id="cf-subject"
             type="text"
-            placeholder="What is this about?"
+            placeholder="Software Engineering Role / Project"
             value={form.subject}
             onChange={(e) => setForm({ ...form, subject: e.target.value })}
-            className={inputCls("subject")}
-            aria-describedby={errors.subject ? "cf-subject-error" : undefined}
-            aria-invalid={!!errors.subject}
+            className={inputStyle("subject")}
             disabled={status === "loading"}
           />
-          {errors.subject && <p id="cf-subject-error" className="mt-1 text-xs text-red-500">{errors.subject}</p>}
+          {errors.subject && <p className="mt-1 text-[11px] text-red-500 font-semibold pl-1">{errors.subject}</p>}
         </div>
       </div>
 
       <div>
-        <label htmlFor="cf-message" className="block text-sm font-medium text-slate-700 dark:text-darktext-secondary mb-1.5">
-          Message <span className="text-red-400">*</span>
+        <label htmlFor="cf-message" className="block text-xs font-bold text-[#2A354F] dark:text-slate-300 mb-1.5">
+          Message <span className="text-[#00BFE8]">*</span>
         </label>
         <textarea
           id="cf-message"
-          rows={5}
-          placeholder="Write your message here..."
+          rows={4}
+          placeholder="Hi Washim, we loved your portfolio and would like to discuss..."
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className={`${inputCls("message")} resize-none`}
-          aria-describedby={errors.message ? "cf-message-error" : "cf-message-hint"}
-          aria-invalid={!!errors.message}
+          className={`${inputStyle("message")} !h-[116px] py-3.5 resize-none`}
           disabled={status === "loading"}
         />
-        {errors.message && <p id="cf-message-error" className="mt-1 text-xs text-red-500">{errors.message}</p>}
-        <p id="cf-message-hint" className="mt-1 text-xs text-slate-400">{form.message.length} characters</p>
+        {errors.message && <p className="mt-1 text-[11px] text-red-500 font-semibold pl-1">{errors.message}</p>}
       </div>
 
-      {/* Submit */}
       <button
         type="submit"
-        disabled={status === "loading" || status === "success"}
-        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-premium text-white font-semibold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed hover:scale-[1.01]"
+        disabled={status === "loading"}
+        className="w-full h-[48px] px-6 rounded-full btn-coral text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md"
       >
         {status === "loading" ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Sending Message...</span>
           </>
         ) : status === "success" ? (
           <>
-            <CheckCircle className="w-4 h-4" /> Message Sent!
+            <CheckCircle2 className="w-4 h-4 text-white" />
+            <span>Message Sent Successfully!</span>
           </>
         ) : (
           <>
-            <Send className="w-4 h-4" /> Send Message
+            <Send className="w-4 h-4" />
+            <span>Send Message</span>
           </>
         )}
       </button>
 
-      {/* Status messages */}
       {status === "success" && (
-        <div className="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-accent-green/10 border border-emerald-200 dark:border-accent-green/30 text-emerald-700 dark:text-accent-green">
-          <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="font-medium text-sm">Message sent successfully!</p>
-            <p className="text-xs mt-0.5 text-emerald-600 dark:text-accent-green/80">
-              I&apos;ll get back to you within 24 hours.
-            </p>
-          </div>
+        <div className="p-3 rounded-2xl bg-[#D1FAE5] text-[#065F46] text-xs font-semibold flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#10B981] shrink-0" />
+          <span>Thank you! I will get back to you within 24 hours.</span>
         </div>
       )}
+
       {status === "error" && (
-        <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-400">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="font-medium text-sm">Failed to send message</p>
-            <p className="text-xs mt-0.5 text-red-600 dark:text-red-400/80">
-              Please try again or email me directly at washimshaikh33@gmail.com
-            </p>
-          </div>
+        <div className="p-3 rounded-2xl bg-[#FEE2E2] text-[#991B1B] text-xs font-semibold flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-[#EF4444] shrink-0" />
+          <span>Failed to send message. Please email washimshaikh33@gmail.com directly.</span>
         </div>
       )}
     </form>

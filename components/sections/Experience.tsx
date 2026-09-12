@@ -1,145 +1,109 @@
-// app/experience/page.tsx — Experience page
+"use client";
 
-import SectionWrapper from "@/components/SectionWrapper";
-import HoverCard from "@/components/HoverCard";
-import { internships, internshipCertificates } from "@/lib/data";
+import React from "react";
+import LightGlassCard from "@/components/ui/LightGlassCard";
+import ClayBadge from "@/components/ui/ClayBadge";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { internships } from "@/lib/data";
 import { MapPin } from "lucide-react";
 
-const companyGradients = [
-  "from-amber-500 to-orange-500", // Inventeron
-  "from-cyan-500 to-teal-500",   // iStudio
-  "from-orange-500 to-red-600",  // 1Stop
-  "from-rose-500 to-pink-600",   // WoRisGo
-  "from-amber-400 to-yellow-500",// YHills
-  "from-violet-600 to-indigo-700",// Coincent
+const companyBadgeColors = [
+  { bg: "bg-[#CCEFF9]", text: "text-[#00BFE8]" },
+  { bg: "bg-[#CCEFF9]", text: "text-[#07131F] dark:text-[#1CE0FD]" },
+  { bg: "bg-[#D1FAE5]", text: "text-[#10B981]" },
+  { bg: "bg-[#FEF3C7]", text: "text-[#D97706]" },
+  { bg: "bg-[#EBF3FE]", text: "text-[#2563EB]" },
+  { bg: "bg-[#F3F4F1]", text: "text-[#475569]" },
 ];
 
 export default function ExperienceSection() {
   return (
-    <div>
-      {/* Header */}
-      <SectionWrapper className="py-16 bg-gradient-to-br from-violet-50/50 via-white to-indigo-50/50 dark:from-darkbg-primary dark:via-darkbg-secondary dark:to-darkbg-primary">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
-            Career Journey
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-darktext-primary mt-2 mb-4">
-            Internship Experience
-          </h1>
-          <p className="text-slate-500 dark:text-darktext-muted text-lg max-w-xl mx-auto">
-            {internships.length} internships focused on AI/ML, Web Development, and Cloud Computing.
-          </p>
-        </div>
-      </SectionWrapper>
+    <div className="py-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          badge="EXPERIENCE"
+          badgeVariant="coral"
+          title="Internship & Industry"
+          highlightedWord="Track Record."
+          description={`Comprehensive hands-on experience across ${internships.length} industry internships specializing in Machine Learning, Cloud Systems, and Full-Stack Engineering.`}
+        />
 
-      {/* Internship Timeline */}
-      <SectionWrapper className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-12 flex items-center gap-2">
-            <span className="text-2xl">💼</span> Internship Timeline
-          </h2>
+        {/* ─── INTERNSHIP TIMELINE ────────────────────────────────────────── */}
+        <div className="relative pl-6 sm:pl-8 space-y-8">
+          {/* Vertical Timeline Guide */}
+          <div className="absolute left-2.5 sm:left-3 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#00BFE8] via-[#1CE0FD] to-transparent opacity-40" />
 
-          <div className="relative space-y-8 pl-16">
-            {/* Vertical line */}
-            <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent-violet to-transparent" />
+          {internships.map((intern, i) => {
+            const style = companyBadgeColors[i % companyBadgeColors.length];
+            return (
+              <div key={intern.title + intern.company} className="relative">
+                {/* Timeline node */}
+                <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-3.5 h-3.5 rounded-full bg-[#00BFE8] border-2 border-white dark:border-darkbg-primary shadow-sm" />
 
-            {internships.map((intern, i) => (
-              <div key={i} className="relative">
-                {/* Avatar circle */}
-                <div
-                  className={`absolute -left-7 top-4 w-12 h-12 z-10 rounded-xl bg-gradient-to-br ${companyGradients[i % companyGradients.length]
-                    } flex items-center justify-center text-white font-bold text-lg shadow-lg border-4 border-white dark:border-darkbg-primary`}
+                <LightGlassCard
+                  variant={intern.isCurrent ? "elevated" : "default"}
+                  className="p-6 sm:p-8"
                 >
-                  {intern.company[0]}
-                </div>
-
-                <HoverCard className="bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-6" gradientFrom="#22C55E" gradientTo="#06B6D4" glowColor="rgba(34,197,94,0.25)">
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-darktext-primary text-lg">{intern.title}</h3>
-                      <p className="text-emerald-600 dark:text-emerald-400 font-semibold">{intern.company}</p>
-                      <div className="flex items-center gap-1.5 mt-1 text-slate-400 dark:text-darktext-muted text-sm">
-                        <MapPin className="w-3.5 h-3.5" />
-                        <span>{intern.location}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                    <div className="flex items-start gap-3.5">
+                      <div
+                        className={`w-12 h-12 rounded-2xl ${style.bg} ${style.text} font-black text-lg flex items-center justify-center shadow-inner shrink-0`}
+                      >
+                        {intern.company[0]}
+                      </div>
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-lg sm:text-xl font-extrabold text-[#2A354F] dark:text-white">
+                            {intern.title}
+                          </h3>
+                          {intern.isCurrent && (
+                            <ClayBadge variant="coral" size="sm" dot>
+                              CURRENT
+                            </ClayBadge>
+                          )}
+                        </div>
+                        <p className="text-sm font-bold text-[#00BFE8] mt-0.5">
+                          {intern.company}
+                        </p>
+                        <div className="flex items-center gap-1.5 text-xs text-[#7E8BA0] mt-1 font-medium">
+                          <MapPin className="w-3.5 h-3.5 text-[#7E8BA0]" />
+                          <span>{intern.location}</span>
+                          <span className="mx-1">•</span>
+                          <span className="font-semibold text-[#5A6A85] dark:text-slate-300">
+                            {intern.type}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-2">
-                      <div className="flex items-center gap-2">
-                        {intern.isCurrent && (
-                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-200 dark:border-emerald-400/30">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            Current
-                          </span>
-                        )}
-                        <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-darkbg-tertiary text-slate-600 dark:text-darktext-muted text-xs font-medium">
-                          {intern.type}
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-slate-600 dark:text-darktext-secondary text-sm font-medium">{intern.period}</p>
-                        <p className="text-slate-400 dark:text-darktext-muted text-xs">{intern.duration}</p>
-                      </div>
+
+                    <div className="flex sm:flex-col items-center sm:items-end justify-between gap-1 text-right shrink-0">
+                      <span className="text-xs font-bold text-[#2A354F] dark:text-white bg-[#E6ECF5] dark:bg-[#161B26] shadow-[-2px_-2px_5px_rgba(255,255,255,0.95),2px_2px_5px_rgba(166,180,200,0.35)] px-3 py-1 rounded-full border border-white/80 dark:border-white/10">
+                        {intern.period}
+                      </span>
+                      <span className="text-[11px] font-medium text-[#7E8BA0]">
+                        {intern.duration}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Bullets */}
-                  <ul className="space-y-2">
+                  {/* Responsibilities Bullets */}
+                  <ul className="space-y-2.5 mt-4 pt-4 border-t border-black/5 dark:border-white/10">
                     {intern.bullets.map((bullet, j) => (
-                      <li key={j} className="flex gap-3 text-sm text-slate-600 dark:text-darktext-muted">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
-                        {bullet}
+                      <li
+                        key={j}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[#5A6A85] dark:text-slate-300 leading-relaxed font-medium"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00BFE8] mt-2 shrink-0" />
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                </HoverCard>
+                </LightGlassCard>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
-      </SectionWrapper>
-
-      {/* Internship Certificates */}
-      <SectionWrapper className="py-16 bg-slate-50 dark:bg-darkbg-secondary/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-10 flex items-center gap-2">
-            <span className="text-2xl">🏆</span> Internship Certificates
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {internshipCertificates.map((item, i) => (
-              <HoverCard
-                key={i}
-                className="bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-6"
-                gradientFrom="#22C55E"
-                gradientTo="#06B6D4"
-                glowColor="rgba(34,197,94,0.25)"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${companyGradients[i % companyGradients.length]
-                      } flex items-center justify-center text-white font-bold`}
-                  >
-                    {item.company[0]}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 dark:text-darktext-primary">{item.company}</h3>
-                    <p className="text-slate-500 dark:text-darktext-muted text-xs">{item.role}</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {item.certificates.map((cert) => (
-                    <span
-                      key={cert}
-                      className="text-xs font-medium px-3 py-1.5 rounded-full border bg-sky-100 dark:bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-500/30"
-                    >
-                      {cert}
-                    </span>
-                  ))}
-                </div>
-              </HoverCard>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+      </div>
     </div>
   );
 }

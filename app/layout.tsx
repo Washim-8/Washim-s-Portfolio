@@ -3,31 +3,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SecurityGuard from "@/components/SecurityGuard";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: {
-    default: "Washim Shaikh — Software Engineer & AI/ML Developer",
+    default: "WASHIM SHAIKH",
     template: "%s | Washim Shaikh",
   },
   description:
-    "Portfolio of Washim Shaikh — CSE student at BIT Mangalore, aspiring Software Engineer with skills in Python, Full Stack Web Development, AI & ML, and Data Analysis. 20+ projects, 6 internships.",
+    "Portfolio of Washim Shaikh — B.E. CSE student at BIT Mangalore / VTU. Software Engineer focused on AI/ML, Full-Stack Web Development, and Data-Driven Systems. 20+ projects, 6 internships.",
   keywords: [
     "Washim Shaikh",
     "Software Engineer",
     "AI ML Developer",
     "Full Stack Web Developer",
     "Python Developer",
+    "FastAPI",
+    "React",
+    "Next.js",
+    "Computer Vision",
+    "Machine Learning",
     "BIT Mangalore",
     "CSE 2026",
-    "Machine Learning",
-    "Deep Learning",
-    "TensorFlow",
-    "FastAPI",
-    "Portfolio",
-    "Resume",
-    "Internship",
     "Bengaluru",
   ],
   authors: [{ name: "Washim Shaikh", url: "https://github.com/Washim-8" }],
@@ -47,16 +45,16 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Washim Shaikh — Software Engineer & AI/ML Developer",
+    title: "WASHIM SHAIKH",
     description:
-      "CSE student at BIT Mangalore. 20+ projects spanning AI/ML, Full Stack Web Dev, and Data Science. 6 internships. Open to opportunities.",
+      "CSE student at BIT Mangalore / VTU. 20+ projects spanning AI/ML, Full Stack Web Dev, and Data Science. 6 internships. Open to opportunities.",
     type: "website",
     locale: "en_IN",
     siteName: "Washim Shaikh Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Washim Shaikh — Software Engineer & AI/ML Developer",
+    title: "WASHIM SHAIKH",
     description: "CSE student at BIT Mangalore. 20+ projects. AI & Web developer portfolio.",
     creator: "@washimshaikh",
   },
@@ -76,7 +74,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Washim Shaikh",
     url: "https://github.com/Washim-8",
-    jobTitle: "Aspiring Software Engineer",
+    jobTitle: "Software Engineer & AI/ML Developer",
     description:
       "CSE student at BIT Mangalore specializing in Python, AI/ML, and Full Stack Web Development. Completed 6 internships and built 20+ projects.",
     email: "washimshaikh33@gmail.com",
@@ -93,63 +91,47 @@ export default function RootLayout({
     ],
     alumniOf: {
       "@type": "EducationalOrganization",
-      name: "Beary's Institute of Technology, Mangalore",
+      name: "Bearys Institute of Technology, Mangalore (VTU)",
     },
     knowsAbout: [
       "Python",
       "Machine Learning",
       "Deep Learning",
       "TensorFlow",
-      "Keras",
-      "NLP",
+      "PyTorch",
       "Computer Vision",
+      "OpenCV",
       "Full Stack Web Development",
       "FastAPI",
-      "AI/ML",
+      "React",
+      "Next.js",
       "Data Analysis",
       "Generative AI",
       "Prompt Engineering",
     ],
-    hasCredential: [
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "Generative AI for Beginners",
-        credentialCategory: "certificate",
-        recognizedBy: { "@type": "Organization", name: "Simplilearn" },
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "Advanced Prompt Engineering",
-        credentialCategory: "certificate",
-        recognizedBy: { "@type": "Organization", name: "Simplilearn" },
-      },
-    ],
   };
 
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth light" suppressHydrationWarning>
       <head>
-        {/* Google Fonts preconnect for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
-        {/* JSON-LD Structured Data (Person schema) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className="min-h-screen flex flex-col antialiased bg-white dark:bg-darkbg-primary text-slate-900 dark:text-darktext-primary"
+        className="min-h-screen flex flex-col antialiased light-canvas-mesh bg-[#E6ECF5] dark:bg-[#111622] text-[#2A354F] dark:text-[#F3F4F6] selection:bg-[#CCEFF9] selection:text-[#00BFE8]"
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <SecurityGuard />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
-          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

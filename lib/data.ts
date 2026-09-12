@@ -252,9 +252,8 @@ export const internships: Internship[] = [
     company: "Inventeron Technologies",
     location: "Bengaluru, Karnataka, India",
     type: "On-site",
-    period: "Feb 2026 – Present",
-    duration: "3 months",
-    isCurrent: true,
+    period: "Feb 2026 – May 2026",
+    duration: "4 months",
     bullets: [
       "Working on real-world machine learning workflows, including data preprocessing, model development, and evaluation.",
       "Applying analytical thinking and engineering practices to support scalable AI/ML solutions.",
@@ -336,6 +335,7 @@ export interface Project {
   isMajor?: boolean;
   period?: string;
   association?: string;
+  image?: string;
   description: string;
   bullets?: string[];
   technologies: string[];
@@ -346,6 +346,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "omnidetect-ai",
+    image: "/projects/omnidetect-ai.jpg",
     name: "OmniDetect-AI",
     category: "AI/ML",
     featured: true,
@@ -378,9 +379,11 @@ export const projects: Project[] = [
       "CSS3",
     ],
     github: "https://github.com/Washim-8/OmniDetect-AI",
+    liveDemo: "https://omnidetect-ai-1.onrender.com",
   },
   {
     id: "student-predictor",
+    image: "/projects/student-predictor.jpg",
     name: "StudentPredictorAI — Student Performer Predictor",
     category: "Data Science",
     featured: true,
@@ -413,9 +416,11 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/StudentPredictorAI-Student-Performer-Predictor",
+    liveDemo: "https://studentpredictorai.onrender.com",
   },
   {
     id: "avatarai",
+    image: "/projects/avatarai.jpg",
     name: "AvatarAI",
     category: "AI/ML",
     featured: true,
@@ -461,6 +466,7 @@ export const projects: Project[] = [
   },
   {
     id: "brain-tumor",
+    image: "/projects/brain-tumor.jpg",
     name: "BrainScan AI – Brain Tumor Detection System",
     category: "AI/ML",
     featured: true,
@@ -492,9 +498,11 @@ export const projects: Project[] = [
       "CNN Architecture",
     ],
     github: "https://github.com/Washim-8/Brain-tumor-classification-main",
+    liveDemo: "https://brain-scan-ai-v9wg.onrender.com",
   },
   {
     id: "drowsiness",
+    image: "/projects/drowsiness.jpg",
     name: "Driver Drowsiness Detection System",
     category: "AI/ML",
     featured: true,
@@ -529,9 +537,11 @@ export const projects: Project[] = [
       "JavaScript",
     ],
     github: "https://github.com/Washim-8/Driver-Drowsiness-Detection-System",
+    liveDemo: "https://driver-drowsiness-detection-system-1xcy.onrender.com",
   },
   {
     id: "face-recognition",
+    image: "/projects/face-recognition.jpg",
     name: "Face Recognition Employee Attendance System",
     category: "AI/ML",
     featured: true,
@@ -569,6 +579,7 @@ export const projects: Project[] = [
   },
   {
     id: "fintrackai",
+    image: "/projects/fintrackai.jpg",
     name: "FinTrackAI – Personal Finance Tracker",
     category: "Data Science",
     period: "Feb 2026 – Feb 2026",
@@ -605,9 +616,11 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/FinTrackAI",
+    liveDemo: "https://fintrack-ai-3mn8.onrender.com",
   },
   {
     id: "agritrade",
+    image: "/projects/agritrade.jpg",
     name: "Interactive AgriTrade",
     category: "Web Development",
     featured: true,
@@ -648,6 +661,7 @@ export const projects: Project[] = [
   },
   {
     id: "recipe-finder",
+    image: "/projects/recipe-finder.jpg",
     name: "Recipe Finder & Meal Planner",
     category: "Web Development",
     period: "Dec 2025 – Dec 2025",
@@ -677,9 +691,11 @@ export const projects: Project[] = [
       "JSON Dataset",
     ],
     github: "https://github.com/Washim-8/Recipe-Finder-Meal-Planner",
+    liveDemo: "https://recipe-finder-n-meal-planner.netlify.app",
   },
   {
     id: "room-booking",
+    image: "/projects/room-booking.jpg",
     name: "Booking Management System for Room Booking",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -719,9 +735,11 @@ export const projects: Project[] = [
       "npm",
     ],
     github: "https://github.com/Washim-8/Booking-Management-System",
+    liveDemo: "https://room-booking-4dgp.onrender.com",
   },
   {
     id: "todo-php",
+    image: "/projects/todo-php.jpg",
     name: "PHP Simple To-Do List",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -749,9 +767,11 @@ export const projects: Project[] = [
       "XAMPP / WAMP",
     ],
     github: "https://github.com/Washim-8/PHP-Simple-To-Do-List",
+    liveDemo: "https://php-simple-to-do-list.onrender.com",
   },
   {
     id: "expense-tracker",
+    image: "/projects/expense-tracker.jpg",
     name: "Personal Expense Tracker",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -779,9 +799,11 @@ export const projects: Project[] = [
       "Browser LocalStorage",
     ],
     github: "https://github.com/Washim-8/Personal-Expense-Tracker",
+    liveDemo: "https://p-expense-tracker.netlify.app",
   },
   {
     id: "portfolio",
+    image: "/projects/portfolio.jpg",
     name: "Portfolio Website",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -823,9 +845,11 @@ export const projects: Project[] = [
       "VS Code",
     ],
     github: "https://github.com/Washim-8/Portfolio",
+    liveDemo: "https://washims-port.netlify.app",
   },
   {
     id: "blogging-platform",
+    image: "/projects/blogging-platform.jpg",
     name: "Simple Blogging Platform",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -856,9 +880,11 @@ export const projects: Project[] = [
       "Git",
     ],
     github: "https://github.com/Washim-8/Simple-Blogging-Platform",
+    liveDemo: "https://simple-blogging-platform-6vqg.onrender.com",
   },
   {
     id: "todo-html",
+    image: "/projects/todo-html.jpg",
     name: "To-Do List Pro",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -884,9 +910,11 @@ export const projects: Project[] = [
       "Google Fonts (Inter)",
     ],
     github: "https://github.com/Washim-8/HTML-To-Do-List-Pro",
+    liveDemo: "https://htmltodolistpro.netlify.app",
   },
   {
     id: "customer-churn",
+    image: "/projects/customer-churn.jpg",
     name: "Customer Churn Prediction",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -925,9 +953,11 @@ export const projects: Project[] = [
       "Jupyter Notebook",
     ],
     github: "https://github.com/Washim-8/Customer-Churn-Prediction",
+    liveDemo: "https://customer-churn-prediction-pewq.onrender.com",
   },
   {
     id: "fraud-detection",
+    image: "/projects/fraud-detection.jpg",
     name: "Financial Fraud Detection System",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -960,9 +990,11 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/Financial-Fraud-Detection",
+    liveDemo: "https://financial-fraud-detection-w9w6.onrender.com",
   },
   {
     id: "house-price",
+    image: "/projects/house-price.jpg",
     name: "House Price Prediction",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -998,9 +1030,11 @@ export const projects: Project[] = [
       "Jupyter Notebook",
     ],
     github: "https://github.com/Washim-8/House-Price-Prediction",
+    liveDemo: "https://house-price-prediction-s1rk.onrender.com",
   },
   {
     id: "text-classification",
+    image: "/projects/text-classification.jpg",
     name: "Text Classification with TensorFlow",
     category: "AI/ML",
     period: "Apr 2024 – May 2024",
@@ -1034,9 +1068,11 @@ export const projects: Project[] = [
       "IMDB Movie Reviews",
     ],
     github: "https://github.com/Washim-8/Text-Classification-Using-TensorFlow",
+    liveDemo: "https://text-classification-lgt4.onrender.com",
   },
   {
     id: "vision-transformer",
+    image: "/projects/vision-transformer.jpg",
     name: "Vision Transformer Image Classification",
     category: "AI/ML",
     period: "Apr 2024 – May 2024",
@@ -1073,51 +1109,422 @@ export const projects: Project[] = [
   },
 ];
 
-export const certifications = [
+export interface Certification {
+  name: string;
+  issuer: string;
+  year: string;
+  credentialId?: string;
+  score?: string;
+  category: "AI & Data Science" | "Programming & Software" | "Cybersecurity & IT";
+  fileUrl?: string;
+  previewImage?: string;
+  verifyUrl?: string;
+  skills: string[];
+}
+
+export const certifications: Certification[] = [
+  // Column 1 - Top: Recent (Sept 2025)
   {
     name: "Generative AI for Beginners",
     issuer: "Simplilearn",
-    year: "2025",
+    year: "Sept 2025",
     credentialId: "9046573",
+    category: "AI & Data Science",
+    fileUrl: "/certificates/Simplilearn Generative AI for Beginners Certificate.pdf",
+    previewImage: "/certificates/previews/Simplilearn Generative AI for Beginners Certificate.png",
+    skills: ["Generative AI", "Prompt Engineering", "Large Language Models"],
   },
+  // Column 1 - Bottom: Older (Jun 2024)
+  {
+    name: "Community Contribution & Web Development",
+    issuer: "DevTown",
+    year: "Jun 2024",
+    credentialId: "Z1rgQEK",
+    category: "Programming & Software",
+    fileUrl: "/certificates/DEVTOWN_participation_Certificate.pdf",
+    previewImage: "/certificates/previews/DEVTOWN_participation_Certificate.png",
+    verifyUrl: "https://cert.devtown.in.tech/verify/Z1rgQEK",
+    skills: ["Web Development", "Community Mentorship", "Frontend Tech"],
+  },
+  // Column 2 - Top: Recent (Sept 2025)
   {
     name: "Advanced Prompt Engineering",
     issuer: "Simplilearn",
-    year: "2025",
+    year: "Sept 2025",
     credentialId: "9041791",
+    category: "AI & Data Science",
+    fileUrl: "/certificates/Simplilearn Advanced Prompt Engineering Certificate.pdf",
+    previewImage: "/certificates/previews/Simplilearn Advanced Prompt Engineering Certificate.png",
+    skills: ["Advanced Prompting", "Few-shot Learning", "Context Optimization"],
   },
-  {
-    name: "Cybersecurity Fundamentals",
-    issuer: "CySecK (Centre of Excellence for Cybersecurity - Karnataka)",
-    year: "2025",
-    credentialId: "CBMOOC1327",
-  },
+  // Column 2 - Bottom: Older (Jan 2024)
   {
     name: "Basics of Python",
     issuer: "Infosys Springboard",
-    year: "2024",
+    year: "Jan 2024",
+    category: "Programming & Software",
+    fileUrl: "/certificates/Basics of Python Infosys.pdf",
+    previewImage: "/certificates/previews/Basics of Python Infosys.png",
+    verifyUrl: "https://verify.onwingspan.com",
+    skills: ["Python Core", "Data Structures", "Object-Oriented Programming"],
   },
+  // Column 3 - Top: Recent (Sept 2025)
+  {
+    name: "Building Data Analyst AI Agent",
+    issuer: "Analytics Vidhya",
+    year: "Sept 2025",
+    credentialId: "bgva8kzhlp",
+    category: "AI & Data Science",
+    fileUrl: "/certificates/Analytics Vidhya_Building Data Analyst AI Agent.pdf",
+    previewImage: "/certificates/previews/Analytics Vidhya_Building Data Analyst AI Agent.png",
+    skills: ["AI Agents", "Data Analytics", "LLMs", "Python"],
+  },
+  // Column 3 - Bottom: Older (Sept 2022)
   {
     name: "Computer Literacy Course (CLC)",
-    issuer: "National Board of Computer Education (NBCE) — Skill India",
-    year: "2022",
-    score: "190/200 (95%)",
+    issuer: "NBCE • Skill India",
+    year: "Sept 2022",
+    score: "190/200 (95% — Grade: EXCELLENT)",
     credentialId: "nbce0002229915",
+    category: "Cybersecurity & IT",
+    fileUrl: "/certificates/NBCE_ACHIEVEMENT.jpg",
+    previewImage: "/certificates/previews/NBCE_ACHIEVEMENT.png",
+    skills: ["Computer Fundamentals", "Data Entry", "MS Office Suite", "Operating Systems"],
+  },
+  // Column 4 - Top: Recent (Jan 2025)
+  {
+    name: "Cybersecurity Fundamentals (MOOC)",
+    issuer: "CySecK • Govt. of Karnataka",
+    year: "Jan 2025",
+    credentialId: "CBMOOC1327",
+    category: "Cybersecurity & IT",
+    fileUrl: "/certificates/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.pdf",
+    previewImage: "/certificates/previews/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.png",
+    skills: ["Network Security", "Threat Modeling", "Cyber Hygiene", "Security Architecture"],
+  },
+  // Column 4 - Bottom: Older (Sept 2022)
+  {
+    name: "Computer Literacy Course (CLC) — Statement of Marks",
+    issuer: "NBCE • Skill India",
+    year: "Sept 2022",
+    score: "190/200 (95% Distinction)",
+    credentialId: "nbce0002229915",
+    category: "Cybersecurity & IT",
+    fileUrl: "/certificates/previews/NBCE_MARKS_CARD.png",
+    previewImage: "/certificates/previews/NBCE_MARKS_CARD.png",
+    skills: ["Computer Fundamentals", "MS Office Suite", "Data Entry", "Typing"],
   },
 ];
 
-export const workshops = [
+export interface Workshop {
+  name: string;
+  type: string;
+  organizer: string;
+  year: string;
+  description: string;
+  fileUrl?: string;
+  previewImage?: string;
+  badge: string;
+}
+
+export const workshops: Workshop[] = [
   {
-    name: "Indian Startup & MSME Ecosystem in the Age of AI",
-    type: "2-Day Workshop",
-    organizer: "Institutions Innovation Council",
-    year: "2024",
+    name: "The Indian Startup & MSME Ecosystem in the Age of AI",
+    type: "2-Day Technical Workshop",
+    organizer: "Dept. of Mechanical Engg., BIT Mangalore & Initium Incubation and Mentoring Consultancy (IIC)",
+    year: "Dec 2024",
+    description: "In-depth technical workshop on startup innovation, AI integration in MSME ecosystems, business automation, and incubation frameworks.",
+    fileUrl: "/certificates/MSME_2DAYS_WORKSHOP.jpg",
+    previewImage: "/certificates/previews/MSME_2DAYS_WORKSHOP.png",
+    badge: "AI & Entrepreneurship",
   },
   {
     name: "One Day Workshop on Virtual Labs",
-    type: "1-Day Workshop",
-    organizer: "Virtual Labs — MoE, Govt. of India (IIT Delhi)",
-    year: "2024",
+    type: "1-Day Technical Workshop",
+    organizer: "Virtual Labs — Ministry of Education (MoE), Govt. of India & IIT Delhi / BIT",
+    year: "May 2024",
+    description: "Hands-on engineering simulation and remote laboratory experimentation platform developed under NMEICT initiative by IIT Delhi.",
+    fileUrl: "/certificates/Virtual_labs_1day_workshop.jpg",
+    previewImage: "/certificates/previews/Virtual_labs_1day_workshop.png",
+    badge: "Govt. of India / IIT Delhi",
+  },
+  {
+    name: "TATA Crucible Campus Quiz 2025",
+    type: "National Level Competitive Event",
+    organizer: "Tata Group",
+    year: "2025",
+    description: "Participated and represented Bearys Institute of Technology in India's premier collegiate business and technology challenge.",
+    fileUrl: "/certificates/TATA Crucible Campus Participation.pdf",
+    previewImage: "/certificates/previews/TATA Crucible Campus Participation.png",
+    badge: "Tata Group",
+  },
+  {
+    name: "Internship Common Aptitude Test (iCAT)",
+    type: "National Aptitude & Technical Certification",
+    organizer: "iStudio Technologies",
+    year: "Sept 2025",
+    description: "National-level computational and aptitude assessment for selection into Cloud & AWS Engineering internships (Reg: CIT-P-2328369).",
+    fileUrl: "/certificates/iSTUDIO_iCAT_Participation Certificate.pdf",
+    previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.png",
+    badge: "Merit Score",
+  },
+  {
+    name: "Student Campus Ambassador Excellence",
+    type: "Leadership & Outreach Recognition",
+    organizer: "1Stop.ai",
+    year: "Apr 2025",
+    description: "Awarded Certificate of Excellence for leading technical learning initiatives, student outreach, and tech workshop coordination.",
+    fileUrl: "/certificates/CAMPUS AMBASSADOR 1STOP.pdf",
+    previewImage: "/certificates/previews/CAMPUS AMBASSADOR 1STOP.png",
+    badge: "Leadership Award",
+  },
+];
+
+export interface VerifiedInternshipCredential {
+  company: string;
+  role: string;
+  period: string;
+  status: string;
+  description: string;
+  documents: {
+    title: string;
+    fileUrl: string;
+    previewImage?: string;
+    type: "Certificate" | "Offer Letter" | "Project Report";
+  }[];
+}
+
+export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
+  {
+    company: "Inventeron Technologies",
+    role: "Trainee Machine Learning Engineer",
+    period: "Feb 2026 – May 2026",
+    status: "Verified Completion",
+    description: "Production machine learning pipelines, predictive modeling, data preprocessing, and evaluation for industry deployment.",
+    documents: [
+      {
+        title: "Internship Completion Certificate",
+        fileUrl: "/certificates/inventeron complition.pdf",
+        previewImage: "/certificates/previews/inventeron complition.png",
+        type: "Certificate",
+      },
+      {
+        title: "Official Industry Certificate",
+        fileUrl: "/certificates/WASHIM SHAIKH.pdf",
+        previewImage: "/certificates/previews/WASHIM SHAIKH.png",
+        type: "Certificate",
+      },
+      {
+        title: "Offer Letter",
+        fileUrl: "/certificates/Internship  Offer letter .pdf",
+        previewImage: "/certificates/previews/Internship  Offer letter .png",
+        type: "Offer Letter",
+      },
+    ],
+  },
+  {
+    company: "iStudio Technologies",
+    role: "AWS Cloud Intern",
+    period: "Oct 2025 – Mar 2026",
+    status: "iCAT Merit Selection",
+    description: "Hands-on cloud infrastructure training in Amazon Web Services (AWS), scalability, and cloud architecture.",
+    documents: [
+      {
+        title: "iCAT Merit Certificate (CIT-P-2328369)",
+        fileUrl: "/certificates/iSTUDIO_iCAT_Participation Certificate.pdf",
+        previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.png",
+        type: "Certificate",
+      },
+      {
+        title: "AWS Internship Offer Letter",
+        fileUrl: "/certificates/iSTUDIO_AWS Internship - Offer Letter.pdf",
+        previewImage: "/certificates/previews/iSTUDIO_AWS Internship - Offer Letter.png",
+        type: "Offer Letter",
+      },
+    ],
+  },
+  {
+    company: "1Stop.ai & WoRisGo",
+    role: "Web Development Back-End Intern",
+    period: "Jul 2025 – Sep 2025",
+    status: "Production Projects Completed",
+    description: "Built PHP/MySQL backend systems including To-Do List, Simple Blogging Platform, and Room Booking Management System.",
+    documents: [
+      {
+        title: "Internship Completion (ID: 68099)",
+        fileUrl: "/certificates/1STOP_internship_BE_68099.pdf",
+        previewImage: "/certificates/previews/1STOP_internship_BE_68099.png",
+        type: "Certificate",
+      },
+      {
+        title: "Industrial Project Completion",
+        fileUrl: "/certificates/1STOP_project_completion_BE_68099.pdf",
+        previewImage: "/certificates/previews/1STOP_project_completion_BE_68099.png",
+        type: "Project Report",
+      },
+      {
+        title: "Certificate of Participation",
+        fileUrl: "/certificates/1STOP_Certificate_of_Participation_BE.pdf",
+        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_BE.png",
+        type: "Certificate",
+      },
+      {
+        title: "Offer Letter",
+        fileUrl: "/certificates/1STOP_Offer_Letter_BE.pdf",
+        previewImage: "/certificates/previews/1STOP_Offer_Letter_BE.png",
+        type: "Offer Letter",
+      },
+    ],
+  },
+  {
+    company: "1Stop.ai & Raise Digital",
+    role: "Web Development Front-End Intern",
+    period: "Jul 2025 – Sep 2025",
+    status: "Production Projects Completed",
+    description: "Engineered dynamic UI/UX applications including Single Page Website, Personal Expense Tracker, and interactive web tools.",
+    documents: [
+      {
+        title: "Internship Completion (ID: 68095)",
+        fileUrl: "/certificates/1STOP_internship_FE_68095.pdf",
+        previewImage: "/certificates/previews/1STOP_internship_FE_68095.png",
+        type: "Certificate",
+      },
+      {
+        title: "Industrial Project Completion",
+        fileUrl: "/certificates/1STOP_project_completion_FE_68095.pdf",
+        previewImage: "/certificates/previews/1STOP_project_completion_FE_68095.png",
+        type: "Project Report",
+      },
+      {
+        title: "Certificate of Participation",
+        fileUrl: "/certificates/1STOP_Certificate_of_Participation_FE.pdf",
+        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_FE.png",
+        type: "Certificate",
+      },
+      {
+        title: "Offer Letter",
+        fileUrl: "/certificates/1STOP_Offer_Letter_FE.pdf",
+        previewImage: "/certificates/previews/1STOP_Offer_Letter_FE.png",
+        type: "Offer Letter",
+      },
+    ],
+  },
+  {
+    company: "YHills & Smart Swift Innovations",
+    role: "Machine Learning with Python Intern",
+    period: "Dec 2024 – Feb 2025",
+    status: "Triple Certified (E-Cell IIT Guwahati)",
+    description: "Machine Learning model training, predictive systems, regression & classification pipelines certified with Wipro DICE ID & E-Cell IIT Guwahati.",
+    documents: [
+      {
+        title: "Course Completion (Wipro DICE ID)",
+        fileUrl: "/certificates/Yhills_ML_with Python Course Completion_1742148348722.pdf",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Course Completion_1742148348722.png",
+        type: "Certificate",
+      },
+      {
+        title: "Internship Completion (SSI Certified)",
+        fileUrl: "/certificates/Yhills_ML_with Python Internship Completion_1742148610585.pdf",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Internship Completion_1742148610585.png",
+        type: "Certificate",
+      },
+      {
+        title: "Project Completion (E-Cell IIT Guwahati)",
+        fileUrl: "/certificates/Yhills_ML_with Python Projects Completion_1742148521314.pdf",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Projects Completion_1742148521314.png",
+        type: "Project Report",
+      },
+    ],
+  },
+  {
+    company: "Coincent.ai",
+    role: "Artificial Intelligence with Python",
+    period: "Apr 2024 – May 2024",
+    status: "Verified Completion",
+    description: "Developed AI and NLP models, feature extraction pipelines, and evaluated performance metrics using Python and Scikit-learn.",
+    documents: [
+      {
+        title: "Internship Completion (ID: 54786)",
+        fileUrl: "/certificates/COINCENT_internship_Participation_54786,.pdf",
+        previewImage: "/certificates/previews/COINCENT_internship_Participation_54786,.png",
+        type: "Certificate",
+      },
+      {
+        title: "Training Completion Certificate",
+        fileUrl: "/certificates/COINCENT_TRAINING_COMPLETION_Certificate.pdf",
+        previewImage: "/certificates/previews/COINCENT_TRAINING_COMPLETION_Certificate.png",
+        type: "Certificate",
+      },
+      {
+        title: "Official Offer Letter (ID: 54786)",
+        fileUrl: "/certificates/COINCENT_Offer_Letter_54786.pdf",
+        previewImage: "/certificates/previews/COINCENT_Offer_Letter_54786.png",
+        type: "Offer Letter",
+      },
+      {
+        title: "Certificate of Participation",
+        fileUrl: "/certificates/COINCENT_Participation_Certificate 54786.pdf",
+        previewImage: "/certificates/previews/COINCENT_Participation_Certificate 54786.png",
+        type: "Certificate",
+      },
+    ],
+  },
+];
+
+export const internshipCertificates = [
+  {
+    company: "Inventeron Technologies",
+    role: "Trainee Machine Learning Engineer",
+    certificates: [
+      "Internship Completion Certificate",
+      "Official Industry Certificate",
+      "Offer Letter",
+    ],
+  },
+  {
+    company: "iStudio Technologies",
+    role: "AWS Cloud Intern",
+    certificates: [
+      "iCAT Merit Certificate (CIT-P-2328369)",
+      "AWS Internship Offer Letter",
+    ],
+  },
+  {
+    company: "1Stop.ai & WoRisGo",
+    role: "Web Development Back-End Intern",
+    certificates: [
+      "Internship Completion (ID: 68099)",
+      "Industrial Project Completion",
+      "Offer Letter",
+    ],
+  },
+  {
+    company: "1Stop.ai & Raise Digital",
+    role: "Web Development Front-End Intern",
+    certificates: [
+      "Internship Completion (ID: 68095)",
+      "Industrial Project Completion",
+      "Offer Letter",
+    ],
+  },
+  {
+    company: "YHills (Smart Swift Innovations)",
+    role: "Machine Learning Intern",
+    certificates: [
+      "Course Completion (Wipro DICE ID)",
+      "Internship Completion (SSI)",
+      "Project Completion (E-Cell IIT Guwahati)",
+    ],
+  },
+  {
+    company: "Coincent.ai",
+    role: "AI with Python Intern",
+    certificates: [
+      "Internship Completion (ID: 54786)",
+      "Training Completion Certificate",
+      "Official Offer Letter (ID: 54786)",
+      "Certificate of Participation",
+    ],
   },
 ];
 
@@ -1137,34 +1544,11 @@ export const achievements = [
     icon: "star",
   },
   {
-    title: "Campus Ambassador",
+    title: "Campus Ambassador Excellence",
     description:
-      "Served as Campus Ambassador for 1Stop.ai, promoting technical learning and internship opportunities among peers.",
+      "Awarded Certificate of Excellence by 1Stop.ai for leading student technical initiatives and workshop coordination.",
     year: "2025",
     icon: "users",
-  },
-];
-
-export const internshipCertificates = [
-  {
-    company: "Coincent.ai",
-    role: "Artificial Intelligence with Python",
-    certificates: ["Participation", "Internship Completion", "Project Completion"],
-  },
-  {
-    company: "YHills",
-    role: "Machine Learning with Python",
-    certificates: ["Participation", "Internship Completion", "Project Completion"],
-  },
-  {
-    company: "1Stop.ai",
-    role: "Full Stack Development",
-    certificates: ["Participation", "Internship Completion", "Project Completion"],
-  },
-  {
-    company: "iStudio",
-    role: "Amazon Web Services (AWS)",
-    certificates: ["Participation", "Internship Completion", "Project Completion"],
   },
 ];
 
@@ -1174,13 +1558,6 @@ export const languages = [
   { language: "Kannada", proficiency: "Native / Bilingual Proficiency", level: 100 },
   { language: "Urdu", proficiency: "Full Professional Proficiency", level: 90 },
   { language: "Marathi", proficiency: "Limited Working Proficiency", level: 50 },
-];
-
-export const extraCurricular = [
-  "Represented school in State-Level Karate Competitions, demonstrating discipline, resilience, and teamwork.",
-  "Served as Campus Ambassador (1Stop.ai), contributing to student engagement and promoting technical learning initiatives.",
-  "Actively participated in hackathons, technical workshops, coding events, and innovation challenges.",
-  "Participated in TATA Crucible Campus Quiz 2025, enhancing competitive aptitude and problem-solving skills.",
 ];
 
 export const stats = {

@@ -112,7 +112,7 @@ function keywordFallback(message: string): string {
     return `Washim has built ${projects.length}+ projects! Featured ones include: ${featured.map((p) => p.name).join(", ")}. They span AI/ML, Web Development, and Data Science. Check the Projects section to explore all of them!`;
   }
   if (lower.includes("intern") || lower.includes("experience") || lower.includes("work")) {
-    return `Washim has completed ${internships.length} internships including: Machine Learning at Inventeron Technologies (current), AWS at iStudio, Frontend & Backend development at 1Stop.ai/WoRisGo, ML at YHills, and AI at Coincent.ai. That's quite a track record for a final-year student!`;
+    return `Washim has completed ${internships.length} internships including: Machine Learning at Inventeron Technologies, AWS at iStudio, Frontend & Backend development at 1Stop.ai/WoRisGo, ML at YHills, and AI at Coincent.ai. That's quite a track record for a final-year student!`;
   }
   if (lower.includes("contact") || lower.includes("reach") || lower.includes("email")) {
     return `You can reach Washim at:\n📧 ${personal.email}\n📱 ${personal.phone}\n🔗 LinkedIn: ${personal.linkedin}\n💻 GitHub: ${personal.github}`;

@@ -2,6 +2,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,36 +11,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary brand colors - Gold System
-        primary: {
-          DEFAULT: "#D4AF37", // Metallic Gold
-          dark: "#B8962E",
-          light: "#FDE047",
+        canvas: {
+          DEFAULT: "#F3F4F1",
+          surface: "#F7F8F6",
+          elevated: "#FFFFFF",
         },
-        // Secondary & Accent colors extracted from button
-        secondary: {
-          DEFAULT: "#262626", // Dark Charcoal
-          dark: "#171717",
-          light: "#404040",
+        coral: {
+          DEFAULT: "#00BFE8",
+          hover: "#00A8CF",
+          soft: "#CCEFF9",
+          muted: "#7DD3FC",
         },
-        // Gradient accents incorporating Sky Blue mix
-        accent: {
-          violet: "#D4AF37", // Mapped to Gold
-          pink: "#0EA5E9",   // Sky Blue
-          cyan: "#38BDF8",   // Light Sky Blue
-          green: "#EAB308",  // Yellow highlight
+        cyan: {
+          DEFAULT: "#1CE0FD",
+          light: "#6AECFC",
+          soft: "#A5EBFB",
+          pale: "#CCEFF9",
         },
-        // Dark background scale
-        darkbg: {
-          primary: "#0B0F19",
-          secondary: "#111827",
-          tertiary: "#1F2937",
+        robot: {
+          white: "#FDFDFD",
+          silver: "#C6CBD6",
+          dark: "#050C1A",
+          navy: "#07131F",
+          display: "#141A23",
         },
-        // Text hierarchy for dark mode
-        darktext: {
-          primary: "#F9FAFB",
-          secondary: "#D1D5DB",
-          muted: "#9CA3AF",
+        text: {
+          main: "#202225",
+          sub: "#5F6368",
+          dim: "#85898E",
         },
       },
       fontFamily: {

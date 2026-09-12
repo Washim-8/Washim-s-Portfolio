@@ -1,4 +1,4 @@
-// app/api/contact/route.ts
+// app/api/contact/route.ts — Contact Form Endpoint dispatching to washimshaikh33@gmail.com
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/mailer";
 
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Try to persist to DB if MongoDB is configured
+    // 1. Try to persist to DB if MongoDB is configured
     const mongoUri = process.env.MONGODB_URI;
     if (mongoUri && !mongoUri.includes("username:password")) {
       try {
@@ -21,25 +21,28 @@ export async function POST(req: NextRequest) {
         await Contact.create({ name, email, phone, subject, message });
       } catch (dbErr) {
         console.error("DB save failed (non-fatal):", dbErr);
-        // Continue — don't fail the request just because DB is unavailable
       }
     }
 
-    // Try sending email notification
-    const emailConfigured =
-      process.env.EMAIL_USER &&
-      process.env.EMAIL_PASS &&
-      process.env.EMAIL_PASS !== "your_gmail_app_password";
+    // 2. Dispatch Email notification to washimshaikh33@gmail.com
+    const emailUser = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
+    const emailPass = process.env.EMAIL_PASS?.trim();
+    const isEmailReady = emailPass && emailPass !== "your_gmail_app_password";
 
-    if (emailConfigured) {
+    if (isEmailReady) {
       try {
         await sendContactEmail({ name, email, phone, subject, message });
+        console.log(`[Contact API] Notification email dispatched successfully to ${process.env.EMAIL_TO || "washimshaikh33@gmail.com"}`);
       } catch (emailErr) {
-        console.error("Email send failed (non-fatal):", emailErr);
+        console.error("[Contact API] Email transmission failed:", emailErr);
       }
+    } else {
+      console.warn(
+        `[Contact API] Notice: EMAIL_PASS is not set with a Gmail App Password in .env.local. To receive live emails at ${emailUser}, create a 16-character Google App Password.`
+      );
     }
 
-    return NextResponse.json({ success: true }, { status: 201 });
+    return NextResponse.json({ success: true, message: "Inquiry received successfully" }, { status: 201 });
   } catch (err) {
     console.error("Contact POST error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

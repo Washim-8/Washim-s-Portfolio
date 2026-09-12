@@ -1,7 +1,9 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { personal } from "@/lib/data";
@@ -12,59 +14,62 @@ const navLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#achievements", label: "Achievements" },
   { href: "#certifications", label: "Certifications" },
   { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   const pathname = usePathname();
   const router = useRouter();
 
-  // Scroll progress bar
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const doc = document.documentElement;
-      const progress = (window.scrollY / (doc.scrollHeight - doc.clientHeight)) * 100;
-      setScrollProgress(Math.min(100, Math.max(0, progress)));
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // IntersectionObserver for active section detection
-  const updateActiveSection = useCallback((id: string) => {
-    setActiveSection(id);
-  }, []);
-
+  // Continuous, high-precision active section tracking on scroll
   useEffect(() => {
     const sectionIds = navLinks.map((l) => l.href.slice(1));
-    const observers: IntersectionObserver[] = [];
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    const checkActiveSection = () => {
+      // If at top of the page, immediately highlight 'home'
+      if (window.scrollY < 80) {
+        setActiveSection("home");
+        return;
+      }
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            updateActiveSection(id);
+      // If scrolled to the bottom of the page, activate 'contact'
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50
+      ) {
+        setActiveSection("contact");
+        return;
+      }
+
+      let currentActive = "home";
+      const threshold = 160; // offset below top navbar
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            currentActive = id;
           }
-        },
-        { threshold: 0.2, rootMargin: "-80px 0px -40% 0px" }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+        }
+      }
 
-    return () => observers.forEach((o) => o.disconnect());
-  }, [updateActiveSection]);
+      setActiveSection(currentActive);
+    };
+
+    checkActiveSection();
+    window.addEventListener("scroll", checkActiveSection, { passive: true });
+    window.addEventListener("resize", checkActiveSection, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", checkActiveSection);
+      window.removeEventListener("resize", checkActiveSection);
+    };
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -75,134 +80,53 @@ export default function Navbar() {
       return;
     }
 
-    const element = document.querySelector(href);
+    const sectionId = href.slice(1);
+    setActiveSection(sectionId);
+
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setActiveSection(href.slice(1));
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/90 dark:bg-darkbg-primary/90 backdrop-blur-md shadow-sm border-b border-slate-100 dark:border-white/10"
-          : "bg-transparent"
-        }`}
-    >
-      {/* Scroll progress indicator */}
-      <div
-        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-accent-violet to-accent-pink transition-all duration-150"
-        style={{ width: `${scrollProgress}%` }}
-        aria-hidden="true"
-      />
-
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-6 pt-3 pointer-events-none">
+      <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+        {/* Brand Pill Container */}
         <a
           href="#home"
           onClick={(e) => handleScroll(e, "#home")}
-          className="flex items-center gap-2 font-bold text-slate-900 hover:text-primary transition-colors dark:text-darktext-primary"
+          className="flex items-center gap-2.5 px-3 py-1.5 rounded-full light-glass-nav hover:scale-[1.02] transition-transform duration-200 group"
+          aria-label="Washim Shaikh Home"
         >
-          <div className="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-white/10 rounded-lg overflow-hidden bg-white shadow-sm">
-            <img
-              src="/logo.png"
-              alt="WS Logo"
-              className="w-full h-full object-contain"
+          <div className="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#00BFE8] to-[#1CE0FD] shadow-[inset_0_1px_2px_rgba(255,255,255,0.95),2px_2px_5px_rgba(166,180,200,0.35)] shrink-0">
+            <Image
+              src="/profile.jpg"
+              alt="Washim Shaikh"
+              width={32}
+              height={32}
+              className="w-full h-full object-cover object-top rounded-full"
             />
           </div>
-          <span className="text-lg font-bold text-premium-charcoal drop-shadow-sm pb-0.5">
-            Washim Shaikh
-          </span>
+          <div className="hidden sm:flex flex-col text-left">
+            <span className="text-sm font-extrabold text-[#2A354F] dark:text-white leading-tight">
+              Washim Shaikh
+            </span>
+            <span className="text-[10px] font-semibold text-[#7E8BA0]">
+              Software Engineer & AI/ML
+            </span>
+          </div>
         </a>
 
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-0.5">
-          {navLinks.map((link) => {
-            const sectionId = link.href.slice(1);
-            const isActive = activeSection === sectionId;
-            return (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                      ? "text-primary dark:text-primary-light bg-white dark:bg-darkbg-secondary shadow-sm border border-slate-100 dark:border-white/10"
-                      : "text-slate-600 dark:text-darktext-secondary hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-darktext-primary"
-                    }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary dark:bg-primary-light" />
-                  )}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right side */}
-        <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
-          <a
-            href={personal.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="w-9 h-9 btn-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-          >
-            <GithubIcon className="w-4 h-4" />
-          </a>
-          <a
-            href={personal.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="w-9 h-9 btn-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-          >
-            <LinkedinIcon className="w-4 h-4" />
-          </a>
-          <a
-            href="#contact"
-            onClick={(e) => handleScroll(e, "#contact")}
-            className="ml-2 px-6 py-2.5 text-[13px] font-bold btn-gold flex items-center justify-center"
-          >
-            Hire Me
-          </a>
-        </div>
-
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg text-slate-600 dark:text-darktext-secondary hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile drawer */}
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-          } bg-white/95 dark:bg-darkbg-primary/95 backdrop-blur-md border-b border-slate-100 dark:border-white/10`}
-      >
-        <div className="px-4 pt-4 pb-2 border-b border-slate-100 dark:border-white/10 mb-2 flex items-center gap-2">
-          <div className="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-white/10 rounded-lg overflow-hidden bg-white shadow-sm">
-            <img
-              src="/logo.png"
-              alt="WS Logo"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <span className="text-sm font-bold text-premium-charcoal dark:text-darktext-primary">
-            Washim Shaikh
-          </span>
-        </div>
-        <div className="px-4 pb-4 space-y-1">
+        {/* Center Desktop Navigation Capsule */}
+        <nav className="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-full light-glass-nav shadow-[-4px_-4px_12px_rgba(255,255,255,0.95),4px_6px_16px_rgba(166,180,200,0.45)]">
           {navLinks.map((link) => {
             const sectionId = link.href.slice(1);
             const isActive = activeSection === sectionId;
@@ -212,32 +136,111 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
                 aria-current={isActive ? "page" : undefined}
-                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
-                    ? "bg-white dark:bg-darkbg-secondary shadow-sm border border-slate-100 dark:border-white/10 text-primary dark:text-primary-light"
-                    : "text-slate-600 dark:text-darktext-secondary hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-darktext-primary"
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${isActive
+                  ? "bg-[#00BFE8] text-white shadow-[0_2px_10px_rgba(0,191,232,0.40)] scale-[1.02]"
+                  : "text-[#5A6A85] dark:text-slate-300 hover:text-[#2A354F] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/10"
                   }`}
               >
                 {link.label}
               </a>
             );
           })}
-          <div className="pt-3 pb-2 flex items-center gap-3 border-t border-slate-100 dark:border-white/10 mt-3">
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold flex items-center gap-2 px-4 py-2 text-[12px] font-bold"
-            >
-              <GithubIcon className="w-4 h-4" /> GitHub
-            </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold flex items-center gap-2 px-4 py-2 text-[12px] font-bold"
-            >
-              <LinkedinIcon className="w-4 h-4" /> LinkedIn
-            </a>
+        </nav>
+
+        {/* Right Utility & Resume Pill */}
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            className="hidden sm:flex w-9 h-9 rounded-full items-center justify-center light-glass-nav text-[#5F6368] dark:text-slate-300 hover:text-[#00BFE8] transition-colors"
+          >
+            <GithubIcon className="w-4 h-4" />
+          </a>
+
+          <a
+            href={personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="hidden sm:flex w-9 h-9 rounded-full items-center justify-center light-glass-nav text-[#5F6368] dark:text-slate-300 hover:text-[#00BFE8] transition-colors"
+          >
+            <LinkedinIcon className="w-4 h-4" />
+          </a>
+
+          {/* Primary Resume Button */}
+          <a
+            href="/resume/washim-shaikh-resume.pdf"
+            download
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full btn-coral text-xs font-bold"
+            aria-label="Download Resume"
+          >
+            <FileDown className="w-3.5 h-3.5" />
+            <span>Resume</span>
+          </a>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden w-9 h-9 rounded-full flex items-center justify-center light-glass-nav text-[#202225] dark:text-white"
+            aria-label={isOpen ? "Close Menu" : "Open Menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`lg:hidden transition-all duration-300 overflow-hidden pointer-events-auto mt-2 max-w-md mx-auto ${isOpen ? "max-h-[460px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+      >
+        <div className="p-4 rounded-3xl light-glass-nav space-y-1 shadow-2xl">
+          {navLinks.map((link) => {
+            const sectionId = link.href.slice(1);
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                aria-current={isActive ? "page" : undefined}
+                className={`block px-4 py-2.5 rounded-2xl text-sm font-semibold transition-all ${isActive
+                  ? "bg-[#00BFE8] text-white shadow-sm"
+                  : "text-[#5F6368] dark:text-slate-200 hover:bg-white/60 dark:hover:bg-white/10"
+                  }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+
+          <div className="pt-3 border-t border-black/5 dark:border-white/10 flex items-center justify-between px-2">
+            <div className="flex items-center gap-2">
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/70 dark:bg-white/10 text-[#5F6368] dark:text-white"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/70 dark:bg-white/10 text-[#5F6368] dark:text-white"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </a>
+            </div>
+            <ThemeToggle />
           </div>
         </div>
       </div>

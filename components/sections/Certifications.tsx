@@ -1,169 +1,644 @@
-// app/certifications/page.tsx
+"use client";
 
-import React from "react";
-import SectionWrapper from "@/components/SectionWrapper";
-import HoverCard from "@/components/HoverCard";
-import { certifications, workshops, achievements, extraCurricular } from "@/lib/data";
-import { Award, BookOpen, Trophy, Users, Star } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import LightGlassCard from "@/components/ui/LightGlassCard";
+import SectionHeading from "@/components/ui/SectionHeading";
+import {
+  certifications,
+  workshops,
+  verifiedInternshipCredentials,
+  Certification,
+} from "@/lib/data";
+import {
+  Award,
+  BookOpen,
+  ExternalLink,
+  FileText,
+  CheckCircle2,
+  Shield,
+  Code,
+  Brain,
+  Building2,
+  Eye,
+  X,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import Image from "next/image";
 
-
-
-const achievementIcons: Record<string, React.ElementType> = {
-  trophy: Trophy,
-  star: Star,
-  users: Users,
-};
+interface ModalData {
+  title: string;
+  issuer: string;
+  previewImage: string;
+  fileUrl?: string;
+  verifyUrl?: string;
+  year?: string;
+  credentialId?: string;
+  score?: string;
+  category?: string;
+  skills?: string[];
+  type?: string;
+}
 
 export default function CertificationsSection() {
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [modalItem, setModalItem] = useState<ModalData | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setModalItem(null);
+    };
+    if (modalItem) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalItem]);
+
+  const categories = [
+    "All",
+    "AI & Data Science",
+    "Programming & Software",
+    "Cybersecurity & IT",
+  ];
+
+  const filteredCerts =
+    activeCategory === "All"
+      ? certifications
+      : certifications.filter((c) => c.category === activeCategory);
+
+  useEffect(() => {
+    checkScroll();
+    const el = scrollContainerRef.current;
+    if (el) {
+      el.addEventListener("scroll", checkScroll, { passive: true });
+      window.addEventListener("resize", checkScroll);
+    }
+    return () => {
+      if (el) el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [filteredCerts]);
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth * 0.75;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const getCategoryIcon = (category: Certification["category"]) => {
+    switch (category) {
+      case "AI & Data Science":
+        return Brain;
+      case "Cybersecurity & IT":
+        return Shield;
+      case "Programming & Software":
+        return Code;
+      default:
+        return Award;
+    }
+  };
+
   return (
-    <div>
-      {/* Header */}
-      <SectionWrapper className="py-16 bg-gradient-to-br from-amber-50/50 via-white to-emerald-50/50 dark:from-darkbg-primary dark:via-darkbg-secondary dark:to-darkbg-primary">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-emerald-600 dark:text-emerald-400 text-sm font-semibold uppercase tracking-wider">
-            Credentials & Milestones
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white mt-2 mb-4">
-            Certifications & Achievements
-          </h1>
-          <p className="text-slate-500 dark:text-darktext-muted text-lg max-w-xl mx-auto">
-            Professional certifications, workshops, and notable achievements.
-          </p>
-        </div>
-      </SectionWrapper>
+    <div className="py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          badge="CREDENTIALS & WORKSHOPS"
+          badgeVariant="emerald"
+          title="Professional Certifications &"
+          highlightedWord="Workshops."
+          description={
+            <>
+              Verified industry certifications, specialized technical workshops, and official internship credentials
+              <br className="hidden sm:inline" /> in AI/ML, Prompt Engineering, Cloud, and Software Development.
+            </>
+          }
+        />
 
-      {/* Certifications */}
-      <SectionWrapper className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-10 flex items-center gap-2">
-            <Award className="w-7 h-7 text-primary" /> Certifications
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((cert, i) => (
-              <HoverCard
-                key={i}
-                className="bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-6 relative overflow-hidden"
-                gradientFrom="#F59E0B"
-                gradientTo="#F97316"
-                glowColor="rgba(245,158,11,0.25)"
+        {/* ─── CATEGORY FILTER PILLS ─────────────────────────────────────── */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "bg-[#00BFE8] text-white shadow-[-3px_-3px_8px_rgba(255,255,255,0.85),3px_5px_14px_rgba(0,191,232,0.45)] scale-[1.02]"
+                    : "bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] dark:text-slate-300 shadow-[-4px_-4px_10px_rgba(255,255,255,0.95),4px_4px_10px_rgba(166,180,200,0.50)] dark:shadow-none border border-white/80 dark:border-white/10 hover:text-[#2A354F]"
+                }`}
               >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-primary" />
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center mb-4">
-                  <Award className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <h3 className="font-semibold text-slate-900 dark:text-darktext-primary mb-1 leading-snug">{cert.name}</h3>
-                <p className="text-emerald-600 dark:text-emerald-400 text-sm font-medium">{cert.issuer}</p>
-                <div className="flex flex-wrap items-center gap-2 mt-3">
-                  <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-darkbg-tertiary text-slate-600 dark:text-darktext-muted text-xs font-medium">
-                    {cert.year}
-                  </span>
-                  {cert.score && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold border border-emerald-200 dark:border-emerald-500/30">
-                      {cert.score}
-                    </span>
-                  )}
-                </div>
-                {cert.credentialId && (
-                  <p className="text-slate-400 dark:text-darktext-muted text-xs mt-2">ID: {cert.credentialId}</p>
-                )}
-              </HoverCard>
-            ))}
-          </div>
+                {cat === "All" ? "All Certifications" : cat}
+              </button>
+            );
+          })}
         </div>
-      </SectionWrapper>
 
-      {/* Workshops */}
-      <SectionWrapper className="py-16 bg-slate-50 dark:bg-darkbg-secondary/50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-10 flex items-center gap-2">
-            <BookOpen className="w-7 h-7 text-accent-violet" /> Workshops & Training
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {workshops.map((ws, i) => (
-              <HoverCard
-                key={i}
-                className="bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-6 flex gap-4"
-                gradientFrom="#F59E0B"
-                gradientTo="#F97316"
-                glowColor="rgba(245,158,11,0.25)"
-              >
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 dark:text-darktext-primary leading-snug">{ws.name}</h3>
-                  <p className="text-emerald-600 dark:text-emerald-400 text-sm font-medium mt-1">{ws.organizer}</p>
-                  <div className="flex gap-2 mt-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium border border-emerald-200 dark:border-emerald-500/30">
-                      {ws.type}
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-darkbg-tertiary text-slate-600 dark:text-darktext-muted text-xs">
-                      {ws.year}
-                    </span>
-                  </div>
-                </div>
-              </HoverCard>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+        {/* ─── CERTIFICATIONS 2-ROW HORIZONTAL SCROLL SHOWCASE ────────────── */}
+        <div className="mb-24">
+          {/* Scroll Navigation Controls & Status Bar */}
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-[#5A6A85] dark:text-slate-300">
+                Displaying <span className="text-[#00BFE8] font-extrabold">{filteredCerts.length}</span> Verified Credentials
+              </span>
+              {filteredCerts.length > 6 && (
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#10AB7C] bg-[#D1FAE5] dark:bg-[#10AB7C]/20 px-2.5 py-0.5 rounded-full border border-[#10AB7C]/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10AB7C] animate-pulse" />
+                  Scroll right to view more
+                </span>
+              )}
+            </div>
 
-      {/* Achievements */}
-      <SectionWrapper className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-10 flex items-center gap-2">
-            <Trophy className="w-7 h-7 text-amber-500" /> Achievements
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {achievements.map((ach, i) => {
-              const Icon = achievementIcons[ach.icon] ?? Trophy;
-              return (
-                <HoverCard
-                  key={i}
-                  className="bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-6 text-center"
-                  gradientFrom="#F59E0B"
-                  gradientTo="#F97316"
-                  glowColor="rgba(245,158,11,0.25)"
+            {filteredCerts.length > 6 && (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleScroll("left")}
+                  disabled={!canScrollLeft}
+                  aria-label="Scroll left"
+                  className="w-9 h-9 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#2A354F] dark:text-white hover:text-[#00BFE8] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] border border-white/80 dark:border-white/10 transition-all cursor-pointer"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-200 dark:shadow-amber-900/20">
-                    <Icon className="w-7 h-7 text-white" />
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleScroll("right")}
+                  disabled={!canScrollRight}
+                  aria-label="Scroll right"
+                  className="w-9 h-9 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#2A354F] dark:text-white hover:text-[#00BFE8] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] border border-white/80 dark:border-white/10 transition-all cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* 2-Row Horizontal Scrollable Grid with Right-Edge Peek Affordance */}
+          <div
+            ref={scrollContainerRef}
+            className="grid grid-rows-2 grid-flow-col gap-5 overflow-x-auto pb-6 pt-2 px-1 scroll-smooth snap-x snap-mandatory auto-cols-[82vw] sm:auto-cols-[calc(46%-10px)] md:auto-cols-[calc(36%-12px)] lg:auto-cols-[calc(29%-14px)] xl:auto-cols-[calc(28.5%-14px)]"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            {filteredCerts.map((cert) => {
+              const IconComponent = getCategoryIcon(cert.category);
+              const previewImg = cert.previewImage || cert.fileUrl || "";
+
+              return (
+                <LightGlassCard
+                  key={cert.name}
+                  variant="elevated"
+                  className="p-4 sm:p-4.5 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 group snap-start h-full"
+                >
+                  <div>
+                    {/* Visual Certificate Preview Image Frame */}
+                    <div
+                      onClick={() =>
+                        setModalItem({
+                          title: cert.name,
+                          issuer: cert.issuer,
+                          previewImage: previewImg,
+                          fileUrl: cert.fileUrl,
+                          verifyUrl: cert.verifyUrl,
+                          year: cert.year,
+                          credentialId: cert.credentialId,
+                          score: cert.score,
+                          category: cert.category,
+                          skills: cert.skills,
+                        })
+                      }
+                      className="relative w-full aspect-[16/10.5] rounded-xl overflow-hidden mb-3.5 bg-[#DEE5F0] dark:bg-black/40 border border-white/90 dark:border-white/10 shadow-inner cursor-pointer group/thumb"
+                    >
+                      {previewImg ? (
+                        <Image
+                          src={previewImg}
+                          alt={`${cert.name} certificate`}
+                          fill
+                          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 30vw"
+                          className="object-contain p-1.5 transition-transform duration-500 group-hover/thumb:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[#7E8BA0]">
+                          <Award className="w-10 h-10 opacity-40" />
+                        </div>
+                      )}
+
+                      {/* Hover Overlay with Preview Badge */}
+                      <div className="absolute inset-0 bg-[#07131F]/40 backdrop-blur-[2px] opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="px-3 py-1.5 rounded-full bg-white/95 dark:bg-darkbg-secondary text-[#00BFE8] text-[11px] font-extrabold shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover/thumb:translate-y-0 transition-transform">
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>View Certificate</span>
+                        </span>
+                      </div>
+
+                      {/* Verified Ribbon / Score Pin */}
+                      <div className="absolute top-2 right-2 flex items-center gap-1">
+                        {cert.score ? (
+                          <span className="text-[10px] font-black text-[#10AB7C] bg-white/95 dark:bg-[#161B26]/95 backdrop-blur-md px-2 py-0.5 rounded-md shadow-sm border border-[#10AB7C]/30">
+                            {cert.score.split(" ")[0]}
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-bold text-[#00BFE8] bg-white/95 dark:bg-[#161B26]/95 backdrop-blur-md px-2 py-0.5 rounded-md shadow-sm border border-[#00BFE8]/30 flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-[#10AB7C]" /> Verified
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Top Info Bar */}
+                    <div className="flex items-center justify-between gap-2 mb-2 w-full">
+                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+                        <div className="w-7 h-7 rounded-lg bg-[#D1FAE5] dark:bg-[#10AB7C]/20 text-[#10AB7C] flex items-center justify-center font-bold shadow-inner border border-[#10AB7C]/20 shrink-0">
+                          <IconComponent className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="text-xs font-bold text-[#00BFE8] truncate block" title={cert.issuer}>
+                          {cert.issuer}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-bold text-[#2A354F] dark:text-white bg-[#E6ECF5] dark:bg-darkbg-tertiary shadow-[-2px_-2px_5px_rgba(255,255,255,0.95),2px_2px_5px_rgba(166,180,200,0.40)] px-2 py-0.5 rounded-full border border-white/80 dark:border-white/10 shrink-0">
+                        {cert.year}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xs sm:text-sm font-extrabold text-[#2A354F] dark:text-white mb-2 leading-snug line-clamp-2 group-hover:text-[#00BFE8] transition-colors">
+                      {cert.name}
+                    </h3>
+
+                    {/* Skills Tags */}
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {cert.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="text-[9px] font-semibold text-[#5A6A85] dark:text-slate-300 bg-[#E6ECF5] dark:bg-darkbg-tertiary px-1.5 py-0.5 rounded-md border border-white/60 dark:border-white/5"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="font-bold text-slate-900 dark:text-darktext-primary mb-2">{ach.title}</h3>
-                  <p className="text-slate-500 dark:text-darktext-muted text-sm leading-relaxed">{ach.description}</p>
-                  <span className="inline-block mt-3 px-3 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-medium border border-amber-200 dark:border-amber-500/30">
-                    {ach.year}
-                  </span>
-                </HoverCard>
+
+                  {/* Bottom Card Footer: Action Button & Credential ID */}
+                  <div>
+                    <div className="pt-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] text-[#7E8BA0] font-medium mb-2.5">
+                      {cert.credentialId ? (
+                        <span className="font-mono text-[10px] text-[#5A6A85] dark:text-slate-400 truncate max-w-[140px]">
+                          ID: {cert.credentialId}
+                        </span>
+                      ) : cert.score ? (
+                        <span className="text-[10px] font-bold text-[#10AB7C]">
+                          {cert.score}
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-[#10AB7C] flex items-center gap-1 font-semibold">
+                          <Check className="w-3 h-3" /> Official Credential
+                        </span>
+                      )}
+                      <span className="text-[9px] font-bold text-[#7E8BA0] uppercase tracking-wider">
+                        {cert.category.split(" ")[0]}
+                      </span>
+                    </div>
+
+                    {/* View Certificate Action Button */}
+                    <button
+                      onClick={() =>
+                        setModalItem({
+                          title: cert.name,
+                          issuer: cert.issuer,
+                          previewImage: previewImg,
+                          fileUrl: cert.fileUrl,
+                          verifyUrl: cert.verifyUrl,
+                          year: cert.year,
+                          credentialId: cert.credentialId,
+                          score: cert.score,
+                          category: cert.category,
+                          skills: cert.skills,
+                        })
+                      }
+                      className="w-full py-2 px-3 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#00BFE8] hover:text-white hover:bg-[#00BFE8] text-xs font-bold flex items-center justify-center gap-1.5 shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] hover:shadow-[-2px_-2px_5px_rgba(255,255,255,0.95),2px_3px_8px_rgba(0,191,232,0.40)] border border-white/80 dark:border-white/10 transition-all duration-200 cursor-pointer"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>View Certificate</span>
+                    </button>
+                  </div>
+                </LightGlassCard>
               );
             })}
           </div>
         </div>
-      </SectionWrapper>
 
-      {/* Extra Curricular */}
-      <SectionWrapper className="py-16 bg-slate-50 dark:bg-darkbg-secondary/50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-darktext-primary mb-10 flex items-center gap-2">
-            <Star className="w-7 h-7 text-accent-green" /> Extra-Curricular Activities
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {extraCurricular.map((activity, i) => (
-              <HoverCard
-                key={i}
-                className="flex gap-4 bg-white dark:bg-darkbg-secondary dark:backdrop-blur-md p-5"
-                gradientFrom="#F59E0B"
-                gradientTo="#F97316"
-                glowColor="rgba(245,158,11,0.25)"
+        {/* ─── TECHNICAL WORKSHOPS & SPECIALIZED PROGRAMS ─────────────────── */}
+        <div className="mb-24">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-2xl bg-[#CCEFF9] text-[#00BFE8] flex items-center justify-center font-bold shadow-inner">
+              <BookOpen className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-[#202225] dark:text-white">
+                Technical Workshops & Specialized Programs
+              </h3>
+              <p className="text-xs text-[#5F6368] dark:text-slate-400 mt-0.5">
+                Hands-on technical workshops, national quizzes, and leadership initiatives.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {workshops.map((ws) => {
+              const previewImg = ws.previewImage || ws.fileUrl || "";
+              return (
+                <LightGlassCard
+                  key={ws.name}
+                  variant="elevated"
+                  className="p-5 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 group"
+                >
+                  <div>
+                    {/* Visual Certificate Preview for Workshop */}
+                    {previewImg && (
+                      <div
+                        onClick={() =>
+                          setModalItem({
+                            title: ws.name,
+                            issuer: ws.organizer,
+                            previewImage: previewImg,
+                            fileUrl: ws.fileUrl,
+                            year: ws.year,
+                            type: ws.type,
+                          })
+                        }
+                        className="relative w-full aspect-[16/11] rounded-2xl overflow-hidden mb-4 bg-[#DEE5F0] dark:bg-black/40 border border-white/90 dark:border-white/10 shadow-inner cursor-pointer group/thumb"
+                      >
+                        <Image
+                          src={previewImg}
+                          alt={`${ws.name} workshop certificate`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-contain p-1.5 transition-transform duration-500 group-hover/thumb:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-[#07131F]/40 backdrop-blur-[2px] opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-darkbg-secondary text-[#00BFE8] text-xs font-extrabold shadow-lg flex items-center gap-1.5">
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>View Certificate</span>
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-bold text-[#00BFE8] bg-[#CCEFF9] dark:bg-[#00BFE8]/15 border border-[#00BFE8]/30 px-2.5 py-0.5 rounded-full shrink-0">
+                        {ws.badge}
+                      </span>
+                      <span className="text-[11px] font-bold text-[#7E8BA0]">
+                        {ws.year}
+                      </span>
+                    </div>
+
+                    <h4 className="text-sm sm:text-base font-extrabold text-[#202225] dark:text-white mb-1.5 leading-snug line-clamp-2 group-hover:text-[#00BFE8] transition-colors">
+                      {ws.name}
+                    </h4>
+                    <p className="text-xs font-bold text-[#00BFE8] mb-2.5">
+                      {ws.organizer}
+                    </p>
+                    <p className="text-xs text-[#5A6A85] dark:text-slate-300 leading-relaxed mb-4">
+                      {ws.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-black/5 dark:border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] font-semibold text-[#7E8BA0]">
+                      {ws.type}
+                    </span>
+                    <button
+                      onClick={() =>
+                        setModalItem({
+                          title: ws.name,
+                          issuer: ws.organizer,
+                          previewImage: previewImg,
+                          fileUrl: ws.fileUrl,
+                          year: ws.year,
+                          type: ws.type,
+                        })
+                      }
+                      className="text-xs font-bold text-[#00BFE8] hover:text-[#009bbd] flex items-center gap-1 transition-colors cursor-pointer"
+                    >
+                      <span>View Certificate</span>
+                      <Eye className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </LightGlassCard>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ─── VERIFIED INDUSTRY INTERNSHIP CREDENTIALS ───────────────────── */}
+        <div>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-2xl bg-[#D1FAE5] text-[#10AB7C] flex items-center justify-center font-bold shadow-inner">
+              <Building2 className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-[#202225] dark:text-white">
+                Verified Internship & Industry Documents
+              </h3>
+              <p className="text-xs text-[#5F6368] dark:text-slate-400 mt-0.5">
+                Official offer letters, industrial project reports, and internship completion certificates.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {verifiedInternshipCredentials.map((ic) => (
+              <LightGlassCard
+                key={ic.company + ic.role}
+                variant="elevated"
+                className="p-6 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-emerald-600 dark:text-emerald-400 text-sm">✦</span>
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-bold text-[#10AB7C] bg-[#D1FAE5] dark:bg-[#10AB7C]/20 border border-[#10AB7C]/30 px-2.5 py-0.5 rounded-full">
+                      {ic.status}
+                    </span>
+                    <span className="text-[11px] font-semibold text-[#7E8BA0]">
+                      {ic.period}
+                    </span>
+                  </div>
+
+                  <h4 className="text-base font-extrabold text-[#202225] dark:text-white mb-1 leading-snug">
+                    {ic.company}
+                  </h4>
+                  <p className="text-xs font-bold text-[#00BFE8] mb-2.5">
+                    {ic.role}
+                  </p>
+                  <p className="text-xs text-[#5A6A85] dark:text-slate-300 leading-relaxed mb-4">
+                    {ic.description}
+                  </p>
                 </div>
-                <p className="text-slate-600 dark:text-darktext-muted text-sm leading-relaxed">{activity}</p>
-              </HoverCard>
+
+                {/* Attached Documents List with Image Preview Triggers */}
+                <div className="pt-3 border-t border-black/5 dark:border-white/10 space-y-2">
+                  <div className="text-[11px] font-bold text-[#7E8BA0] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <FileText className="w-3.5 h-3.5 text-[#00BFE8]" />
+                    <span>Attached Official Documents ({ic.documents.length})</span>
+                  </div>
+                  {ic.documents.map((doc) => {
+                    const previewImg = doc.previewImage || doc.fileUrl || "";
+                    return (
+                      <button
+                        key={doc.title}
+                        onClick={() =>
+                          setModalItem({
+                            title: doc.title,
+                            issuer: ic.company,
+                            previewImage: previewImg,
+                            fileUrl: doc.fileUrl,
+                            type: doc.type,
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-tertiary hover:bg-[#CCEFF9] dark:hover:bg-[#00BFE8]/20 text-[#2A354F] dark:text-slate-200 hover:text-[#00BFE8] text-xs font-semibold flex items-center justify-between transition-colors group/doc shadow-sm border border-white/70 dark:border-white/5 cursor-pointer text-left"
+                      >
+                        <div className="flex items-center gap-2 truncate pr-2">
+                          <Eye className="w-3.5 h-3.5 text-[#00BFE8] shrink-0" />
+                          <span className="truncate">{doc.title}</span>
+                        </div>
+                        <span className="text-[10px] text-[#7E8BA0] group-hover/doc:text-[#00BFE8] font-bold shrink-0">
+                          View
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </LightGlassCard>
             ))}
           </div>
         </div>
-      </SectionWrapper>
+      </div>
+
+      {/* ─── INTERACTIVE CERTIFICATE LIGHTBOX / FULL IMAGE MODAL ────────── */}
+      {modalItem && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+          onClick={() => setModalItem(null)}
+        >
+          <div
+            className="relative w-full max-w-4xl max-h-[92vh] bg-[#E6ECF5] dark:bg-darkbg-primary rounded-3xl p-5 sm:p-7 shadow-2xl border border-white/60 dark:border-white/10 flex flex-col justify-between overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-black/10 dark:border-white/10 shrink-0">
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <span className="text-xs font-bold text-[#00BFE8] bg-[#CCEFF9] dark:bg-[#00BFE8]/20 px-2.5 py-0.5 rounded-full">
+                    {modalItem.issuer}
+                  </span>
+                  {modalItem.year && (
+                    <span className="text-xs font-semibold text-[#7E8BA0]">
+                      {modalItem.year}
+                    </span>
+                  )}
+                  {modalItem.score && (
+                    <span className="text-xs font-extrabold text-[#10AB7C] bg-[#D1FAE5] dark:bg-[#10AB7C]/20 px-2 py-0.5 rounded-md">
+                      {modalItem.score}
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-[#2A354F] dark:text-white leading-snug">
+                  {modalItem.title}
+                </h3>
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={() => setModalItem(null)}
+                aria-label="Close certificate modal"
+                className="w-9 h-9 rounded-2xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] hover:text-[#FF6B6B] flex items-center justify-center shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] hover:shadow-inner border border-white/80 dark:border-white/10 transition-all cursor-pointer shrink-0"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body: High-Res Certificate Image Display */}
+            <div className="relative my-4 flex-1 min-h-[300px] sm:min-h-[460px] max-h-[62vh] rounded-2xl bg-[#DEE5F0] dark:bg-black/50 border border-white/80 dark:border-white/5 shadow-inner overflow-auto flex items-center justify-center p-2 sm:p-4">
+              {modalItem.previewImage ? (
+                <div className="relative w-full h-full min-h-[300px] sm:min-h-[440px] flex items-center justify-center">
+                  <Image
+                    src={modalItem.previewImage}
+                    alt={`${modalItem.title} full certificate`}
+                    fill
+                    className="object-contain drop-shadow-md rounded-lg"
+                    priority
+                  />
+                </div>
+              ) : (
+                <div className="text-center p-8">
+                  <FileText className="w-16 h-16 text-[#00BFE8] mx-auto mb-3" />
+                  <p className="text-sm font-bold text-[#2A354F] dark:text-white">
+                    Official Document Attached
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer: Action buttons & Verification */}
+            <div className="pt-3 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+              <div className="text-xs text-[#5A6A85] dark:text-slate-300 flex flex-wrap items-center gap-2 font-medium">
+                {modalItem.credentialId && (
+                  <span className="font-mono bg-white/60 dark:bg-darkbg-tertiary px-2 py-1 rounded-md border border-black/5 dark:border-white/5">
+                    Credential ID: {modalItem.credentialId}
+                  </span>
+                )}
+                {modalItem.skills && (
+                  <div className="hidden sm:flex items-center gap-1">
+                    {modalItem.skills.slice(0, 3).map((s) => (
+                      <span
+                        key={s}
+                        className="text-[10px] bg-white/60 dark:bg-darkbg-tertiary px-2 py-0.5 rounded-md"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {modalItem.verifyUrl && (
+                <div className="flex items-center gap-3">
+                  <a
+                    href={modalItem.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] dark:text-slate-200 hover:text-[#00BFE8] text-xs font-bold flex items-center gap-1.5 shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] border border-white/80 dark:border-white/10 transition-all cursor-pointer"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Verify Online</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, Loader2, ShieldCheck } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -31,26 +31,31 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#F3F4F1] dark:bg-[#12151A] px-4 light-canvas-mesh">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-blue-500/30">
-            <Lock className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 rounded-2xl bg-white dark:bg-[#181C24] shadow-[-6px_-6px_16px_rgba(255,255,255,0.95),6px_8px_18px_rgba(163,166,160,0.25)] border border-white flex items-center justify-center mx-auto mb-4">
+            <Lock className="w-7 h-7 text-[#00BFE8]" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Admin Access</h1>
-          <p className="text-slate-400 text-sm mt-1">Washim Shaikh Portfolio Dashboard</p>
+          <h1 className="text-2xl font-extrabold tracking-tight text-[#202225] dark:text-white">Admin Authentication</h1>
+          <p className="text-[#5F6368] dark:text-slate-400 text-xs font-medium mt-1">Washim Shaikh Portfolio Management Portal</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 space-y-5">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white/90 dark:bg-[#181C24]/90 backdrop-blur-xl rounded-3xl border border-white dark:border-white/10 p-8 space-y-5 shadow-[-10px_-10px_24px_rgba(255,255,255,0.95),12px_16px_32px_rgba(163,166,160,0.25)]"
+        >
           <div>
-            <label className="block text-slate-300 text-sm font-medium mb-2">Email</label>
+            <label className="block text-[#202225] dark:text-slate-200 text-xs font-bold uppercase tracking-wider mb-2">
+              Admin Email
+            </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#85898E]" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="w-full pl-10 pr-4 py-3 rounded-2xl neu-inset text-[#202225] dark:text-white placeholder:text-[#85898E] focus:outline-none focus:ring-2 focus:ring-[#00BFE8]/40 text-xs font-medium"
                 placeholder="admin@email.com"
                 required
               />
@@ -58,21 +63,23 @@ export default function AdminLoginPage() {
           </div>
 
           <div>
-            <label className="block text-slate-300 text-sm font-medium mb-2">Password</label>
+            <label className="block text-[#202225] dark:text-slate-200 text-xs font-bold uppercase tracking-wider mb-2">
+              Password
+            </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#85898E]" />
               <input
                 type={showPw ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="w-full pl-10 pr-10 py-3 rounded-2xl neu-inset text-[#202225] dark:text-white placeholder:text-[#85898E] focus:outline-none focus:ring-2 focus:ring-[#00BFE8]/40 text-xs font-medium"
                 placeholder="••••••••"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPw(!showPw)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#85898E] hover:text-[#202225] dark:hover:text-white"
                 aria-label={showPw ? "Hide password" : "Show password"}
               >
                 {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -81,7 +88,7 @@ export default function AdminLoginPage() {
           </div>
 
           {error && (
-            <p className="text-red-400 text-sm bg-red-500/10 px-4 py-2.5 rounded-lg border border-red-500/20">
+            <p className="text-red-500 text-xs font-semibold bg-red-50 dark:bg-red-950/40 px-4 py-2.5 rounded-xl border border-red-200 dark:border-red-900/40">
               {error}
             </p>
           )}
@@ -89,12 +96,12 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
+            className="w-full btn-coral py-3.5 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-pointer disabled:opacity-60"
           >
             {loading ? (
-              <><Loader2 className="w-4 h-4 animate-spin" /> Signing in...</>
+              <><Loader2 className="w-4 h-4 animate-spin" /> Authenticating...</>
             ) : (
-              "Sign In →"
+              <><ShieldCheck className="w-4 h-4" /> Sign In to Dashboard</>
             )}
           </button>
         </form>
