@@ -1202,6 +1202,17 @@ export const certifications: Certification[] = [
     previewImage: "/certificates/previews/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.png",
     skills: ["Network Security", "Threat Modeling", "Cyber Hygiene", "Security Architecture"],
   },
+  {
+    name: "Computer Literacy Course (CLC) — Statement of Marks",
+    issuer: "National Board of Computer Education (NBCE)",
+    year: "Sept 2022",
+    score: "190/200 (95% Distinction)",
+    credentialId: "nbce0002229915",
+    category: "Cybersecurity & IT",
+    fileUrl: "/certificates/NBCE_MARKS_CARD.jpg",
+    previewImage: "/certificates/previews/NBCE_MARKS_CARD.png",
+    skills: ["Computer Fundamentals", "MS Office Suite", "Data Entry", "Typing", "Operating Systems"],
+  },
 ];
 
 export interface Workshop {
