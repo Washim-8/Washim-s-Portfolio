@@ -1,8 +1,4 @@
 /* app/globals.css — Light Liquid Glass × Neumorphism × Robot AI Design System */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
-
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -36,9 +32,9 @@
   --color-amber-accent: #F5B759;
   --color-amber-soft: #FEF3C7;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-heading: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-space-grotesk), "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
 }
 
 :root {

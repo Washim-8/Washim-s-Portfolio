@@ -1,10 +1,29 @@
 // app/layout.tsx — Root layout
 import type { Metadata } from "next";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SecurityGuard from "@/components/SecurityGuard";
 import { ThemeProvider } from "@/components/ThemeProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -112,10 +131,12 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth light" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth light ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <script
@@ -124,7 +145,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen flex flex-col antialiased light-canvas-mesh bg-[#E6ECF5] dark:bg-[#111622] text-[#2A354F] dark:text-[#F3F4F6] selection:bg-[#CCEFF9] selection:text-[#00BFE8]"
+        className="min-h-screen flex flex-col antialiased font-sans light-canvas-mesh bg-[#E6ECF5] dark:bg-[#111622] text-[#2A354F] dark:text-[#F3F4F6] selection:bg-[#CCEFF9] selection:text-[#00BFE8]"
         suppressHydrationWarning
       >
         <ThemeProvider>

@@ -1202,18 +1202,6 @@ export const certifications: Certification[] = [
     previewImage: "/certificates/previews/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.png",
     skills: ["Network Security", "Threat Modeling", "Cyber Hygiene", "Security Architecture"],
   },
-  // Column 4 - Bottom: Older (Sept 2022)
-  {
-    name: "Computer Literacy Course (CLC) — Statement of Marks",
-    issuer: "NBCE • Skill India",
-    year: "Sept 2022",
-    score: "190/200 (95% Distinction)",
-    credentialId: "nbce0002229915",
-    category: "Cybersecurity & IT",
-    fileUrl: "/certificates/previews/NBCE_MARKS_CARD.png",
-    previewImage: "/certificates/previews/NBCE_MARKS_CARD.png",
-    skills: ["Computer Fundamentals", "MS Office Suite", "Data Entry", "Typing"],
-  },
 ];
 
 export interface Workshop {
@@ -1467,63 +1455,6 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
         previewImage: "/certificates/previews/COINCENT_Participation_Certificate 54786.png",
         type: "Certificate",
       },
-    ],
-  },
-];
-
-export const internshipCertificates = [
-  {
-    company: "Inventeron Technologies",
-    role: "Trainee Machine Learning Engineer",
-    certificates: [
-      "Internship Completion Certificate",
-      "Official Industry Certificate",
-      "Offer Letter",
-    ],
-  },
-  {
-    company: "iStudio Technologies",
-    role: "AWS Cloud Intern",
-    certificates: [
-      "iCAT Merit Certificate (CIT-P-2328369)",
-      "AWS Internship Offer Letter",
-    ],
-  },
-  {
-    company: "1Stop.ai & WoRisGo",
-    role: "Web Development Back-End Intern",
-    certificates: [
-      "Internship Completion (ID: 68099)",
-      "Industrial Project Completion",
-      "Offer Letter",
-    ],
-  },
-  {
-    company: "1Stop.ai & Raise Digital",
-    role: "Web Development Front-End Intern",
-    certificates: [
-      "Internship Completion (ID: 68095)",
-      "Industrial Project Completion",
-      "Offer Letter",
-    ],
-  },
-  {
-    company: "YHills (Smart Swift Innovations)",
-    role: "Machine Learning Intern",
-    certificates: [
-      "Course Completion (Wipro DICE ID)",
-      "Internship Completion (SSI)",
-      "Project Completion (E-Cell IIT Guwahati)",
-    ],
-  },
-  {
-    company: "Coincent.ai",
-    role: "AI with Python Intern",
-    certificates: [
-      "Internship Completion (ID: 54786)",
-      "Training Completion Certificate",
-      "Official Offer Letter (ID: 54786)",
-      "Certificate of Participation",
     ],
   },
 ];
