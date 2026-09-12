@@ -3,7 +3,6 @@
 import Image from "next/image";
 import TechnicalSkills from "@/components/sections/TechnicalSkills";
 import LightGlassCard from "@/components/ui/LightGlassCard";
-import ClayBadge from "@/components/ui/ClayBadge";
 import SectionHeading from "@/components/ui/SectionHeading";
 import {
   personal,
@@ -274,7 +273,7 @@ export default function AboutSection() {
             {/* Soft vertical line */}
             <div className="absolute left-2.5 sm:left-3 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#00BFE8] via-[#1CE0FD] to-transparent opacity-40" />
 
-            {education.map((edu, idx) => (
+            {education.map((edu) => (
               <div key={edu.degree} className="relative">
                 {/* Node dot */}
                 <div className="absolute -left-[23px] sm:-left-[27px] top-6 w-3.5 h-3.5 rounded-full bg-[#00BFE8] border-2 border-white dark:border-darkbg-primary shadow-sm" />

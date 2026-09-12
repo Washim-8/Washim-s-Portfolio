@@ -6,13 +6,8 @@ import { motion } from "framer-motion";
 import Tilt3DCard from "@/components/ui/Tilt3DCard";
 import {
   Brain,
-  Sparkles,
   MapPin,
-  ShieldCheck,
-  Zap,
-  Code2,
   GraduationCap,
-  Layers,
 } from "lucide-react";
 
 export default function HeroProfileShowcase() {
