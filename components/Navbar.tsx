@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BLUR_DATA_URL } from "@/lib/imageUtils";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
@@ -26,11 +25,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const isManualScrolling = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
   // Continuous, high-precision active section tracking on scroll
   useEffect(() => {
     const sectionIds = navLinks.map((l) => l.href.slice(1));
 
     const checkActiveSection = () => {
+      if (isManualScrolling.current) return;
+
       // If at top of the page, immediately highlight 'home'
       if (window.scrollY < 80) {
         setActiveSection("home");
@@ -40,20 +44,23 @@ export default function Navbar() {
       // If scrolled to the bottom of the page, activate 'contact'
       if (
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50
+        document.documentElement.scrollHeight - 60
       ) {
         setActiveSection("contact");
         return;
       }
 
       let currentActive = "home";
-      const threshold = 160; // offset below top navbar
+      const navOffset = 120; // vertical offset below navbar
 
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= threshold) {
+          if (rect.top <= navOffset && rect.bottom > navOffset) {
+            currentActive = id;
+            break;
+          } else if (rect.top <= navOffset) {
             currentActive = id;
           }
         }
@@ -69,11 +76,13 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", checkActiveSection);
       window.removeEventListener("resize", checkActiveSection);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    (e.currentTarget as HTMLElement)?.blur();
     setIsOpen(false);
 
     if (pathname !== "/") {
@@ -83,6 +92,11 @@ export default function Navbar() {
 
     const sectionId = href.slice(1);
     setActiveSection(sectionId);
+    isManualScrolling.current = true;
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    scrollTimeout.current = setTimeout(() => {
+      isManualScrolling.current = false;
+    }, 900);
 
     const element = document.getElementById(sectionId);
     if (element) {
@@ -104,7 +118,7 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(e) => handleScroll(e, "#home")}
-          className="flex items-center gap-2.5 px-3 py-1.5 rounded-full light-glass-nav hover:scale-[1.02] transition-transform duration-200 group"
+          className="flex items-center gap-2.5 px-3 py-1.5 rounded-full light-glass-nav hover:scale-[1.02] transition-transform duration-200 group outline-none focus:outline-none"
           aria-label="Washim Shaikh Home"
         >
           <div className="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#00BFE8] to-[#1CE0FD] shadow-[inset_0_1px_2px_rgba(255,255,255,0.95),2px_2px_5px_rgba(166,180,200,0.35)] shrink-0">
@@ -114,8 +128,7 @@ export default function Navbar() {
               width={32}
               height={32}
               loading="lazy"
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
+              unoptimized
               className="w-full h-full object-cover object-top rounded-full"
             />
           </div>
@@ -140,10 +153,11 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
                 aria-current={isActive ? "page" : undefined}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${isActive
-                  ? "bg-[#00BFE8] text-white shadow-[0_2px_10px_rgba(0,191,232,0.40)] scale-[1.02]"
-                  : "text-[#5A6A85] dark:text-slate-300 hover:text-[#2A354F] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/10"
-                  }`}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 outline-none focus:outline-none cursor-pointer ${
+                  isActive
+                    ? "bg-[#00BFE8] text-white shadow-[-2px_-2px_6px_rgba(255,255,255,0.8),2px_4px_12px_rgba(0,191,232,0.45)] scale-[1.02]"
+                    : "text-[#5A6A85] dark:text-slate-300 hover:text-[#00BFE8] dark:hover:text-white hover:bg-white/40 dark:hover:bg-white/5"
+                }`}
               >
                 {link.label}
               </a>

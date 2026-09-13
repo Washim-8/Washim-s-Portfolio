@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { personal, stats } from "@/lib/data";
-import { BLUR_DATA_URL } from "@/lib/imageUtils";
 
 export default function HeroSection() {
   return (
@@ -149,8 +148,7 @@ export default function HeroSection() {
                 fill
                 priority
                 fetchPriority="high"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover object-top filter contrast-[1.02] brightness-[1.01] transition-transform duration-700 ease-out group-hover:scale-105 z-0"
               />

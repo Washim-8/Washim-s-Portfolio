@@ -24,7 +24,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
-import { BLUR_DATA_URL } from "@/lib/imageUtils";
 import DocumentLightboxModal, { DocumentModalData } from "@/components/DocumentLightboxModal";
 
 export default function CertificationsSection() {
@@ -167,8 +166,7 @@ export default function CertificationsSection() {
           {/* Responsive Scrollable Grid: 1-row on mobile (<sm) for clean touch swipe, 2-row on desktop */}
           <div
             ref={scrollContainerRef}
-            className="grid grid-rows-1 sm:grid-rows-2 grid-flow-col gap-4 sm:gap-5 overflow-x-auto pb-6 pt-2 px-1 scroll-smooth snap-x snap-mandatory auto-cols-[85vw] sm:auto-cols-[calc(46%-10px)] md:auto-cols-[calc(36%-12px)] lg:auto-cols-[calc(29%-14px)] xl:auto-cols-[calc(28.5%-14px)]"
-            style={{ scrollbarWidth: "thin" }}
+            className="grid grid-rows-1 sm:grid-rows-2 grid-flow-col gap-4 sm:gap-5 overflow-x-auto custom-scrollbar pb-6 pt-2 px-1 scroll-smooth snap-x snap-mandatory auto-cols-[85vw] sm:auto-cols-[calc(46%-10px)] md:auto-cols-[calc(36%-12px)] lg:auto-cols-[calc(29%-14px)] xl:auto-cols-[calc(28.5%-14px)]"
           >
             {filteredCerts.map((cert) => {
               const IconComponent = getCategoryIcon(cert.category);
@@ -205,8 +203,7 @@ export default function CertificationsSection() {
                           alt={`${cert.name} certificate`}
                           fill
                           loading="lazy"
-                          placeholder="blur"
-                          blurDataURL={BLUR_DATA_URL}
+                          unoptimized
                           sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 30vw"
                           className="object-contain p-1.5 transition-transform duration-500 group-hover/thumb:scale-105"
                         />
@@ -365,6 +362,7 @@ export default function CertificationsSection() {
                           src={previewImg}
                           alt={`${ws.name} workshop certificate`}
                           fill
+                          unoptimized
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-contain p-1.5 transition-transform duration-500 group-hover/thumb:scale-105"
                         />

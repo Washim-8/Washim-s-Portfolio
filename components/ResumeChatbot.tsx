@@ -158,6 +158,7 @@ export default function ResumeChatbot() {
               alt="Washim AI Robot"
               width={80}
               height={80}
+              unoptimized
               className="w-full h-full object-contain pointer-events-auto -scale-x-100"
               priority
             />
@@ -174,42 +175,43 @@ export default function ResumeChatbot() {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="fixed bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[410px] h-[540px] max-h-[82vh] light-glass-modal rounded-3xl z-50 flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.2),0_0_30px_rgba(28,224,253,0.15)] overflow-hidden border border-white/95 dark:border-white/15"
           >
-            {/* Robot Navy Header */}
-            <div className="p-4 border-b border-[#1CE0FD]/20 flex items-center justify-between robot-display-bg">
+            {/* Modern Vibrant Cyan/Blue Header */}
+            <div className="p-4 border-b border-[#00BFE8]/20 flex items-center justify-between bg-gradient-to-r from-[#00BFE8] via-[#00AEDB] to-[#009BBD] text-white shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-[#0A1320] border-2 border-[#1CE0FD] shadow-[0_0_12px_rgba(28,224,253,0.4)] p-0.5 shrink-0">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/20 backdrop-blur-sm border-2 border-white/80 shadow-md p-0.5 shrink-0">
                   <Image
                     src="/robot-assistant.webp"
                     alt="Washim AI Robot"
                     width={40}
                     height={40}
+                    unoptimized
                     className="w-full h-full object-contain"
                   />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
                     <span>Washim AI Assistant</span>
-                    <span className="px-1.5 py-0.2 text-[9px] font-bold rounded bg-[#1CE0FD]/20 text-[#1CE0FD] border border-[#1CE0FD]/40">
+                    <span className="px-1.5 py-0.2 text-[9px] font-bold rounded bg-white/25 text-white border border-white/40">
                       GPT-4o
                     </span>
                   </h4>
-                  <p className="text-[10px] text-[#A5EBFB] font-semibold flex items-center gap-1 mt-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1CE0FD] shadow-[0_0_6px_#1CE0FD] animate-pulse" />
+                  <p className="text-[10px] text-cyan-100 font-semibold flex items-center gap-1 mt-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 shadow-[0_0_6px_#6EE7B7] animate-pulse" />
                     Neural Engine Online
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 text-white hover:bg-white/30 transition-colors cursor-pointer"
                 aria-label="Close Chat"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Messages Scroll Area */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed bg-[#F7F8F6]/60 dark:bg-[#181C24]/60 backdrop-blur-md">
+            {/* Messages Scroll Area — Clean crisp background */}
+            <div className="flex-1 p-4 overflow-y-auto custom-scrollbar space-y-3.5 text-xs leading-relaxed bg-[#F4F7FB] dark:bg-[#131720]">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -222,12 +224,13 @@ export default function ResumeChatbot() {
                       <User className="w-3.5 h-3.5" />
                     </div>
                   ) : (
-                    <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#0A1320] border border-[#1CE0FD]/50 shadow-[0_0_8px_rgba(28,224,253,0.3)] shrink-0 p-0.5">
+                    <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#E6ECF5] dark:bg-[#202632] border border-[#00BFE8]/40 shadow-sm shrink-0 p-0.5">
                       <Image
                         src="/robot-assistant.webp"
                         alt="Robot AI"
                         width={28}
                         height={28}
+                        unoptimized
                         className="w-full h-full object-contain"
                       />
                     </div>
@@ -237,7 +240,7 @@ export default function ResumeChatbot() {
                     className={`p-3.5 rounded-2xl max-w-[82%] ${
                       msg.role === "user"
                         ? "bg-[#00BFE8] text-white rounded-tr-none shadow-[0_3px_10px_rgba(0,191,232,0.25)]"
-                        : "bg-[#FDFDFD] dark:bg-[#202632] text-[#202225] dark:text-slate-200 rounded-tl-none shadow-[-2px_-2px_6px_rgba(255,255,255,0.9),2px_3px_8px_rgba(163,166,160,0.18)] dark:shadow-none border border-white/90 dark:border-white/10"
+                        : "bg-[#FFFFFF] dark:bg-[#1E2430] text-[#202225] dark:text-slate-200 rounded-tl-none shadow-[-2px_-2px_6px_rgba(255,255,255,0.9),2px_3px_8px_rgba(163,166,160,0.18)] dark:shadow-none border border-white/90 dark:border-white/10"
                     }`}
                   >
                     {formatContent(msg.content)}
@@ -247,17 +250,18 @@ export default function ResumeChatbot() {
 
               {isTyping && (
                 <div className="flex items-center gap-2.5">
-                  <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#0A1320] border border-[#1CE0FD]/50 shadow-[0_0_8px_rgba(28,224,253,0.3)] shrink-0 p-0.5">
+                  <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#E6ECF5] dark:bg-[#202632] border border-[#00BFE8]/40 shadow-sm shrink-0 p-0.5">
                     <Image
                       src="/robot-assistant.webp"
                       alt="Robot AI"
                       width={28}
                       height={28}
+                      unoptimized
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="p-3 rounded-2xl bg-[#FDFDFD] dark:bg-[#202632] shadow-sm flex items-center gap-2 text-[#5F6368] dark:text-slate-300">
-                    <Loader2 className="w-3.5 h-3.5 animate-spin text-[#1CE0FD]" />
+                  <div className="p-3 rounded-2xl bg-[#FFFFFF] dark:bg-[#1E2430] shadow-sm flex items-center gap-2 text-[#5F6368] dark:text-slate-300">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-[#00BFE8]" />
                     <span className="text-[11px] font-semibold">Processing query...</span>
                   </div>
                 </div>

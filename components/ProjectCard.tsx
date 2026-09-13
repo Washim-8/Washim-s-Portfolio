@@ -8,7 +8,6 @@ import LightGlassCard from "@/components/ui/LightGlassCard";
 import ClayBadge from "@/components/ui/ClayBadge";
 import Tilt3DCard from "@/components/ui/Tilt3DCard";
 import type { Project } from "@/lib/data";
-import { BLUR_DATA_URL } from "@/lib/imageUtils";
 
 interface ProjectCardProps {
   project: Project;
@@ -47,8 +46,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                 alt={project.name}
                 fill
                 loading="lazy"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
+                unoptimized
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />

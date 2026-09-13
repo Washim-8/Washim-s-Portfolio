@@ -114,7 +114,7 @@ export default function DocumentLightboxModal({
         </div>
 
         {/* Modal Body: Document Preview */}
-        <div className="relative my-3 sm:my-4 flex-1 max-h-[58vh] sm:max-h-[64vh] rounded-2xl bg-[#DEE5F0]/90 dark:bg-black/60 border border-white/80 dark:border-white/5 shadow-inner overflow-auto flex items-center justify-center p-2 sm:p-4">
+        <div className="relative my-3 sm:my-4 flex-1 max-h-[58vh] sm:max-h-[64vh] rounded-2xl bg-[#DEE5F0]/90 dark:bg-black/60 border border-white/80 dark:border-white/5 shadow-inner overflow-auto custom-scrollbar flex items-center justify-center p-2 sm:p-4">
           {item.previewImage ? (
             <div className="relative max-h-full max-w-full flex items-center justify-center">
               <Image

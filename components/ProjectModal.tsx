@@ -58,7 +58,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           initial={{ opacity: 0, scale: 0.95, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 16 }}
-          className="relative light-glass-modal rounded-3xl w-full max-w-3xl max-h-[85vh] overflow-y-auto z-10 p-6 sm:p-8"
+          className="relative light-glass-modal rounded-3xl w-full max-w-3xl max-h-[85vh] overflow-y-auto custom-scrollbar z-10 p-6 sm:p-8"
         >
           {/* Close button */}
           <button
@@ -76,6 +76,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 src={project.image}
                 alt={project.name}
                 fill
+                unoptimized
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 800px"
               />

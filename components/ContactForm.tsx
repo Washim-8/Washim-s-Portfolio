@@ -192,9 +192,26 @@ export default function ContactForm() {
       )}
 
       {status === "error" && (
-        <div className="p-3 rounded-2xl bg-[#FEE2E2] text-[#991B1B] text-xs font-semibold flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-[#EF4444] shrink-0" />
-          <span>{serverError || "Failed to send message. Please email washimshaikh33@gmail.com directly."}</span>
+        <div className="p-3.5 rounded-2xl bg-[#FEE2E2] dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/40 text-[#991B1B] dark:text-rose-300 text-xs font-semibold space-y-2">
+          <div className="flex items-start gap-2">
+            <AlertCircle className="w-4 h-4 text-[#EF4444] shrink-0 mt-0.5" />
+            <span className="leading-relaxed">
+              {serverError || "Email delivery failed. Please contact directly via email."}
+            </span>
+          </div>
+          <div className="pt-1 flex items-center justify-end">
+            <a
+              href={`mailto:washimshaikh33@gmail.com?subject=${encodeURIComponent(
+                form.subject || "Portfolio Contact: " + form.name
+              )}&body=${encodeURIComponent(
+                `Hi Washim,\n\n${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || "N/A"}`
+              )}`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white text-[11px] font-bold shadow-sm transition-all cursor-pointer"
+            >
+              <Send className="w-3 h-3" />
+              <span>Send via Email Client (1-Click)</span>
+            </a>
+          </div>
         </div>
       )}
     </form>

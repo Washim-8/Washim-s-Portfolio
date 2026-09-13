@@ -1,0 +1,43 @@
+# Washim Shaikh — Software Engineer & AI/ML Developer Portfolio
+
+> Personal developer portfolio of Washim Shaikh, showcasing full-stack web applications, machine learning projects, verified industry certifications, and technical experience.
+
+## Overview
+- **Name**: Washim Shaikh
+- **Title**: Software Engineer & AI/ML Developer
+- **Degree**: B.E. Computer Science & Engineering (2022–2026), BIT Mangalore (VTU) — CGPA: 8.2
+- **Location**: Bengaluru, Karnataka, India
+- **Email**: washimshaikh33@gmail.com
+- **Phone**: +91 8884958185
+- **Portfolio Website**: https://washims-portfolio.onrender.com
+- **GitHub**: https://github.com/washim8
+- **LinkedIn**: https://linkedin.com/in/washimshaikh
+
+## Core Competencies & Skills
+- **Programming Languages**: Python, TypeScript, JavaScript, SQL, HTML5, CSS3, PHP, C/C++
+- **Frameworks & Libraries**: Next.js 14/15, React 18/19, Node.js, Express, Tailwind CSS, FastAPI, Flask, PyTorch, TensorFlow, Scikit-learn, OpenCV
+- **AI / Machine Learning**: Computer Vision, NLP, Prompt Engineering, Large Language Models (LLMs), Predictive Analytics, Vision Transformers (ViT), CNNs, Object Detection
+- **Databases & Tools**: MongoDB, PostgreSQL, MySQL, Docker, Git, REST APIs, Nodemailer, Figma, Postman
+
+## Featured Projects
+- **OmniDetect AI**: Multi-modal computer vision web application for real-time object detection and classification using deep neural networks and Next.js.
+- **FinTrack AI**: Intelligent personal finance manager with automated transaction categorization, budget forecasting, and interactive data visualization.
+- **Brain Tumor Classification**: Clinical deep learning system using Convolutional Neural Networks (CNN) with 96%+ accuracy on MRI neuroimaging datasets.
+- **Drowsiness & Fatigue Detection**: Real-time driver safety system tracking facial landmarks and Eye Aspect Ratio (EAR) via OpenCV with sound alerts.
+- **AgriTrade Hub**: Full-stack agricultural commerce platform enabling direct farmer-to-buyer transactions with localized pricing analytics.
+- **Student Performance Predictor**: Machine learning regression model analyzing academic metrics to predict student outcomes and identify at-risk learners.
+
+## Verified Certifications
+- **Generative AI for Beginners** — Simplilearn (Sept 2025)
+- **Advanced Prompt Engineering** — Simplilearn (Sept 2025)
+- **Building Data Analyst AI Agent** — Analytics Vidhya (Sept 2025)
+- **Cybersecurity Fundamentals (MOOC)** — CySecK • Govt. of Karnataka (Jan 2025)
+- **Basics of Python** — Infosys Springboard (Jan 2024)
+- **Computer Literacy Course (CLC)** — NBCE • Skill India (Sept 2022 — Score: 190/200, 95% Distinction)
+- **Community Contribution & Web Development** — DevTown (Jun 2024)
+
+## Contact Information
+For job opportunities, technical collaborations, or consulting:
+- Email: washimshaikh33@gmail.com
+- Location: Bengaluru, Karnataka, India
+- Website: https://washims-portfolio.onrender.com/#contact
