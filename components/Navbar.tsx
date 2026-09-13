@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/imageUtils";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
@@ -112,6 +113,9 @@ export default function Navbar() {
               alt="Washim Shaikh"
               width={32}
               height={32}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               className="w-full h-full object-cover object-top rounded-full"
             />
           </div>

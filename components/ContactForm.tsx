@@ -30,6 +30,8 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+  const [serverError, setServerError] = useState<string>("");
+
   const validate = (): boolean => {
     const errs: FormErrors = {};
     if (!form.name.trim()) errs.name = "Name is required";
@@ -46,20 +48,24 @@ export default function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("loading");
+    setServerError("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      const data = await res.json().catch(() => null);
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
         setStatus("error");
+        setServerError(data?.error || "Failed to send message. Please email washimshaikh33@gmail.com directly.");
       }
     } catch {
       setStatus("error");
+      setServerError("Network error. Please email washimshaikh33@gmail.com directly.");
     }
   };
 
@@ -188,7 +194,7 @@ export default function ContactForm() {
       {status === "error" && (
         <div className="p-3 rounded-2xl bg-[#FEE2E2] text-[#991B1B] text-xs font-semibold flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-[#EF4444] shrink-0" />
-          <span>Failed to send message. Please email washimshaikh33@gmail.com directly.</span>
+          <span>{serverError || "Failed to send message. Please email washimshaikh33@gmail.com directly."}</span>
         </div>
       )}
     </form>

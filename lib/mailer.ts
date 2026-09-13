@@ -11,15 +11,23 @@ export interface MailOptions {
 
 function getTransporter() {
   const user = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
-  // Remove any spaces that users frequently copy from Google App Passwords (e.g. "abcd efgh ijkl mnop" -> "abcdefghijklmnop")
-  const pass = process.env.EMAIL_PASS?.replace(/\s+/g, "") || "";
+  // Clean all spaces, quotes and whitespace that users frequently copy from Google App Passwords
+  const pass = process.env.EMAIL_PASS?.replace(/[\s"']/g, "").trim() || "";
 
   return nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user,
       pass,
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 5000,
+    socketTimeout: 15000,
   });
 }
 

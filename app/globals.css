@@ -552,6 +552,16 @@ input, textarea, [contenteditable="true"] {
   50% { opacity: 0; }
 }
 
+/* Hero portrait entrance — CSS replaces framer-motion so LCP image stays
+   visible (opacity:1) from frame 0, allowing Lighthouse to detect it. */
+@keyframes hero-portrait-in {
+  from { opacity: 0.85; transform: scale(0.96) translateY(12px); }
+  to   { opacity: 1;    transform: scale(1)    translateY(0); }
+}
+.animate-hero-portrait {
+  animation: hero-portrait-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(20px)) {
   .light-glass, .light-glass-nav, .light-glass-modal {
@@ -561,3 +571,32 @@ input, textarea, [contenteditable="true"] {
     background: #181C24 !important;
   }
 }
+
+/* ─── SCROLL PERFORMANCE OPTIMIZATIONS ─────────────────────────────────────
+   content-visibility: auto tells the browser to skip rendering off-screen
+   sections entirely, only rendering them as they approach the viewport.
+   This makes scrolling significantly faster with many images.
+─────────────────────────────────────────────────────────────────────────── */
+#about,
+#skills,
+#projects,
+#experience,
+#certifications,
+#contact {
+  content-visibility: auto;
+  /* Reserve approximate section height to prevent layout shifts */
+  contain-intrinsic-size: 0 600px;
+}
+
+/* Ensure images use hardware-accelerated compositing for smooth scroll */
+img {
+  image-rendering: auto;
+  /* Prevent paint flicker on scroll for images inside transformed containers */
+  backface-visibility: hidden;
+}
+
+/* Smooth image reveal — pairs with Next.js blur placeholder */
+img[data-nimg] {
+  transition: opacity 0.3s ease;
+}
+

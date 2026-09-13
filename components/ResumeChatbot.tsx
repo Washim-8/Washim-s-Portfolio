@@ -145,15 +145,13 @@ export default function ResumeChatbot() {
           {/* 3D Robot Asset Floating Directly without Background or Circle, Flipped to Left */}
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 transition-all duration-300">
             <Image
-              src="/robot-assistant.png"
+              src="/robot-assistant.webp"
               alt="Washim AI Robot"
               width={80}
               height={80}
               className="w-full h-full object-contain pointer-events-auto -scale-x-100"
               priority
             />
-            {/* Pulsing Cyan Online Indicator */}
-            <span className="absolute bottom-1 left-2 w-2.5 h-2.5 rounded-full bg-[#1CE0FD] border-2 border-white dark:border-[#07131F] shadow-[0_0_8px_#1CE0FD] animate-pulse" />
           </div>
         </button>
       </motion.div>
@@ -172,7 +170,7 @@ export default function ResumeChatbot() {
               <div className="flex items-center gap-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-[#0A1320] border-2 border-[#1CE0FD] shadow-[0_0_12px_rgba(28,224,253,0.4)] p-0.5 shrink-0">
                   <Image
-                    src="/robot-assistant.png"
+                    src="/robot-assistant.webp"
                     alt="Washim AI Robot"
                     width={40}
                     height={40}
@@ -217,7 +215,7 @@ export default function ResumeChatbot() {
                   ) : (
                     <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#0A1320] border border-[#1CE0FD]/50 shadow-[0_0_8px_rgba(28,224,253,0.3)] shrink-0 p-0.5">
                       <Image
-                        src="/robot-assistant.png"
+                        src="/robot-assistant.webp"
                         alt="Robot AI"
                         width={28}
                         height={28}
@@ -242,7 +240,7 @@ export default function ResumeChatbot() {
                 <div className="flex items-center gap-2.5">
                   <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#0A1320] border border-[#1CE0FD]/50 shadow-[0_0_8px_rgba(28,224,253,0.3)] shrink-0 p-0.5">
                     <Image
-                      src="/robot-assistant.png"
+                      src="/robot-assistant.webp"
                       alt="Robot AI"
                       width={28}
                       height={28}

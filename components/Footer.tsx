@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/imageUtils";
 import { ArrowUp, Mail, Phone, MapPin, Sparkles, FileDown, Layers } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { personal } from "@/lib/data";
@@ -61,6 +62,9 @@ export default function Footer() {
                     alt="Washim Shaikh"
                     width={48}
                     height={48}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
                     className="w-full h-full object-cover object-top rounded-[14px]"
                   />
                   <span className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#0D121D] shadow-sm animate-pulse" />

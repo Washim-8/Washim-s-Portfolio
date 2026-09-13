@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { personal, stats } from "@/lib/data";
+import { BLUR_DATA_URL } from "@/lib/imageUtils";
 
 export default function HeroSection() {
   return (
@@ -126,11 +127,9 @@ export default function HeroSection() {
 
         {/* ─── RIGHT COLUMN: SCULPTED MODERN GLASS CAPSULE PORTRAIT FRAME ─────── */}
         <div className="lg:col-span-5 flex items-center justify-center relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative w-full max-w-[320px] sm:max-w-[350px] lg:max-w-[370px] mx-auto select-none"
+          {/* CSS animation instead of framer-motion to preserve LCP detection */}
+          <div
+            className="relative w-full max-w-[320px] sm:max-w-[350px] lg:max-w-[370px] mx-auto select-none animate-hero-portrait"
           >
             {/* Ambient Multi-Tone Radiant Glow Backdrops */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-gradient-to-tr from-[#00BFE8]/30 via-[#3B82F6]/25 to-emerald-400/20 dark:from-cyan-500/30 dark:via-blue-600/25 dark:to-emerald-500/15 rounded-full blur-[85px] pointer-events-none -z-10" />
@@ -149,6 +148,9 @@ export default function HeroSection() {
                 alt="WASHIM SHAIKH"
                 fill
                 priority
+                fetchPriority="high"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover object-top filter contrast-[1.02] brightness-[1.01] transition-transform duration-700 ease-out group-hover:scale-105 z-0"
               />
@@ -156,7 +158,7 @@ export default function HeroSection() {
               {/* Soft Bottom Gradient Scrim to Gracefully Ground the Portrait */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#2A354F]/25 via-transparent to-transparent pointer-events-none z-10" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

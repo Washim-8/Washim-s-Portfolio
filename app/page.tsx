@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/Hero";
-
-// Import all sections
-import AboutSection from "@/components/sections/About";
-import ExperienceSection from "@/components/sections/Experience";
-import ProjectsSection from "@/components/sections/Projects";
-import CertificationsSection from "@/components/sections/Certifications";
-import ContactSection from "@/components/sections/Contact";
-import TestimonialsSection from "@/components/sections/Testimonials";
 import AnimatedSection from "@/components/AnimatedSection";
-import ResumeChatbot from "@/components/ResumeChatbot";
+
+// ── Dynamic (lazy) imports for below-fold sections ──────────────────────────
+// Each section loads only when user is about to see it, slashing initial JS.
+const AboutSection = dynamic(() => import("@/components/sections/About"));
+const ExperienceSection = dynamic(
+  () => import("@/components/sections/Experience")
+);
+const ProjectsSection = dynamic(
+  () => import("@/components/sections/Projects")
+);
+const CertificationsSection = dynamic(
+  () => import("@/components/sections/Certifications")
+);
+const TestimonialsSection = dynamic(
+  () => import("@/components/sections/Testimonials")
+);
+const ContactSection = dynamic(
+  () => import("@/components/sections/Contact")
+);
+const ResumeChatbot = dynamic(() => import("@/components/ResumeChatbot"));
+
 
 export const metadata: Metadata = {
   title: "WASHIM SHAIKH",
@@ -20,10 +33,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="relative min-h-screen bg-[#E6ECF5] dark:bg-[#111622] overflow-hidden text-[#2A354F] dark:text-slate-100">
-      {/* ─── HERO SECTION (HEADLINE + PROFILE PHOTO SHOWCASE) ──────────────────── */}
+      {/* ─── HERO: Loaded immediately, above the fold ─────────────────────── */}
       <HeroSection />
 
-      {/* ─── FULL SECTIONS ──────────────────────────────────────────────────────── */}
+      {/* ─── BELOW FOLD: All lazy-loaded to reduce initial bundle ─────────── */}
       <AnimatedSection id="about">
         <AboutSection />
       </AnimatedSection>
@@ -48,8 +61,9 @@ export default function HomePage() {
         <ContactSection />
       </AnimatedSection>
 
-      {/* Floating AI Chatbot Assistant */}
+      {/* Floating AI Chatbot — defer until after page paint */}
       <ResumeChatbot />
     </div>
   );
 }
+
