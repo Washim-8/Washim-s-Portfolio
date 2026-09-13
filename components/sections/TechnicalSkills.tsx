@@ -590,6 +590,8 @@ export default function TechnicalSkills() {
                       <Icon
                         className="w-6 h-6 shrink-0 transition-transform"
                         style={{ color: skill.iconColor }}
+                        role="img"
+                        aria-label={skill.name}
                       />
                     </div>
                   </div>
