@@ -50,7 +50,6 @@ export default function ContactForm() {
     setStatus("loading");
     setServerError("");
 
-    // Attempt 1: Next.js Server API Route
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -62,41 +61,14 @@ export default function ContactForm() {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
         return;
+      } else {
+        setStatus("error");
+        setServerError(data?.error || "Email delivery failed. Please click below to send directly via email client.");
       }
     } catch {
-      // Fall through to Attempt 2
+      setStatus("error");
+      setServerError("Network error. Please click below to send directly via email client.");
     }
-
-    // Attempt 2: Direct Client-Side HTTPS Relay (Bypasses all server firewall / SMTP issues)
-    try {
-      const relayRes = await fetch("https://formsubmit.co/ajax/washimshaikh33@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone || "Not Provided",
-          _subject: `⚡ [Portfolio Inquiry] ${form.subject} — from ${form.name}`,
-          message: form.message,
-          _template: "table",
-          _captcha: "false",
-        }),
-      });
-
-      if (relayRes.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-        return;
-      }
-    } catch {
-      // Fall through to error state
-    }
-
-    setStatus("error");
-    setServerError("Email delivery failed. Please click below to send directly via email client.");
   };
 
   const inputStyle = (field: keyof FormErrors) =>

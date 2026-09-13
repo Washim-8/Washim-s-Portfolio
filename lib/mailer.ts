@@ -161,41 +161,15 @@ export async function sendContactEmail(data: MailOptions): Promise<void> {
         from: `"Washim Portfolio Contact" <${senderUser}>`,
         to: targetEmail,
         replyTo: data.email,
-        subject: `[Portfolio Inquiry] ${data.subject} — from ${data.name}`,
+        subject: `⚡ [Portfolio Inquiry] ${data.subject} — from ${data.name}`,
         html,
       });
-      return; // Succeeded!
+      console.log(`[Mailer] Custom HTML email dispatched successfully via strategy ${i + 1} to ${targetEmail}`);
+      return; // Succeeded with custom HTML template!
     } catch (err: unknown) {
       lastError = err as Error;
       console.warn(`[Mailer] Strategy ${i + 1} failed:`, lastError?.message || lastError);
     }
-  }
-
-  // ── Strategy 4: Direct HTTPS Email Relay (Bypasses all cloud SMTP port restrictions) ──
-  try {
-    const relayResponse = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        phone: data.phone || "Not Provided",
-        _subject: `⚡ [Portfolio Inquiry] ${data.subject} — from ${data.name}`,
-        message: data.message,
-        _template: "table",
-        _captcha: "false",
-      }),
-    });
-
-    if (relayResponse.ok) {
-      console.log(`[Mailer] Contact email delivered successfully via HTTPS relay to ${targetEmail}`);
-      return;
-    }
-  } catch (relayErr) {
-    console.warn("[Mailer] HTTPS relay attempt failed:", relayErr);
   }
 
   if (lastError) {
