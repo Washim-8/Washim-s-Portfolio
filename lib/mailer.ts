@@ -171,6 +171,33 @@ export async function sendContactEmail(data: MailOptions): Promise<void> {
     }
   }
 
+  // ── Strategy 4: Direct HTTPS Email Relay (Bypasses all cloud SMTP port restrictions) ──
+  try {
+    const relayResponse = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || "Not Provided",
+        _subject: `⚡ [Portfolio Inquiry] ${data.subject} — from ${data.name}`,
+        message: data.message,
+        _template: "table",
+        _captcha: "false",
+      }),
+    });
+
+    if (relayResponse.ok) {
+      console.log(`[Mailer] Contact email delivered successfully via HTTPS relay to ${targetEmail}`);
+      return;
+    }
+  } catch (relayErr) {
+    console.warn("[Mailer] HTTPS relay attempt failed:", relayErr);
+  }
+
   if (lastError) {
     throw lastError;
   }
