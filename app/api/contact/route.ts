@@ -33,27 +33,17 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Dispatch Email notification to washimshaikh33@gmail.com
-    const emailUser = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
-    const rawPass = process.env.EMAIL_PASS?.replace(/[\s"']/g, "").trim();
-    const isEmailReady = Boolean(rawPass && rawPass !== "your_gmail_app_password" && rawPass.length >= 8);
-
     let emailSent = false;
     let emailErrorMsg = "";
 
-    if (isEmailReady) {
-      try {
-        await sendContactEmail({ name, email, phone, subject, message });
-        emailSent = true;
-        console.log(`[Contact API] Notification email dispatched successfully to ${process.env.EMAIL_TO || "washimshaikh33@gmail.com"}`);
-      } catch (emailErr: unknown) {
-        const err = emailErr as Error;
-        emailErrorMsg = err?.message || "Email delivery failed";
-        console.error("[Contact API] Email transmission failed:", emailErrorMsg);
-      }
-    } else {
-      console.warn(
-        `[Contact API] Notice: EMAIL_PASS is not configured in environment variables. To receive live emails at ${emailUser}, add EMAIL_PASS in your deployment dashboard (e.g., Render Environment).`
-      );
+    try {
+      await sendContactEmail({ name, email, phone, subject, message });
+      emailSent = true;
+      console.log(`[Contact API] Notification email dispatched successfully to ${process.env.EMAIL_TO || "washimshaikh33@gmail.com"}`);
+    } catch (emailErr: unknown) {
+      const err = emailErr as Error;
+      emailErrorMsg = err?.message || "Email delivery failed";
+      console.error("[Contact API] Email transmission failed:", emailErrorMsg);
     }
 
     // If email sent successfully, or if message was persisted to DB
@@ -82,7 +72,7 @@ export async function POST(req: NextRequest) {
         error: userFriendlyError,
         details: emailErrorMsg,
       },
-      { status: isEmailReady ? 500 : 200 }
+      { status: 500 }
     );
   } catch (err) {
     console.error("Contact POST error:", err);

@@ -11,28 +11,20 @@ export interface MailOptions {
 
 function createTransporters(user: string, pass: string) {
   return [
-    // Strategy 1: Standard Gmail Service with secure credentials
-    nodemailer.createTransport({
-      service: "gmail",
-      auth: { user, pass },
-      connectionTimeout: 8000,
-      greetingTimeout: 5000,
-      socketTimeout: 10000,
-    }),
-    // Strategy 2: Port 587 with STARTTLS (works on all cloud firewalls)
+    // Strategy 1: Port 587 STARTTLS with IPv4 for cloud container reliability
     nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
-      secure: false, // TLS
+      secure: false,
       auth: { user, pass },
       tls: {
         rejectUnauthorized: false,
       },
-      connectionTimeout: 8000,
-      greetingTimeout: 5000,
-      socketTimeout: 10000,
-    }),
-    // Strategy 3: Port 465 Direct SSL
+      connectionTimeout: 6000,
+      greetingTimeout: 4000,
+      socketTimeout: 8000,
+    } as Parameters<typeof nodemailer.createTransport>[0]),
+    // Strategy 2: Port 465 Direct SSL
     nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -41,10 +33,18 @@ function createTransporters(user: string, pass: string) {
       tls: {
         rejectUnauthorized: false,
       },
-      connectionTimeout: 8000,
-      greetingTimeout: 5000,
-      socketTimeout: 10000,
-    }),
+      connectionTimeout: 6000,
+      greetingTimeout: 4000,
+      socketTimeout: 8000,
+    } as Parameters<typeof nodemailer.createTransport>[0]),
+    // Strategy 3: Standard Gmail Service descriptor
+    nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass },
+      connectionTimeout: 6000,
+      greetingTimeout: 4000,
+      socketTimeout: 8000,
+    } as Parameters<typeof nodemailer.createTransport>[0]),
   ];
 }
 
@@ -169,6 +169,33 @@ export async function sendContactEmail(data: MailOptions): Promise<void> {
       lastError = err as Error;
       console.warn(`[Mailer] Strategy ${i + 1} failed:`, lastError?.message || lastError);
     }
+  }
+
+  // ── Strategy 4: Direct HTTPS Email Relay (Bypasses all cloud SMTP port restrictions) ──
+  try {
+    const relayResponse = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || "Not Provided",
+        _subject: `⚡ [Portfolio Inquiry] ${data.subject} — from ${data.name}`,
+        message: data.message,
+        _template: "table",
+        _captcha: "false",
+      }),
+    });
+
+    if (relayResponse.ok) {
+      console.log(`[Mailer] Contact email delivered successfully via HTTPS relay to ${targetEmail}`);
+      return;
+    }
+  } catch (relayErr) {
+    console.warn("[Mailer] HTTPS relay attempt failed:", relayErr);
   }
 
   if (lastError) {
