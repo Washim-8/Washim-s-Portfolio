@@ -161,11 +161,10 @@ export async function sendContactEmail(data: MailOptions): Promise<void> {
         from: `"Washim Portfolio Contact" <${senderUser}>`,
         to: targetEmail,
         replyTo: data.email,
-        subject: `⚡ [Portfolio Inquiry] ${data.subject} — from ${data.name}`,
+        subject: `[Portfolio Inquiry] ${data.subject} — from ${data.name}`,
         html,
       });
-      console.log(`[Mailer] Custom HTML email dispatched successfully via strategy ${i + 1} to ${targetEmail}`);
-      return; // Succeeded with custom HTML template!
+      return; // Succeeded!
     } catch (err: unknown) {
       lastError = err as Error;
       console.warn(`[Mailer] Strategy ${i + 1} failed:`, lastError?.message || lastError);

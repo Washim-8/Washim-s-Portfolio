@@ -57,17 +57,16 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
       const data = await res.json().catch(() => null);
-      if (res.ok && data?.success) {
+      if (res.ok && (data?.success || data?.emailDelivered || data?.dbSaved)) {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-        return;
       } else {
         setStatus("error");
-        setServerError(data?.error || "Email delivery failed. Please click below to send directly via email client.");
+        setServerError(data?.error || "Failed to send message. Please email washimshaikh33@gmail.com directly.");
       }
     } catch {
       setStatus("error");
-      setServerError("Network error. Please click below to send directly via email client.");
+      setServerError("Network error. Please click below to send directly via your email client.");
     }
   };
 
