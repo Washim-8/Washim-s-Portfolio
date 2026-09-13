@@ -346,7 +346,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "omnidetect-ai",
-    image: "/projects/omnidetect-ai.jpg",
+    image: "/projects/omnidetect-ai.webp",
     name: "OmniDetect-AI",
     category: "AI/ML",
     featured: true,
@@ -383,7 +383,7 @@ export const projects: Project[] = [
   },
   {
     id: "student-predictor",
-    image: "/projects/student-predictor.jpg",
+    image: "/projects/student-predictor.webp",
     name: "StudentPredictorAI — Student Performer Predictor",
     category: "Data Science",
     featured: true,
@@ -420,7 +420,7 @@ export const projects: Project[] = [
   },
   {
     id: "avatarai",
-    image: "/projects/avatarai.jpg",
+    image: "/projects/avatarai.webp",
     name: "AvatarAI",
     category: "AI/ML",
     featured: true,
@@ -466,7 +466,7 @@ export const projects: Project[] = [
   },
   {
     id: "brain-tumor",
-    image: "/projects/brain-tumor.jpg",
+    image: "/projects/brain-tumor.webp",
     name: "BrainScan AI – Brain Tumor Detection System",
     category: "AI/ML",
     featured: true,
@@ -502,7 +502,7 @@ export const projects: Project[] = [
   },
   {
     id: "drowsiness",
-    image: "/projects/drowsiness.jpg",
+    image: "/projects/drowsiness.webp",
     name: "Driver Drowsiness Detection System",
     category: "AI/ML",
     featured: true,
@@ -541,7 +541,7 @@ export const projects: Project[] = [
   },
   {
     id: "face-recognition",
-    image: "/projects/face-recognition.jpg",
+    image: "/projects/face-recognition.webp",
     name: "Face Recognition Employee Attendance System",
     category: "AI/ML",
     featured: true,
@@ -579,7 +579,7 @@ export const projects: Project[] = [
   },
   {
     id: "fintrackai",
-    image: "/projects/fintrackai.jpg",
+    image: "/projects/fintrackai.webp",
     name: "FinTrackAI – Personal Finance Tracker",
     category: "Data Science",
     period: "Feb 2026 – Feb 2026",
@@ -620,7 +620,7 @@ export const projects: Project[] = [
   },
   {
     id: "agritrade",
-    image: "/projects/agritrade.jpg",
+    image: "/projects/agritrade.webp",
     name: "Interactive AgriTrade",
     category: "Web Development",
     featured: true,
@@ -661,7 +661,7 @@ export const projects: Project[] = [
   },
   {
     id: "recipe-finder",
-    image: "/projects/recipe-finder.jpg",
+    image: "/projects/recipe-finder.webp",
     name: "Recipe Finder & Meal Planner",
     category: "Web Development",
     period: "Dec 2025 – Dec 2025",
@@ -695,7 +695,7 @@ export const projects: Project[] = [
   },
   {
     id: "room-booking",
-    image: "/projects/room-booking.jpg",
+    image: "/projects/room-booking.webp",
     name: "Booking Management System for Room Booking",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -739,7 +739,7 @@ export const projects: Project[] = [
   },
   {
     id: "todo-php",
-    image: "/projects/todo-php.jpg",
+    image: "/projects/todo-php.webp",
     name: "PHP Simple To-Do List",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -771,7 +771,7 @@ export const projects: Project[] = [
   },
   {
     id: "expense-tracker",
-    image: "/projects/expense-tracker.jpg",
+    image: "/projects/expense-tracker.webp",
     name: "Personal Expense Tracker",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -803,7 +803,7 @@ export const projects: Project[] = [
   },
   {
     id: "portfolio",
-    image: "/projects/portfolio.jpg",
+    image: "/projects/portfolio.webp",
     name: "Portfolio Website",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -849,7 +849,7 @@ export const projects: Project[] = [
   },
   {
     id: "blogging-platform",
-    image: "/projects/blogging-platform.jpg",
+    image: "/projects/blogging-platform.webp",
     name: "Simple Blogging Platform",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -884,7 +884,7 @@ export const projects: Project[] = [
   },
   {
     id: "todo-html",
-    image: "/projects/todo-html.jpg",
+    image: "/projects/todo-html.webp",
     name: "To-Do List Pro",
     category: "Web Development",
     period: "Jul 2025 – Sep 2025",
@@ -914,7 +914,7 @@ export const projects: Project[] = [
   },
   {
     id: "customer-churn",
-    image: "/projects/customer-churn.jpg",
+    image: "/projects/customer-churn.webp",
     name: "Customer Churn Prediction",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -957,7 +957,7 @@ export const projects: Project[] = [
   },
   {
     id: "fraud-detection",
-    image: "/projects/fraud-detection.jpg",
+    image: "/projects/fraud-detection.webp",
     name: "Financial Fraud Detection System",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -994,7 +994,7 @@ export const projects: Project[] = [
   },
   {
     id: "house-price",
-    image: "/projects/house-price.jpg",
+    image: "/projects/house-price.webp",
     name: "House Price Prediction",
     category: "Data Science",
     period: "Dec 2024 – Feb 2025",
@@ -1034,7 +1034,7 @@ export const projects: Project[] = [
   },
   {
     id: "text-classification",
-    image: "/projects/text-classification.jpg",
+    image: "/projects/text-classification.webp",
     name: "Text Classification with TensorFlow",
     category: "AI/ML",
     period: "Apr 2024 – May 2024",
@@ -1072,7 +1072,7 @@ export const projects: Project[] = [
   },
   {
     id: "vision-transformer",
-    image: "/projects/vision-transformer.jpg",
+    image: "/projects/vision-transformer.webp",
     name: "Vision Transformer Image Classification",
     category: "AI/ML",
     period: "Apr 2024 – May 2024",
@@ -1131,7 +1131,7 @@ export const certifications: Certification[] = [
     credentialId: "9046573",
     category: "AI & Data Science",
     fileUrl: "/certificates/Simplilearn Generative AI for Beginners Certificate.pdf",
-    previewImage: "/certificates/previews/Simplilearn Generative AI for Beginners Certificate.png",
+    previewImage: "/certificates/previews/Simplilearn Generative AI for Beginners Certificate.webp",
     skills: ["Generative AI", "Prompt Engineering", "Large Language Models"],
   },
   // Column 1 - Bottom: Older (Jun 2024)
@@ -1142,7 +1142,7 @@ export const certifications: Certification[] = [
     credentialId: "Z1rgQEK",
     category: "Programming & Software",
     fileUrl: "/certificates/DEVTOWN_participation_Certificate.pdf",
-    previewImage: "/certificates/previews/DEVTOWN_participation_Certificate.png",
+    previewImage: "/certificates/previews/DEVTOWN_participation_Certificate.webp",
     verifyUrl: "https://cert.devtown.in.tech/verify/Z1rgQEK",
     skills: ["Web Development", "Community Mentorship", "Frontend Tech"],
   },
@@ -1154,7 +1154,7 @@ export const certifications: Certification[] = [
     credentialId: "9041791",
     category: "AI & Data Science",
     fileUrl: "/certificates/Simplilearn Advanced Prompt Engineering Certificate.pdf",
-    previewImage: "/certificates/previews/Simplilearn Advanced Prompt Engineering Certificate.png",
+    previewImage: "/certificates/previews/Simplilearn Advanced Prompt Engineering Certificate.webp",
     skills: ["Advanced Prompting", "Few-shot Learning", "Context Optimization"],
   },
   // Column 2 - Bottom: Older (Jan 2024)
@@ -1164,7 +1164,7 @@ export const certifications: Certification[] = [
     year: "Jan 2024",
     category: "Programming & Software",
     fileUrl: "/certificates/Basics of Python Infosys.pdf",
-    previewImage: "/certificates/previews/Basics of Python Infosys.png",
+    previewImage: "/certificates/previews/Basics of Python Infosys.webp",
     verifyUrl: "https://verify.onwingspan.com",
     skills: ["Python Core", "Data Structures", "Object-Oriented Programming"],
   },
@@ -1176,7 +1176,7 @@ export const certifications: Certification[] = [
     credentialId: "bgva8kzhlp",
     category: "AI & Data Science",
     fileUrl: "/certificates/Analytics Vidhya_Building Data Analyst AI Agent.pdf",
-    previewImage: "/certificates/previews/Analytics Vidhya_Building Data Analyst AI Agent.png",
+    previewImage: "/certificates/previews/Analytics Vidhya_Building Data Analyst AI Agent.webp",
     skills: ["AI Agents", "Data Analytics", "LLMs", "Python"],
   },
   // Column 3 - Bottom: Older (Sept 2022)
@@ -1188,7 +1188,7 @@ export const certifications: Certification[] = [
     credentialId: "nbce0002229915",
     category: "Cybersecurity & IT",
     fileUrl: "/certificates/NBCE_ACHIEVEMENT.jpg",
-    previewImage: "/certificates/previews/NBCE_ACHIEVEMENT.png",
+    previewImage: "/certificates/previews/NBCE_ACHIEVEMENT.webp",
     skills: ["Computer Fundamentals", "Data Entry", "MS Office Suite", "Operating Systems"],
   },
   // Column 4 - Top: Recent (Jan 2025)
@@ -1199,7 +1199,7 @@ export const certifications: Certification[] = [
     credentialId: "CBMOOC1327",
     category: "Cybersecurity & IT",
     fileUrl: "/certificates/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.pdf",
-    previewImage: "/certificates/previews/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.png",
+    previewImage: "/certificates/previews/CyberSmart_Cybersecurity_Fundamentals-Washim_Shaikh.webp",
     skills: ["Network Security", "Threat Modeling", "Cyber Hygiene", "Security Architecture"],
   },
   {
@@ -1210,7 +1210,7 @@ export const certifications: Certification[] = [
     credentialId: "nbce0002229915",
     category: "Cybersecurity & IT",
     fileUrl: "/certificates/NBCE_MARKS_CARD.jpg",
-    previewImage: "/certificates/previews/NBCE_MARKS_CARD.png",
+    previewImage: "/certificates/previews/NBCE_MARKS_CARD.webp",
     skills: ["Computer Fundamentals", "MS Office Suite", "Data Entry", "Typing", "Operating Systems"],
   },
 ];
@@ -1234,7 +1234,7 @@ export const workshops: Workshop[] = [
     year: "Dec 2024",
     description: "In-depth technical workshop on startup innovation, AI integration in MSME ecosystems, business automation, and incubation frameworks.",
     fileUrl: "/certificates/MSME_2DAYS_WORKSHOP.jpg",
-    previewImage: "/certificates/previews/MSME_2DAYS_WORKSHOP.png",
+    previewImage: "/certificates/previews/MSME_2DAYS_WORKSHOP.webp",
     badge: "AI & Entrepreneurship",
   },
   {
@@ -1244,7 +1244,7 @@ export const workshops: Workshop[] = [
     year: "May 2024",
     description: "Hands-on engineering simulation and remote laboratory experimentation platform developed under NMEICT initiative by IIT Delhi.",
     fileUrl: "/certificates/Virtual_labs_1day_workshop.jpg",
-    previewImage: "/certificates/previews/Virtual_labs_1day_workshop.png",
+    previewImage: "/certificates/previews/Virtual_labs_1day_workshop.webp",
     badge: "Govt. of India / IIT Delhi",
   },
   {
@@ -1254,7 +1254,7 @@ export const workshops: Workshop[] = [
     year: "2025",
     description: "Participated and represented Bearys Institute of Technology in India's premier collegiate business and technology challenge.",
     fileUrl: "/certificates/TATA Crucible Campus Participation.pdf",
-    previewImage: "/certificates/previews/TATA Crucible Campus Participation.png",
+    previewImage: "/certificates/previews/TATA Crucible Campus Participation.webp",
     badge: "Tata Group",
   },
   {
@@ -1264,7 +1264,7 @@ export const workshops: Workshop[] = [
     year: "Sept 2025",
     description: "National-level computational and aptitude assessment for selection into Cloud & AWS Engineering internships (Reg: CIT-P-2328369).",
     fileUrl: "/certificates/iSTUDIO_iCAT_Participation Certificate.pdf",
-    previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.png",
+    previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.webp",
     badge: "Merit Score",
   },
   {
@@ -1274,7 +1274,7 @@ export const workshops: Workshop[] = [
     year: "Apr 2025",
     description: "Awarded Certificate of Excellence for leading technical learning initiatives, student outreach, and tech workshop coordination.",
     fileUrl: "/certificates/CAMPUS AMBASSADOR 1STOP.pdf",
-    previewImage: "/certificates/previews/CAMPUS AMBASSADOR 1STOP.png",
+    previewImage: "/certificates/previews/CAMPUS AMBASSADOR 1STOP.webp",
     badge: "Leadership Award",
   },
 ];
@@ -1304,19 +1304,19 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "Internship Completion Certificate",
         fileUrl: "/certificates/inventeron complition.pdf",
-        previewImage: "/certificates/previews/inventeron complition.png",
+        previewImage: "/certificates/previews/inventeron complition.webp",
         type: "Certificate",
       },
       {
         title: "Official Industry Certificate",
         fileUrl: "/certificates/WASHIM SHAIKH.pdf",
-        previewImage: "/certificates/previews/WASHIM SHAIKH.png",
+        previewImage: "/certificates/previews/WASHIM SHAIKH.webp",
         type: "Certificate",
       },
       {
         title: "Offer Letter",
         fileUrl: "/certificates/Internship  Offer letter .pdf",
-        previewImage: "/certificates/previews/Internship  Offer letter .png",
+        previewImage: "/certificates/previews/Internship  Offer letter .webp",
         type: "Offer Letter",
       },
     ],
@@ -1331,13 +1331,13 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "iCAT Merit Certificate (CIT-P-2328369)",
         fileUrl: "/certificates/iSTUDIO_iCAT_Participation Certificate.pdf",
-        previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.png",
+        previewImage: "/certificates/previews/iSTUDIO_iCAT_Participation Certificate.webp",
         type: "Certificate",
       },
       {
         title: "AWS Internship Offer Letter",
         fileUrl: "/certificates/iSTUDIO_AWS Internship - Offer Letter.pdf",
-        previewImage: "/certificates/previews/iSTUDIO_AWS Internship - Offer Letter.png",
+        previewImage: "/certificates/previews/iSTUDIO_AWS Internship - Offer Letter.webp",
         type: "Offer Letter",
       },
     ],
@@ -1352,25 +1352,25 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "Internship Completion (ID: 68099)",
         fileUrl: "/certificates/1STOP_internship_BE_68099.pdf",
-        previewImage: "/certificates/previews/1STOP_internship_BE_68099.png",
+        previewImage: "/certificates/previews/1STOP_internship_BE_68099.webp",
         type: "Certificate",
       },
       {
         title: "Industrial Project Completion",
         fileUrl: "/certificates/1STOP_project_completion_BE_68099.pdf",
-        previewImage: "/certificates/previews/1STOP_project_completion_BE_68099.png",
+        previewImage: "/certificates/previews/1STOP_project_completion_BE_68099.webp",
         type: "Project Report",
       },
       {
         title: "Certificate of Participation",
         fileUrl: "/certificates/1STOP_Certificate_of_Participation_BE.pdf",
-        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_BE.png",
+        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_BE.webp",
         type: "Certificate",
       },
       {
         title: "Offer Letter",
         fileUrl: "/certificates/1STOP_Offer_Letter_BE.pdf",
-        previewImage: "/certificates/previews/1STOP_Offer_Letter_BE.png",
+        previewImage: "/certificates/previews/1STOP_Offer_Letter_BE.webp",
         type: "Offer Letter",
       },
     ],
@@ -1385,25 +1385,25 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "Internship Completion (ID: 68095)",
         fileUrl: "/certificates/1STOP_internship_FE_68095.pdf",
-        previewImage: "/certificates/previews/1STOP_internship_FE_68095.png",
+        previewImage: "/certificates/previews/1STOP_internship_FE_68095.webp",
         type: "Certificate",
       },
       {
         title: "Industrial Project Completion",
         fileUrl: "/certificates/1STOP_project_completion_FE_68095.pdf",
-        previewImage: "/certificates/previews/1STOP_project_completion_FE_68095.png",
+        previewImage: "/certificates/previews/1STOP_project_completion_FE_68095.webp",
         type: "Project Report",
       },
       {
         title: "Certificate of Participation",
         fileUrl: "/certificates/1STOP_Certificate_of_Participation_FE.pdf",
-        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_FE.png",
+        previewImage: "/certificates/previews/1STOP_Certificate_of_Participation_FE.webp",
         type: "Certificate",
       },
       {
         title: "Offer Letter",
         fileUrl: "/certificates/1STOP_Offer_Letter_FE.pdf",
-        previewImage: "/certificates/previews/1STOP_Offer_Letter_FE.png",
+        previewImage: "/certificates/previews/1STOP_Offer_Letter_FE.webp",
         type: "Offer Letter",
       },
     ],
@@ -1418,19 +1418,19 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "Course Completion (Wipro DICE ID)",
         fileUrl: "/certificates/Yhills_ML_with Python Course Completion_1742148348722.pdf",
-        previewImage: "/certificates/previews/Yhills_ML_with Python Course Completion_1742148348722.png",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Course Completion_1742148348722.webp",
         type: "Certificate",
       },
       {
         title: "Internship Completion (SSI Certified)",
         fileUrl: "/certificates/Yhills_ML_with Python Internship Completion_1742148610585.pdf",
-        previewImage: "/certificates/previews/Yhills_ML_with Python Internship Completion_1742148610585.png",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Internship Completion_1742148610585.webp",
         type: "Certificate",
       },
       {
         title: "Project Completion (E-Cell IIT Guwahati)",
         fileUrl: "/certificates/Yhills_ML_with Python Projects Completion_1742148521314.pdf",
-        previewImage: "/certificates/previews/Yhills_ML_with Python Projects Completion_1742148521314.png",
+        previewImage: "/certificates/previews/Yhills_ML_with Python Projects Completion_1742148521314.webp",
         type: "Project Report",
       },
     ],
@@ -1445,25 +1445,25 @@ export const verifiedInternshipCredentials: VerifiedInternshipCredential[] = [
       {
         title: "Internship Completion (ID: 54786)",
         fileUrl: "/certificates/COINCENT_internship_Participation_54786,.pdf",
-        previewImage: "/certificates/previews/COINCENT_internship_Participation_54786,.png",
+        previewImage: "/certificates/previews/COINCENT_internship_Participation_54786,.webp",
         type: "Certificate",
       },
       {
         title: "Training Completion Certificate",
         fileUrl: "/certificates/COINCENT_TRAINING_COMPLETION_Certificate.pdf",
-        previewImage: "/certificates/previews/COINCENT_TRAINING_COMPLETION_Certificate.png",
+        previewImage: "/certificates/previews/COINCENT_TRAINING_COMPLETION_Certificate.webp",
         type: "Certificate",
       },
       {
         title: "Official Offer Letter (ID: 54786)",
         fileUrl: "/certificates/COINCENT_Offer_Letter_54786.pdf",
-        previewImage: "/certificates/previews/COINCENT_Offer_Letter_54786.png",
+        previewImage: "/certificates/previews/COINCENT_Offer_Letter_54786.webp",
         type: "Offer Letter",
       },
       {
         title: "Certificate of Participation",
         fileUrl: "/certificates/COINCENT_Participation_Certificate 54786.pdf",
-        previewImage: "/certificates/previews/COINCENT_Participation_Certificate 54786.png",
+        previewImage: "/certificates/previews/COINCENT_Participation_Certificate 54786.webp",
         type: "Certificate",
       },
     ],

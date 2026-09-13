@@ -108,7 +108,7 @@ export default function Navbar() {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#00BFE8] to-[#1CE0FD] shadow-[inset_0_1px_2px_rgba(255,255,255,0.95),2px_2px_5px_rgba(166,180,200,0.35)] shrink-0">
             <Image
-              src="/profile.jpg"
+              src="/profile.webp"
               alt="Washim Shaikh"
               width={32}
               height={32}

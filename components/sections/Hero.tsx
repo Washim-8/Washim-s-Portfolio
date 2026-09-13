@@ -145,7 +145,7 @@ export default function HeroSection() {
 
               {/* High-Resolution Portrait Photo */}
               <Image
-                src="/profile.jpg"
+                src="/profile.webp"
                 alt="WASHIM SHAIKH"
                 fill
                 priority

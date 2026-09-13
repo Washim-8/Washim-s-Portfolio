@@ -50,7 +50,7 @@ export default function AboutSection() {
                   <div className="relative shrink-0">
                     <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gradient-to-tr from-[#00BFE8] to-[#1CE0FD] p-0.5 shadow-[-3px_-3px_8px_rgba(255,255,255,0.9),3px_5px_15px_rgba(0,191,232,0.45)] border border-white/80 dark:border-white/20">
                       <Image
-                        src="/profile.jpg"
+                        src="/profile.webp"
                         alt="Washim Shaikh"
                         width={72}
                         height={72}

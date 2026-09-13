@@ -57,7 +57,7 @@ export default function Footer() {
               <div className="flex items-center gap-3.5 mb-4">
                 <div className="relative w-12 h-12 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-[#00BFE8] to-[#1CE0FD] shadow-[-2px_-2px_6px_rgba(255,255,255,0.95),2px_4px_10px_rgba(0,191,232,0.4)] border border-white/80 dark:border-white/20 shrink-0">
                   <Image
-                    src="/profile.jpg"
+                    src="/profile.webp"
                     alt="Washim Shaikh"
                     width={48}
                     height={48}
