@@ -51,12 +51,19 @@ function formatContent(text: string) {
 }
 
 export default function ResumeChatbot() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Mount chatbot smoothly after initial page paint to free critical mobile main thread
+    const timer = setTimeout(() => setMounted(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -119,6 +126,8 @@ export default function ResumeChatbot() {
     },
     [isTyping]
   );
+
+  if (!mounted) return null;
 
   return (
     <>

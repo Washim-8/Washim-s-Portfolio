@@ -231,6 +231,7 @@ export default function Navbar() {
                 href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Washim Shaikh's GitHub Profile"
                 className="w-8 h-8 rounded-full flex items-center justify-center bg-white/70 dark:bg-white/10 text-[#5F6368] dark:text-white"
               >
                 <GithubIcon className="w-4 h-4" />
@@ -239,6 +240,7 @@ export default function Navbar() {
                 href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Washim Shaikh's LinkedIn Profile"
                 className="w-8 h-8 rounded-full flex items-center justify-center bg-white/70 dark:bg-white/10 text-[#5F6368] dark:text-white"
               >
                 <LinkedinIcon className="w-4 h-4" />

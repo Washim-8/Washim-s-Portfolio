@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { X, ExternalLink, Calendar, Building2, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
@@ -13,25 +14,42 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+function useIsClient() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
-  // Close on ESC
+  const isClient = useIsClient();
+
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [onClose]);
 
-  return (
+  if (!isClient) return null;
+
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-        {/* Backdrop */}
+      <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        {/* Backdrop — Clean semi-transparent dim without heavy blur */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/40 backdrop-blur-md"
+          className="fixed inset-0 bg-black/50"
           onClick={onClose}
         />
 
@@ -160,6 +178,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
