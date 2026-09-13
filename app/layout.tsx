@@ -137,8 +137,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Preconnect to Render CDN to eliminate 160ms critical path latency */}
-        <link rel="preconnect" href="https://washims-portfolio.onrender.com" />
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <script

@@ -9,32 +9,51 @@ export interface MailOptions {
   message: string;
 }
 
-function getTransporter() {
-  const user = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
-  // Clean all spaces, quotes and whitespace that users frequently copy from Google App Passwords
-  const pass = process.env.EMAIL_PASS?.replace(/[\s"']/g, "").trim() || "";
-
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user,
-      pass,
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 5000,
-    socketTimeout: 15000,
-  });
+function createTransporters(user: string, pass: string) {
+  return [
+    // Strategy 1: Standard Gmail Service with secure credentials
+    nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass },
+      connectionTimeout: 8000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
+    }),
+    // Strategy 2: Port 587 with STARTTLS (works on all cloud firewalls)
+    nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // TLS
+      auth: { user, pass },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 8000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
+    }),
+    // Strategy 3: Port 465 Direct SSL
+    nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: { user, pass },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 8000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
+    }),
+  ];
 }
 
 export async function sendContactEmail(data: MailOptions): Promise<void> {
   const targetEmail = process.env.EMAIL_TO?.trim() || "washimshaikh33@gmail.com";
-  const senderUser = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
-  const transporter = getTransporter();
+  const senderUser = (process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com");
+  const rawPass = (process.env.EMAIL_PASS?.replace(/[\s"']/g, "").trim() || "");
+
+  const transporters = createTransporters(senderUser, rawPass);
 
   const formattedDate = new Date().toLocaleString("en-US", {
     timeZone: "Asia/Kolkata",
@@ -134,11 +153,25 @@ export async function sendContactEmail(data: MailOptions): Promise<void> {
     </html>
   `;
 
-  await transporter.sendMail({
-    from: `"Washim Portfolio Contact" <${senderUser}>`,
-    to: targetEmail,
-    replyTo: data.email,
-    subject: `[Portfolio Inquiry] ${data.subject} — from ${data.name}`,
-    html,
-  });
+  let lastError: Error | null = null;
+
+  for (let i = 0; i < transporters.length; i++) {
+    try {
+      await transporters[i].sendMail({
+        from: `"Washim Portfolio Contact" <${senderUser}>`,
+        to: targetEmail,
+        replyTo: data.email,
+        subject: `[Portfolio Inquiry] ${data.subject} — from ${data.name}`,
+        html,
+      });
+      return; // Succeeded!
+    } catch (err: unknown) {
+      lastError = err as Error;
+      console.warn(`[Mailer] Strategy ${i + 1} failed:`, lastError?.message || lastError);
+    }
+  }
+
+  if (lastError) {
+    throw lastError;
+  }
 }

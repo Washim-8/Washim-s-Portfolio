@@ -11,29 +11,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // 1. Non-blocking MongoDB persistence with timeout (won't hang email if DB is unreachable)
+    let dbSaved = false;
+
+    // 1. MongoDB persistence with 3-second timeout
     const mongoUri = process.env.MONGODB_URI;
     if (mongoUri && !mongoUri.includes("username:password")) {
-      const dbSavePromise = (async () => {
-        try {
-          const { default: dbConnect } = await import("@/lib/db");
-          const { default: Contact } = await import("@/models/Contact");
-          await dbConnect();
-          await Contact.create({ name, email, phone, subject, message });
-        } catch (dbErr) {
-          console.warn("[Contact API] DB save failed (non-fatal):", dbErr);
-        }
-      })();
-
-      // Set a 3-second maximum wait for DB to prevent hanging the HTTP response
-      const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 3000));
-      Promise.race([dbSavePromise, timeoutPromise]).catch(() => {});
+      try {
+        const { default: dbConnect } = await import("@/lib/db");
+        const { default: Contact } = await import("@/models/Contact");
+        await Promise.race([
+          (async () => {
+            await dbConnect();
+            await Contact.create({ name, email, phone, subject, message });
+            dbSaved = true;
+          })(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("DB timeout")), 3000)),
+        ]);
+      } catch (dbErr) {
+        console.warn("[Contact API] DB save non-fatal error:", dbErr);
+      }
     }
 
     // 2. Dispatch Email notification to washimshaikh33@gmail.com
     const emailUser = process.env.EMAIL_USER?.trim() || "washimshaikh33@gmail.com";
     const rawPass = process.env.EMAIL_PASS?.replace(/[\s"']/g, "").trim();
-    const isEmailReady = rawPass && rawPass !== "your_gmail_app_password" && rawPass.length >= 8;
+    const isEmailReady = Boolean(rawPass && rawPass !== "your_gmail_app_password" && rawPass.length >= 8);
 
     let emailSent = false;
     let emailErrorMsg = "";
@@ -54,24 +56,33 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // If email failed because of authentication / connection error when password was provided
-    if (isEmailReady && !emailSent) {
+    // If email sent successfully, or if message was persisted to DB
+    if (emailSent || dbSaved) {
       return NextResponse.json(
         {
-          error: "Email delivery failed. Please check EMAIL_PASS or contact directly via email.",
-          details: emailErrorMsg,
+          success: true,
+          message: emailSent
+            ? "Inquiry sent and delivered to inbox!"
+            : "Inquiry received and logged to admin dashboard!",
+          emailDelivered: emailSent,
+          dbSaved,
         },
-        { status: 500 }
+        { status: 201 }
       );
+    }
+
+    // If both failed or email failed with auth error
+    let userFriendlyError = "Email delivery failed. Please check EMAIL_PASS or contact directly via email.";
+    if (emailErrorMsg.includes("535") || emailErrorMsg.includes("Username and Password not accepted") || emailErrorMsg.includes("EAUTH")) {
+      userFriendlyError = "Gmail Authentication Failed: Google requires a 16-character App Password (from myaccount.google.com/apppasswords), not your standard email password.";
     }
 
     return NextResponse.json(
       {
-        success: true,
-        message: "Inquiry received successfully",
-        emailDelivered: emailSent,
+        error: userFriendlyError,
+        details: emailErrorMsg,
       },
-      { status: 201 }
+      { status: isEmailReady ? 500 : 200 }
     );
   } catch (err) {
     console.error("Contact POST error:", err);

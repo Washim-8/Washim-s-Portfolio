@@ -598,12 +598,12 @@ export default function TechnicalSkills() {
 
                   {/* Skill Name & Subtitle Tag */}
                   <div className="w-full relative z-10">
-                    <h5
+                    <p
                       className="text-xs sm:text-[13px] font-extrabold text-[#2A354F] dark:text-slate-100 leading-snug line-clamp-2 mb-1.5 group-hover:text-[#00BFE8] dark:group-hover:text-cyan-300 transition-colors"
                       title={skill.name}
                     >
                       {skill.name}
-                    </h5>
+                    </p>
                     <span className="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold text-[#5A6A85] dark:text-cyan-300 bg-white/70 dark:bg-cyan-500/10 border border-white/90 dark:border-cyan-500/25 shadow-sm max-w-full truncate">
                       {skill.tag}
                     </span>

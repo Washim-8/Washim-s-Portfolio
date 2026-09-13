@@ -149,7 +149,7 @@ export default function CertificationsSection() {
                 className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#00BFE8] text-white shadow-[-3px_-3px_8px_rgba(255,255,255,0.85),3px_5px_14px_rgba(0,191,232,0.45)] scale-[1.02]"
-                    : "bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] dark:text-slate-300 shadow-[-4px_-4px_10px_rgba(255,255,255,0.95),4px_4px_10px_rgba(166,180,200,0.50)] dark:shadow-none border border-white/80 dark:border-white/10 hover:text-[#2A354F]"
+                    : "bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#475569] dark:text-slate-300 shadow-[-4px_-4px_10px_rgba(255,255,255,0.95),4px_4px_10px_rgba(166,180,200,0.50)] dark:shadow-none border border-white/80 dark:border-white/10 hover:text-[#2A354F]"
                 }`}
               >
                 {cat === "All" ? "All Certifications" : cat}
@@ -158,23 +158,23 @@ export default function CertificationsSection() {
           })}
         </div>
 
-        {/* ─── CERTIFICATIONS 2-ROW HORIZONTAL SCROLL SHOWCASE ────────────── */}
+        {/* ─── CERTIFICATIONS RESPONSIVE HORIZONTAL SCROLL SHOWCASE ────────── */}
         <div className="mb-24">
           {/* Scroll Navigation Controls & Status Bar */}
           <div className="flex items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-[#5A6A85] dark:text-slate-300">
+              <span className="text-xs font-bold text-[#475569] dark:text-slate-300">
                 Displaying <span className="text-[#00BFE8] font-extrabold">{filteredCerts.length}</span> Verified Credentials
               </span>
-              {filteredCerts.length > 6 && (
+              {filteredCerts.length > 4 && (
                 <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#10AB7C] bg-[#D1FAE5] dark:bg-[#10AB7C]/20 px-2.5 py-0.5 rounded-full border border-[#10AB7C]/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#10AB7C] animate-pulse" />
-                  Scroll right to view more
+                  Scroll to explore
                 </span>
               )}
             </div>
 
-            {filteredCerts.length > 6 && (
+            {filteredCerts.length > 2 && (
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleScroll("left")}
@@ -196,10 +196,10 @@ export default function CertificationsSection() {
             )}
           </div>
 
-          {/* 2-Row Horizontal Scrollable Grid with Right-Edge Peek Affordance */}
+          {/* Responsive Scrollable Grid: 1-row on mobile (<sm) for clean touch swipe, 2-row on desktop */}
           <div
             ref={scrollContainerRef}
-            className="grid grid-rows-2 grid-flow-col gap-5 overflow-x-auto pb-6 pt-2 px-1 scroll-smooth snap-x snap-mandatory auto-cols-[82vw] sm:auto-cols-[calc(46%-10px)] md:auto-cols-[calc(36%-12px)] lg:auto-cols-[calc(29%-14px)] xl:auto-cols-[calc(28.5%-14px)]"
+            className="grid grid-rows-1 sm:grid-rows-2 grid-flow-col gap-4 sm:gap-5 overflow-x-auto pb-6 pt-2 px-1 scroll-smooth snap-x snap-mandatory auto-cols-[85vw] sm:auto-cols-[calc(46%-10px)] md:auto-cols-[calc(36%-12px)] lg:auto-cols-[calc(29%-14px)] xl:auto-cols-[calc(28.5%-14px)]"
             style={{ scrollbarWidth: "thin" }}
           >
             {filteredCerts.map((cert) => {
@@ -243,7 +243,7 @@ export default function CertificationsSection() {
                           className="object-contain p-1.5 transition-transform duration-500 group-hover/thumb:scale-105"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[#7E8BA0]">
+                        <div className="w-full h-full flex items-center justify-center text-[#475569]">
                           <Award className="w-10 h-10 opacity-40" />
                         </div>
                       )}
@@ -295,7 +295,7 @@ export default function CertificationsSection() {
                       {cert.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="text-[9px] font-semibold text-[#5A6A85] dark:text-slate-300 bg-[#E6ECF5] dark:bg-darkbg-tertiary px-1.5 py-0.5 rounded-md border border-white/60 dark:border-white/5"
+                          className="text-[9px] font-semibold text-[#475569] dark:text-slate-300 bg-[#E6ECF5] dark:bg-darkbg-tertiary px-1.5 py-0.5 rounded-md border border-white/60 dark:border-white/5"
                         >
                           {skill}
                         </span>
@@ -305,9 +305,9 @@ export default function CertificationsSection() {
 
                   {/* Bottom Card Footer: Action Button & Credential ID */}
                   <div>
-                    <div className="pt-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] text-[#7E8BA0] font-medium mb-2.5">
+                    <div className="pt-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] text-[#475569] dark:text-slate-400 font-medium mb-2.5">
                       {cert.credentialId ? (
-                        <span className="font-mono text-[10px] text-[#5A6A85] dark:text-slate-400 truncate max-w-[140px]">
+                        <span className="font-mono text-[10px] text-[#475569] dark:text-slate-400 truncate max-w-[140px]">
                           ID: {cert.credentialId}
                         </span>
                       ) : cert.score ? (
@@ -319,7 +319,7 @@ export default function CertificationsSection() {
                           <Check className="w-3 h-3" /> Official Credential
                         </span>
                       )}
-                      <span className="text-[9px] font-bold text-[#7E8BA0] uppercase tracking-wider">
+                      <span className="text-[9px] font-bold text-[#475569] dark:text-slate-400 uppercase tracking-wider">
                         {cert.category.split(" ")[0]}
                       </span>
                     </div>
@@ -362,7 +362,7 @@ export default function CertificationsSection() {
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#202225] dark:text-white">
                 Technical Workshops & Specialized Programs
               </h3>
-              <p className="text-xs text-[#5F6368] dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[#475569] dark:text-slate-400 mt-0.5">
                 Hands-on technical workshops, national quizzes, and leadership initiatives.
               </p>
             </div>
@@ -413,7 +413,7 @@ export default function CertificationsSection() {
                       <span className="text-[10px] font-bold text-[#00BFE8] bg-[#CCEFF9] dark:bg-[#00BFE8]/15 border border-[#00BFE8]/30 px-2.5 py-0.5 rounded-full shrink-0">
                         {ws.badge}
                       </span>
-                      <span className="text-[11px] font-bold text-[#7E8BA0]">
+                      <span className="text-[11px] font-bold text-[#475569] dark:text-slate-400">
                         {ws.year}
                       </span>
                     </div>
@@ -424,13 +424,13 @@ export default function CertificationsSection() {
                     <p className="text-xs font-bold text-[#00BFE8] mb-2.5">
                       {ws.organizer}
                     </p>
-                    <p className="text-xs text-[#5A6A85] dark:text-slate-300 leading-relaxed mb-4">
+                    <p className="text-xs text-[#475569] dark:text-slate-300 leading-relaxed mb-4">
                       {ws.description}
                     </p>
                   </div>
 
                   <div className="pt-3 border-t border-black/5 dark:border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-[#7E8BA0]">
+                    <span className="text-[11px] font-semibold text-[#475569] dark:text-slate-400">
                       {ws.type}
                     </span>
                     <button
@@ -466,7 +466,7 @@ export default function CertificationsSection() {
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#202225] dark:text-white">
                 Verified Internship & Industry Documents
               </h3>
-              <p className="text-xs text-[#5F6368] dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[#475569] dark:text-slate-400 mt-0.5">
                 Official offer letters, industrial project reports, and internship completion certificates.
               </p>
             </div>
@@ -484,7 +484,7 @@ export default function CertificationsSection() {
                     <span className="text-[10px] font-bold text-[#10AB7C] bg-[#D1FAE5] dark:bg-[#10AB7C]/20 border border-[#10AB7C]/30 px-2.5 py-0.5 rounded-full">
                       {ic.status}
                     </span>
-                    <span className="text-[11px] font-semibold text-[#7E8BA0]">
+                    <span className="text-[11px] font-semibold text-[#475569] dark:text-slate-400">
                       {ic.period}
                     </span>
                   </div>
@@ -495,14 +495,14 @@ export default function CertificationsSection() {
                   <p className="text-xs font-bold text-[#00BFE8] mb-2.5">
                     {ic.role}
                   </p>
-                  <p className="text-xs text-[#5A6A85] dark:text-slate-300 leading-relaxed mb-4">
+                  <p className="text-xs text-[#475569] dark:text-slate-300 leading-relaxed mb-4">
                     {ic.description}
                   </p>
                 </div>
 
                 {/* Attached Documents List with Image Preview Triggers */}
                 <div className="pt-3 border-t border-black/5 dark:border-white/10 space-y-2">
-                  <div className="text-[11px] font-bold text-[#7E8BA0] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                  <div className="text-[11px] font-bold text-[#475569] dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5 text-[#00BFE8]" />
                     <span>Attached Official Documents ({ic.documents.length})</span>
                   </div>
@@ -526,7 +526,7 @@ export default function CertificationsSection() {
                           <Eye className="w-3.5 h-3.5 text-[#00BFE8] shrink-0" />
                           <span className="truncate">{doc.title}</span>
                         </div>
-                        <span className="text-[10px] text-[#7E8BA0] group-hover/doc:text-[#00BFE8] font-bold shrink-0">
+                        <span className="text-[10px] text-[#475569] dark:text-slate-400 group-hover/doc:text-[#00BFE8] font-bold shrink-0">
                           View
                         </span>
                       </button>
@@ -542,22 +542,22 @@ export default function CertificationsSection() {
       {/* ─── INTERACTIVE CERTIFICATE LIGHTBOX / FULL IMAGE MODAL ────────── */}
       {modalItem && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setModalItem(null)}
         >
           <div
-            className="relative w-full max-w-4xl max-h-[92vh] bg-[#E6ECF5] dark:bg-darkbg-primary rounded-3xl p-5 sm:p-7 shadow-2xl border border-white/60 dark:border-white/10 flex flex-col justify-between overflow-hidden"
+            className="relative w-full max-w-4xl max-h-[92vh] bg-[#E6ECF5] dark:bg-darkbg-primary rounded-3xl p-4 sm:p-6 shadow-2xl border border-white/80 dark:border-white/10 flex flex-col justify-between overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-black/10 dark:border-white/10 shrink-0">
-              <div>
+            <div className="flex items-start justify-between gap-4 pb-3 sm:pb-4 border-b border-black/10 dark:border-white/10 shrink-0">
+              <div className="min-w-0 flex-1 pr-2">
                 <div className="flex flex-wrap items-center gap-2 mb-1">
                   <span className="text-xs font-bold text-[#00BFE8] bg-[#CCEFF9] dark:bg-[#00BFE8]/20 px-2.5 py-0.5 rounded-full">
                     {modalItem.issuer}
                   </span>
                   {modalItem.year && (
-                    <span className="text-xs font-semibold text-[#7E8BA0]">
+                    <span className="text-xs font-semibold text-[#475569] dark:text-slate-400">
                       {modalItem.year}
                     </span>
                   )}
@@ -567,7 +567,7 @@ export default function CertificationsSection() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-lg sm:text-xl font-black text-[#2A354F] dark:text-white leading-snug">
+                <h3 className="text-base sm:text-lg md:text-xl font-black text-[#2A354F] dark:text-white leading-snug line-clamp-2">
                   {modalItem.title}
                 </h3>
               </div>
@@ -576,22 +576,21 @@ export default function CertificationsSection() {
               <button
                 onClick={() => setModalItem(null)}
                 aria-label="Close certificate modal"
-                className="w-9 h-9 rounded-2xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] hover:text-[#FF6B6B] flex items-center justify-center shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] hover:shadow-inner border border-white/80 dark:border-white/10 transition-all cursor-pointer shrink-0"
+                className="w-9 h-9 rounded-2xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#475569] hover:text-[#FF6B6B] flex items-center justify-center shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] hover:shadow-inner border border-white/80 dark:border-white/10 transition-all cursor-pointer shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Modal Body: High-Res Certificate Image Display */}
-            <div className="relative my-4 flex-1 min-h-[300px] sm:min-h-[460px] max-h-[62vh] rounded-2xl bg-[#DEE5F0] dark:bg-black/50 border border-white/80 dark:border-white/5 shadow-inner overflow-auto flex items-center justify-center p-2 sm:p-4">
+            {/* Modal Body: High-Res Certificate / Document Image Display */}
+            <div className="relative my-3 sm:my-4 flex-1 max-h-[58vh] sm:max-h-[64vh] rounded-2xl bg-[#DEE5F0]/90 dark:bg-black/60 border border-white/80 dark:border-white/5 shadow-inner overflow-auto flex items-center justify-center p-2 sm:p-4">
               {modalItem.previewImage ? (
-                <div className="relative w-full h-full min-h-[300px] sm:min-h-[440px] flex items-center justify-center">
-                  <Image
+                <div className="relative max-h-full max-w-full flex items-center justify-center">
+                  <img
                     src={modalItem.previewImage}
-                    alt={`${modalItem.title} full certificate`}
-                    fill
-                    className="object-contain drop-shadow-md rounded-lg"
-                    priority
+                    alt={`${modalItem.title} certificate document`}
+                    className="max-h-[52vh] sm:max-h-[58vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-lg border border-white/40 dark:border-white/10 select-none"
+                    loading="eager"
                   />
                 </div>
               ) : (
@@ -606,18 +605,18 @@ export default function CertificationsSection() {
 
             {/* Modal Footer: Action buttons & Verification */}
             <div className="pt-3 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
-              <div className="text-xs text-[#5A6A85] dark:text-slate-300 flex flex-wrap items-center gap-2 font-medium">
+              <div className="text-xs text-[#475569] dark:text-slate-300 flex flex-wrap items-center gap-2 font-medium">
                 {modalItem.credentialId && (
-                  <span className="font-mono bg-white/60 dark:bg-darkbg-tertiary px-2 py-1 rounded-md border border-black/5 dark:border-white/5">
-                    Credential ID: {modalItem.credentialId}
+                  <span className="font-mono bg-white/70 dark:bg-darkbg-tertiary px-2.5 py-1 rounded-lg border border-black/5 dark:border-white/5 text-[#2A354F] dark:text-white font-bold">
+                    ID: {modalItem.credentialId}
                   </span>
                 )}
                 {modalItem.skills && (
-                  <div className="hidden sm:flex items-center gap-1">
+                  <div className="hidden sm:flex items-center gap-1.5">
                     {modalItem.skills.slice(0, 3).map((s) => (
                       <span
                         key={s}
-                        className="text-[10px] bg-white/60 dark:bg-darkbg-tertiary px-2 py-0.5 rounded-md"
+                        className="text-[11px] bg-white/70 dark:bg-darkbg-tertiary px-2 py-0.5 rounded-md text-[#475569] dark:text-slate-300 font-semibold"
                       >
                         {s}
                       </span>
@@ -626,19 +625,33 @@ export default function CertificationsSection() {
                 )}
               </div>
 
-              {modalItem.verifyUrl && (
-                <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                {/* Direct High-Res Open in New Tab Button */}
+                {modalItem.previewImage && (
+                  <a
+                    href={modalItem.previewImage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 rounded-xl bg-[#00BFE8] text-white hover:bg-[#00AEDB] text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open High-Res Document</span>
+                  </a>
+                )}
+
+                {/* Verify Online Button */}
+                {modalItem.verifyUrl && (
                   <a
                     href={modalItem.verifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#5A6A85] dark:text-slate-200 hover:text-[#00BFE8] text-xs font-bold flex items-center gap-1.5 shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] border border-white/80 dark:border-white/10 transition-all cursor-pointer"
+                    className="px-3.5 py-2 rounded-xl bg-[#E6ECF5] dark:bg-darkbg-secondary text-[#2A354F] dark:text-slate-200 hover:text-[#00BFE8] text-xs font-bold flex items-center gap-1.5 shadow-[-3px_-3px_7px_rgba(255,255,255,0.95),3px_3px_7px_rgba(166,180,200,0.45)] border border-white/80 dark:border-white/10 transition-all cursor-pointer"
                   >
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <Shield className="w-3.5 h-3.5 text-[#10AB7C]" />
                     <span>Verify Online</span>
                   </a>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -646,3 +659,4 @@ export default function CertificationsSection() {
     </div>
   );
 }
+
