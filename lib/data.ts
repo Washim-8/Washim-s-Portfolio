@@ -14,7 +14,7 @@ export const personal = {
 };
 
 export const careerObjective =
-  "Aspiring Software Engineer with strong skills in Python, Java, Web Development, and Database Management, and hands-on experience in Machine Learning, Full Stack Development, and Data Analysis. Passionate about building scalable, data-driven applications and leveraging AI/ML, Generative AI, and Prompt Engineering to solve real-world problems. Seeking opportunities to contribute to innovative solutions while continuously growing as a technology professional.";
+  "Aspiring Software Engineer with hands-on experience in Python, Full Stack Development, Artificial Intelligence, Machine Learning, and Data Analytics through multiple internships and real-world projects. Skilled in developing scalable web applications, intelligent AI/ML solutions, REST APIs, and data-driven systems using Python, React, FastAPI, Django, TensorFlow, PyTorch, SQL, and modern development tools. Passionate about applying software engineering, AI/ML, Generative AI, and analytical problem-solving to build innovative solutions that address real-world challenges and deliver meaningful impact.";
 
 export const education = [
   {

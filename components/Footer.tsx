@@ -173,7 +173,7 @@ export default function Footer() {
         {/* ─── BOTTOM ROW: COPYRIGHT, CREDITS & BACK TO TOP ──────────────── */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-[#7E8BA0] dark:text-slate-400">
           <p className="text-center sm:text-left">
-            © {year} <strong className="font-extrabold text-[#2A354F] dark:text-white">Washim Shaikh</strong>. Crafted with precision using Next.js & Tailwind.
+            © {year} <strong className="font-extrabold text-[#2A354F] dark:text-white">Washim Shaikh</strong>.
           </p>
 
           <button
