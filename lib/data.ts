@@ -379,7 +379,7 @@ export const projects: Project[] = [
       "CSS3",
     ],
     github: "https://github.com/Washim-8/OmniDetect-AI",
-    liveDemo: "https://omnidetect-ai-1.onrender.com",
+    liveDemo: "https://omnidetect-ai-i787.onrender.com",
   },
   {
     id: "student-predictor",
@@ -416,7 +416,7 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/StudentPredictorAI-Student-Performer-Predictor",
-    liveDemo: "https://studentpredictorai.onrender.com",
+    liveDemo: "https://student-performer-predictor.onrender.com",
   },
   {
     id: "avatarai",
@@ -498,7 +498,7 @@ export const projects: Project[] = [
       "CNN Architecture",
     ],
     github: "https://github.com/Washim-8/Brain-tumor-classification-main",
-    liveDemo: "https://brain-scan-ai-v9wg.onrender.com",
+    liveDemo: "https://brain-scan-ai-7ai2.onrender.com",
   },
   {
     id: "drowsiness",
@@ -537,7 +537,7 @@ export const projects: Project[] = [
       "JavaScript",
     ],
     github: "https://github.com/Washim-8/Driver-Drowsiness-Detection-System",
-    liveDemo: "https://driver-drowsiness-detection-system-1xcy.onrender.com",
+    liveDemo: "https://drowsiness-detection-djnz.onrender.com",
   },
   {
     id: "face-recognition",
@@ -616,7 +616,7 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/FinTrackAI",
-    liveDemo: "https://fintrack-ai-3mn8.onrender.com",
+    liveDemo: "https://fintrack-ai-yvk4.onrender.com",
   },
   {
     id: "agritrade",
@@ -735,7 +735,7 @@ export const projects: Project[] = [
       "npm",
     ],
     github: "https://github.com/Washim-8/Booking-Management-System",
-    liveDemo: "https://room-booking-4dgp.onrender.com",
+    liveDemo: "https://stayease-hotel-lbap.onrender.com",
   },
   {
     id: "todo-php",
@@ -767,7 +767,7 @@ export const projects: Project[] = [
       "XAMPP / WAMP",
     ],
     github: "https://github.com/Washim-8/PHP-Simple-To-Do-List",
-    liveDemo: "https://php-simple-to-do-list.onrender.com",
+    liveDemo: "https://php-simple-todo-list.onrender.com",
   },
   {
     id: "expense-tracker",
@@ -880,7 +880,7 @@ export const projects: Project[] = [
       "Git",
     ],
     github: "https://github.com/Washim-8/Simple-Blogging-Platform",
-    liveDemo: "https://simple-blogging-platform-6vqg.onrender.com",
+    liveDemo: "https://simple-blog-platform-wicn.onrender.com",
   },
   {
     id: "todo-html",
@@ -953,7 +953,7 @@ export const projects: Project[] = [
       "Jupyter Notebook",
     ],
     github: "https://github.com/Washim-8/Customer-Churn-Prediction",
-    liveDemo: "https://customer-churn-prediction-pewq.onrender.com",
+    liveDemo: "https://customer-churn-prediction-cxcv.onrender.com",
   },
   {
     id: "fraud-detection",
@@ -990,7 +990,7 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/Financial-Fraud-Detection",
-    liveDemo: "https://financial-fraud-detection-w9w6.onrender.com",
+    liveDemo: "https://financial-fraud-detection-vuzs.onrender.com",
   },
   {
     id: "house-price",
@@ -1030,7 +1030,7 @@ export const projects: Project[] = [
       "Jupyter Notebook",
     ],
     github: "https://github.com/Washim-8/House-Price-Prediction",
-    liveDemo: "https://house-price-prediction-s1rk.onrender.com",
+    liveDemo: "https://house-price-prediction-i8qz.onrender.com",
   },
   {
     id: "text-classification",
@@ -1068,7 +1068,7 @@ export const projects: Project[] = [
       "IMDB Movie Reviews",
     ],
     github: "https://github.com/Washim-8/Text-Classification-Using-TensorFlow",
-    liveDemo: "https://text-classification-lgt4.onrender.com",
+    liveDemo: "https://text-classification-tensorflow.onrender.com",
   },
   {
     id: "vision-transformer",
