@@ -379,7 +379,7 @@ export const projects: Project[] = [
       "CSS3",
     ],
     github: "https://github.com/Washim-8/OmniDetect-AI",
-    liveDemo: "https://omnidetect-ai-i787.onrender.com",
+    liveDemo: "https://omnidetect-ai-oog8.onrender.com",
   },
   {
     id: "student-predictor",
@@ -416,7 +416,7 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/StudentPredictorAI-Student-Performer-Predictor",
-    liveDemo: "https://student-performer-predictor.onrender.com",
+    liveDemo: "https://student-performer-predictor-vrtp.onrender.com",
   },
   {
     id: "avatarai",
@@ -537,7 +537,7 @@ export const projects: Project[] = [
       "JavaScript",
     ],
     github: "https://github.com/Washim-8/Driver-Drowsiness-Detection-System",
-    liveDemo: "https://drowsiness-detection-djnz.onrender.com",
+    liveDemo: "https://drowsiness-detection-95hs.onrender.com",
   },
   {
     id: "face-recognition",
@@ -767,7 +767,7 @@ export const projects: Project[] = [
       "XAMPP / WAMP",
     ],
     github: "https://github.com/Washim-8/PHP-Simple-To-Do-List",
-    liveDemo: "https://php-simple-todo-list.onrender.com",
+    liveDemo: "https://php-simple-todo-list-f7l2.onrender.com",
   },
   {
     id: "expense-tracker",
@@ -990,7 +990,7 @@ export const projects: Project[] = [
       "Chart.js",
     ],
     github: "https://github.com/Washim-8/Financial-Fraud-Detection",
-    liveDemo: "https://financial-fraud-detection-vuzs.onrender.com",
+    liveDemo: "https://financial-fraud-detection-2lwq.onrender.com",
   },
   {
     id: "house-price",
@@ -1030,7 +1030,7 @@ export const projects: Project[] = [
       "Jupyter Notebook",
     ],
     github: "https://github.com/Washim-8/House-Price-Prediction",
-    liveDemo: "https://house-price-prediction-i8qz.onrender.com",
+    liveDemo: "https://house-price-prediction-lgch.onrender.com",
   },
   {
     id: "text-classification",
